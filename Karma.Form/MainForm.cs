@@ -17,5 +17,13 @@ namespace Karma_Form
         {
             InitializeComponent();
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            MainStatusBar.BackColor = Color.FromArgb(60, 60, 60);
+            MainMenu.BackColor = MainStatusBar.BackColor;
+            MainStatusBar.ForeColor = Color.White;
+            MainMenu.ForeColor = Color.White;
+        }
     }
 }

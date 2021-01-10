@@ -127,8 +127,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\KarmaLib\KarmaLib.csproj">
+      <Project>{8940ee8f-1b08-4c84-b97c-86eb1b8cd863}</Project>
+      <Name>KarmaLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KarmaObjects\KarmaObjects.csproj">
-      <Project>{502436D1-2544-43CF-9A32-68F92FE7A63D}</Project>
+      <Project>{502436d1-2544-43cf-9a32-68f92fe7a63d}</Project>
       <Name>KarmaObjects</Name>
     </ProjectReference>
   </ItemGroup>

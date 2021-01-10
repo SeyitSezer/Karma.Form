@@ -57,6 +57,16 @@
     <Compile Include="KarmaTab.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="KarmaTab.Designer.cs">
+      <DependentUpon>KarmaTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KarmaTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="KarmaTextBox.Designer.cs">
+      <DependentUpon>KarmaTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectsDefaults.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="KarmaForm.cs">
