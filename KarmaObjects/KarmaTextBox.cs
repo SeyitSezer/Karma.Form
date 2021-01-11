@@ -12,6 +12,7 @@ namespace KarmaObjects
 {
     public partial class KarmaTextBox : Control
     {
+        private string _GuideValue = "";
         private CalcEdit _Numeric;
         private TextEdit _String;
         private DateEdit _Date;
@@ -40,6 +41,10 @@ namespace KarmaObjects
                 if (KarmaFieldType == KarmaFieldTypes.String)
                 {
                     _String.Properties.UseSystemPasswordChar = value;
+                }
+                else
+                {
+                    _ShowPassword = false;
                 }
             }
         }
@@ -225,7 +230,13 @@ namespace KarmaObjects
             return _Sonuc;
         }
 
-
+        public DateTime ToDateTime()
+        {
+            if (KarmaFieldType == KarmaFieldTypes.Date)
+                return Convert.ToDateTime(_Time.Text);
+            else
+                return DateTime.MinValue;
+        }
     }
 
     public enum KarmaFieldTypes

@@ -25,5 +25,11 @@ namespace Karma_Form
             MainStatusBar.ForeColor = Color.White;
             MainMenu.ForeColor = Color.White;
         }
+
+        private void BtnToolCari_Click(object sender, EventArgs e)
+        {
+            Point _local = new Point(DesktopTab.Width / 2, DesktopTab.Height / 2);
+            MnuRadial.ShowPopup(_local, true);
+        }
     }
 }
