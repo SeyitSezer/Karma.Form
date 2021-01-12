@@ -1,7 +1,9 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +12,7 @@ using static KarmaObjects.ObjectsDefaults;
 
 namespace KarmaObjects
 {
-    public partial class KarmaTextBox : Control
+    public partial class KarmaTextBox : Control, KarmaObject
     {
         private string _GuideValue = "";
         private CalcEdit _Numeric;
@@ -25,6 +27,8 @@ namespace KarmaObjects
             InitializeComponent();
             SetFieldType(KarmaFieldTypes.String);
         }
+        
+        public BorderStyles BorderStyle { get; set; } = BorderStyles.UltraFlat;
         public KarmaTextBox(IContainer container)
         {
             container.Add(this);
@@ -112,6 +116,20 @@ namespace KarmaObjects
             }
         }
 
+        public override Color BackColor { get => base.BackColor; 
+        set
+            {
+                base.BackColor = value;
+            }
+        }
+
+        public bool ReadOnly { get; set; }
+
+        protected override void OnCreateControl()
+        {
+            Controls[0].BackColor = base.BackColor;
+            base.OnCreateControl();
+        }        
         private void SetFieldType(KarmaFieldTypes _Type)
         {
             _FieldType = _Type;
@@ -122,7 +140,9 @@ namespace KarmaObjects
                         _String = new TextEdit();
                         Controls.Clear();
                         Controls.Add(_String);
+                        _String.BorderStyle = BorderStyle;
                         _String.StyleController = KarmaStyle();
+                        _String.BackColor = BackColor;
                         _String.Dock = DockStyle.Fill;
                     }
                     break;
@@ -132,6 +152,8 @@ namespace KarmaObjects
                         Controls.Clear();
                         Controls.Add(_Date);
                         _Date.StyleController = KarmaStyle();
+                        _Date.BorderStyle = BorderStyle;
+                        _Date.BackColor = BackColor;
                         _Date.Dock = DockStyle.Fill;
                     }
                     break;
@@ -140,7 +162,9 @@ namespace KarmaObjects
                         _Time = new TimeEdit();
                         Controls.Clear();
                         Controls.Add(_Time);
+                        _Time.BorderStyle = BorderStyle;
                         _Time.StyleController = KarmaStyle();
+                        _Time.BackColor = BackColor;
                         _Time.Dock = DockStyle.Fill;
                     }
                     break;
@@ -149,6 +173,8 @@ namespace KarmaObjects
                         _Numeric = new CalcEdit();
                         Controls.Clear();
                         Controls.Add(_Numeric);
+                        _Numeric.BorderStyle = BorderStyle;
+                        _Numeric.BackColor = BackColor;
                         _Numeric.StyleController = KarmaStyle();
                         _Numeric.Dock = DockStyle.Fill;
                     }
@@ -159,6 +185,8 @@ namespace KarmaObjects
                         Controls.Clear();
                         _Guide.ButtonClick += _Guide_ButtonClick; ;
                         Controls.Add(_Guide);
+                        _Guide.BorderStyle = BorderStyle;
+                        _Guide.BackColor = BackColor;
                         _Guide.StyleController = KarmaStyle();
                         _Guide.Dock = DockStyle.Fill;
                     }

@@ -80,9 +80,16 @@
     <Compile Include="KarmaButton.Designer.cs">
       <DependentUpon>KarmaButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="KarmaComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="KarmaGrid.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="KarmaLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="KarmaObject.cs" />
     <Compile Include="KarmaPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -156,6 +163,12 @@
       <ProductName>.NET Framework 3.5 SP1 </ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KarmaLib\KarmaLib.csproj">
+      <Project>{8940ee8f-1b08-4c84-b97c-86eb1b8cd863}</Project>
+      <Name>KarmaLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

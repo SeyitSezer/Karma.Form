@@ -59,7 +59,6 @@
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.BtnToolCari = new KarmaObjects.KarmaButton(this.components);
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.MainTimer = new System.Windows.Forms.Timer(this.components);
             this.MnuRadial = new DevExpress.XtraBars.Ribbon.RadialMenu(this.components);
@@ -67,7 +66,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.MainTabControl)).BeginInit();
             this.MainTabControl.SuspendLayout();
             this.DesktopTab.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MnuRadial)).BeginInit();
             this.SuspendLayout();
@@ -81,7 +79,8 @@
             this.yardımToolStripMenuItem});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
-            this.MainMenu.Size = new System.Drawing.Size(1174, 24);
+            this.MainMenu.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.MainMenu.Size = new System.Drawing.Size(1370, 24);
             this.MainMenu.TabIndex = 0;
             this.MainMenu.Text = "menuStrip1";
             // 
@@ -220,9 +219,10 @@
             // 
             // MainStatusBar
             // 
-            this.MainStatusBar.Location = new System.Drawing.Point(0, 613);
+            this.MainStatusBar.Location = new System.Drawing.Point(0, 662);
             this.MainStatusBar.Name = "MainStatusBar";
-            this.MainStatusBar.Size = new System.Drawing.Size(1174, 22);
+            this.MainStatusBar.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
+            this.MainStatusBar.Size = new System.Drawing.Size(1370, 22);
             this.MainStatusBar.TabIndex = 1;
             this.MainStatusBar.Text = "statusStrip1";
             // 
@@ -235,7 +235,7 @@
             this.MainTabControl.Location = new System.Drawing.Point(0, 24);
             this.MainTabControl.Name = "MainTabControl";
             this.MainTabControl.SelectedTabPage = this.DesktopTab;
-            this.MainTabControl.Size = new System.Drawing.Size(1174, 589);
+            this.MainTabControl.Size = new System.Drawing.Size(1370, 638);
             this.MainTabControl.TabIndex = 2;
             this.MainTabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.DesktopTab});
@@ -245,17 +245,16 @@
             this.DesktopTab.Controls.Add(this.panel1);
             this.DesktopTab.Name = "DesktopTab";
             this.DesktopTab.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
-            this.DesktopTab.Size = new System.Drawing.Size(1172, 566);
+            this.DesktopTab.Size = new System.Drawing.Size(1368, 614);
             this.DesktopTab.Text = "Masaüstü";
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.BtnToolCari);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1172, 566);
+            this.panel1.Size = new System.Drawing.Size(1368, 614);
             this.panel1.TabIndex = 0;
             // 
             // barManager1
@@ -279,15 +278,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1174, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1370, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 635);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 684);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1174, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1370, 0);
             // 
             // barDockControlLeft
             // 
@@ -295,15 +294,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 635);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 684);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1174, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1370, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 635);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 684);
             // 
             // barButtonItem1
             // 
@@ -336,18 +335,6 @@
             this.barButtonItem5.Id = 4;
             this.barButtonItem5.Name = "barButtonItem5";
             // 
-            // BtnToolCari
-            // 
-            this.BtnToolCari.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnToolCari.Image = global::Karma_Form.Properties.Resources.user_silhouette;
-            this.BtnToolCari.Location = new System.Drawing.Point(15, 15);
-            this.BtnToolCari.Name = "BtnToolCari";
-            this.BtnToolCari.Size = new System.Drawing.Size(50, 50);
-            this.BtnToolCari.TabIndex = 1;
-            this.BtnToolCari.TasinabilirMi = true;
-            this.BtnToolCari.UseVisualStyleBackColor = true;
-            this.BtnToolCari.Click += new System.EventHandler(this.BtnToolCari_Click);
-            // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Name = "xtraTabPage2";
@@ -374,11 +361,10 @@
             this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.Appearance.ForeColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
-            this.Appearance.Options.UseFont = true;
             this.Appearance.Options.UseForeColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1174, 635);
+            this.ClientSize = new System.Drawing.Size(1370, 684);
             this.Controls.Add(this.MainTabControl);
             this.Controls.Add(this.MainStatusBar);
             this.Controls.Add(this.MainMenu);
@@ -386,6 +372,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Font = new System.Drawing.Font("Roboto", 9F);
             this.MainMenuStrip = this.MainMenu;
             this.Name = "MainForm";
             this.Text = "Karma";
@@ -395,7 +382,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.MainTabControl)).EndInit();
             this.MainTabControl.ResumeLayout(false);
             this.DesktopTab.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MnuRadial)).EndInit();
             this.ResumeLayout(false);
@@ -438,7 +424,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private System.Windows.Forms.Panel panel1;
-        private KarmaObjects.KarmaButton BtnToolCari;
     }
 }
 

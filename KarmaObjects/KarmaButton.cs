@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -10,9 +11,8 @@ using System.Windows.Forms;
 
 namespace KarmaObjects
 {
-    public partial class KarmaButton : Button
+    public partial class KarmaButton : SimpleButton
     {
-        bool SecildiMi = false;
         private Point MouseDownLocation;
         public KarmaButton()
         {
@@ -38,7 +38,6 @@ namespace KarmaObjects
 
         protected override void OnMouseUp(MouseEventArgs mevent)
         {
-            SecildiMi = false;
             base.OnMouseUp(mevent);
         }
 

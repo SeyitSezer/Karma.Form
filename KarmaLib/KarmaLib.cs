@@ -11,7 +11,7 @@ namespace KarmaLib
 {
     public static class KarmaLib
     {
-        public static Image Base64ToImage(string base64Image)
+        public static Image KarmaBase64ToImage(string base64Image)
         {
             using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(base64Image)))
             {

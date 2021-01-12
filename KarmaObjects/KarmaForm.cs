@@ -2,6 +2,8 @@
 using System.Drawing;
 using DevExpress.XtraEditors;
 using System.IO;
+using static KarmaLib.KarmaLib;
+using static KarmaLib.KarmaSQL;
 
 namespace KarmaObjects
 {
@@ -12,13 +14,5 @@ namespace KarmaObjects
             InitializeComponent();
         }
 
-        public static Image Base64ToImage(string base64Image)
-        {
-            using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(base64Image)))
-            {
-                Image image = Image.FromStream(ms, true);
-                return image;
-            }
-        }
     }
 }
