@@ -14,13 +14,14 @@ namespace Karma_Form
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //if(args.Length >0 && string.IsNullOrEmpty(args[0]) && args[0] == "KarmaLauncher")
+            if(1==1 /*args.Length >0 && string.IsNullOrEmpty(args[0]) && args[0] == "KarmaLauncher"*/)
                 Application.Run(new MainForm());
-            //else
-            //{
-                //Process.Start("KarmaLauncher.exe");
-                //Application.Exit();
-            //}
+            else
+            {
+                Process.Start("KarmaLauncher.exe");
+                //Application.Run(new MainForm());
+                Application.Exit();
+            }
         }
     }
 }

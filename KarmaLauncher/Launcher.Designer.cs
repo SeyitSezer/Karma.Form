@@ -36,7 +36,7 @@
             this.Sirket = new KarmaObjects.KarmaComboBox();
             this.Password = new KarmaObjects.KarmaTextBox(this.components);
             this.UserName = new KarmaObjects.KarmaTextBox(this.components);
-            this.karmaButton1 = new KarmaObjects.KarmaButton(this.components);
+            this.BtnGiris = new KarmaObjects.KarmaButton(this.components);
             this.karmaLabel4 = new KarmaObjects.KarmaLabel();
             this.karmaLabel3 = new KarmaObjects.KarmaLabel();
             this.karmaLabel2 = new KarmaObjects.KarmaLabel();
@@ -64,7 +64,7 @@
             this.karmaPanel1.Controls.Add(this.Sirket);
             this.karmaPanel1.Controls.Add(this.Password);
             this.karmaPanel1.Controls.Add(this.UserName);
-            this.karmaPanel1.Controls.Add(this.karmaButton1);
+            this.karmaPanel1.Controls.Add(this.BtnGiris);
             this.karmaPanel1.Controls.Add(this.karmaLabel4);
             this.karmaPanel1.Controls.Add(this.karmaLabel3);
             this.karmaPanel1.Controls.Add(this.karmaLabel2);
@@ -85,6 +85,7 @@
             this.Yil.Name = "Yil";
             this.Yil.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.Yil.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.Yil.Size = new System.Drawing.Size(227, 20);
             this.Yil.TabIndex = 4;
             // 
@@ -94,6 +95,7 @@
             this.Sirket.Name = "Sirket";
             this.Sirket.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.Sirket.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.Sirket.Size = new System.Drawing.Size(227, 20);
             this.Sirket.TabIndex = 3;
             // 
@@ -121,19 +123,20 @@
             this.UserName.Size = new System.Drawing.Size(227, 20);
             this.UserName.TabIndex = 0;
             // 
-            // karmaButton1
+            // BtnGiris
             // 
-            this.karmaButton1.Appearance.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Bold);
-            this.karmaButton1.Appearance.ForeColor = System.Drawing.Color.Yellow;
-            this.karmaButton1.Appearance.Options.UseFont = true;
-            this.karmaButton1.Appearance.Options.UseForeColor = true;
-            this.karmaButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("karmaButton1.ImageOptions.Image")));
-            this.karmaButton1.Location = new System.Drawing.Point(225, 67);
-            this.karmaButton1.Name = "karmaButton1";
-            this.karmaButton1.Size = new System.Drawing.Size(120, 49);
-            this.karmaButton1.TabIndex = 2;
-            this.karmaButton1.TasinabilirMi = false;
-            this.karmaButton1.Text = "Giriş";
+            this.BtnGiris.Appearance.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Bold);
+            this.BtnGiris.Appearance.ForeColor = System.Drawing.Color.Yellow;
+            this.BtnGiris.Appearance.Options.UseFont = true;
+            this.BtnGiris.Appearance.Options.UseForeColor = true;
+            this.BtnGiris.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnGiris.ImageOptions.Image")));
+            this.BtnGiris.Location = new System.Drawing.Point(225, 67);
+            this.BtnGiris.Name = "BtnGiris";
+            this.BtnGiris.Size = new System.Drawing.Size(120, 49);
+            this.BtnGiris.TabIndex = 2;
+            this.BtnGiris.TasinabilirMi = false;
+            this.BtnGiris.Text = "Giriş";
+            this.BtnGiris.Click += new System.EventHandler(this.BtnGiris_Click);
             // 
             // karmaLabel4
             // 
@@ -217,7 +220,7 @@
         private KarmaObjects.KarmaComboBox Sirket;
         private KarmaObjects.KarmaTextBox Password;
         private KarmaObjects.KarmaTextBox UserName;
-        private KarmaObjects.KarmaButton karmaButton1;
+        private KarmaObjects.KarmaButton BtnGiris;
         private KarmaObjects.KarmaLabel karmaLabel4;
         private KarmaObjects.KarmaLabel karmaLabel3;
         private KarmaObjects.KarmaLabel karmaLabel2;

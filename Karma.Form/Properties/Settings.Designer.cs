@@ -22,5 +22,26 @@ namespace Karma_Form.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Sirket {
+            get {
+                return ((string)(this["Sirket"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Yil {
+            get {
+                return ((string)(this["Yil"]));
+            }
+            set {
+                this["Yil"] = value;
+            }
+        }
     }
 }
