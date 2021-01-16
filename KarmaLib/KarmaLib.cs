@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using DevExpress.XtraEditors;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace KarmaLib
 {
@@ -45,6 +46,22 @@ namespace KarmaLib
             FrmMesajAlt _Soru = new FrmMesajAlt(Mesaj, false, DefaultDeger, Baslik);
             _Soru.ShowDialog();
             return _Soru.DialogResult;
+        }
+
+        public static string HataMesajiHazirla(string SQLText, string HataMesaji, Type GonderenNesne, string DataBase)
+        {
+            string Msj = "";
+            Msj  = "Hata             :" + HataMesaji + Environment.NewLine;
+            Msj += "SQL Text         :" + SQLText + Environment.NewLine;
+            Msj += "Gönderen Nesne   :" + GonderenNesne.Name+ Environment.NewLine;
+            Msj += "Çalışılan Şifket :" + DataBase + Environment.NewLine;
+            Msj += "Hata Tarihi      :" + DateTime.Now.ToString("D");
+            return Msj;
+        }
+        public static void PleaseWait(Thread currThread)
+        {
+            FrmBekle _WaitForm = new FrmBekle(currThread);
+            _WaitForm.ShowDialog();
         }
     }
 }

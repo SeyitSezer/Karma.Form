@@ -41,6 +41,7 @@
             this.karmaLabel3 = new KarmaObjects.KarmaLabel();
             this.karmaLabel2 = new KarmaObjects.KarmaLabel();
             this.karmaLabel1 = new KarmaObjects.KarmaLabel();
+            this.karmaLabel5 = new KarmaObjects.KarmaLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.karmaPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Yil.Properties)).BeginInit();
@@ -60,6 +61,7 @@
             // 
             // karmaPanel1
             // 
+            this.karmaPanel1.Controls.Add(this.karmaLabel5);
             this.karmaPanel1.Controls.Add(this.Yil);
             this.karmaPanel1.Controls.Add(this.Sirket);
             this.karmaPanel1.Controls.Add(this.Password);
@@ -186,6 +188,18 @@
             this.karmaLabel1.Text = "Kullanıcı Adı";
             this.karmaLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // karmaLabel5
+            // 
+            this.karmaLabel5.AutoSize = true;
+            this.karmaLabel5.Font = new System.Drawing.Font("Roboto", 9F);
+            this.karmaLabel5.KarmaFocusControl = null;
+            this.karmaLabel5.Location = new System.Drawing.Point(93, 172);
+            this.karmaLabel5.Name = "karmaLabel5";
+            this.karmaLabel5.ReadOnly = false;
+            this.karmaLabel5.Size = new System.Drawing.Size(78, 14);
+            this.karmaLabel5.TabIndex = 14;
+            this.karmaLabel5.Text = "karmaLabel5";
+            // 
             // Launcher
             // 
             this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
@@ -207,6 +221,7 @@
             this.Load += new System.EventHandler(this.Launcher_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.karmaPanel1.ResumeLayout(false);
+            this.karmaPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Yil.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Sirket.Properties)).EndInit();
             this.ResumeLayout(false);
@@ -225,6 +240,7 @@
         private KarmaObjects.KarmaLabel karmaLabel3;
         private KarmaObjects.KarmaLabel karmaLabel2;
         private KarmaObjects.KarmaLabel karmaLabel1;
+        private KarmaObjects.KarmaLabel karmaLabel5;
     }
 }
 

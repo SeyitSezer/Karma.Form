@@ -20,7 +20,7 @@ namespace KarmaLib
             BtnNo.Visible = !MesajMi;
             BtnYes.Visible = !MesajMi;
             BtnCancel.Visible = !MesajMi;
-            lblMesaj.Text = Mesaj;
+            TxtMesaj.Text = Mesaj;
             lblBaslik.Text = Baslik;
             if(!MesajMi)
             {

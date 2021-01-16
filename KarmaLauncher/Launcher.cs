@@ -8,9 +8,11 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static KarmaLib.KarmaLib;
+using static KarmaLib.KarmaSQL;
 
 namespace KarmaLauncher
 {
@@ -29,22 +31,25 @@ namespace KarmaLauncher
             BtnGiris.Left = UserName.Left + UserName.Width - 120;
             BtnGiris.Top = Password.Top + 29;
         }
-
+        void Test()
+        {
+            for (int i = 0; i < 10000; i++)
+            {
+                karmaLabel5.Text = i.ToString();
+            }
+        }
         private void BtnGiris_Click(object sender, EventArgs e)
         {
-            if(Sor("Gördün mü Len") == DialogResult.Yes)
-            Mesaj("Ömer Gördün mü?");
-            KarmaLib.KarmaSecurity.DosyaSifrele("seyit.txt", "seyit2.txt", "87eMZYB_fsbq7E^j");
-            KarmaLib.KarmaSecurity.DosyaCoz("seyit2.txt", "seyit3.txt", "87eMZYB_fsbq7E^j");
+            Mesaj(KarmaLib.AppLib.FileVersion());
             if (string.IsNullOrEmpty(Sirket.Text))
             {
-                MessageBox.Show("Şirket Seçimi Yapılmadı!");
+                Mesaj("Şirket Seçimi Yapılmadı!");
                 Sirket.Focus();
                 return;
             }
             if(string.IsNullOrEmpty(Yil.Text))
             {
-                MessageBox.Show("Yıl Seçimi Yapılmadı!");
+                Mesaj("Yıl Seçimi Yapılmadı!");
                 Yil.Focus();
                 return;
             }
@@ -54,7 +59,7 @@ namespace KarmaLauncher
             }
             else
             {
-                MessageBox.Show("Karma.Form Bulunamadı!");
+                Mesaj("Karma.Form Bulunamadı!");
                 Application.Exit();
             }
         }

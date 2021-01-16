@@ -31,7 +31,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblMesaj = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.TxtMesaj = new System.Windows.Forms.RichTextBox();
             this.lblBaslik = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.BtnOk = new System.Windows.Forms.Button();
@@ -41,6 +42,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,7 +75,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.panel1.Controls.Add(this.lblMesaj);
+            this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.lblBaslik);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -83,16 +85,28 @@
             this.panel1.Size = new System.Drawing.Size(1018, 224);
             this.panel1.TabIndex = 0;
             // 
-            // lblMesaj
+            // panel5
             // 
-            this.lblMesaj.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblMesaj.Font = new System.Drawing.Font("Roboto", 12F);
-            this.lblMesaj.Location = new System.Drawing.Point(10, 48);
-            this.lblMesaj.Name = "lblMesaj";
-            this.lblMesaj.Padding = new System.Windows.Forms.Padding(150, 0, 0, 0);
-            this.lblMesaj.Size = new System.Drawing.Size(998, 133);
-            this.lblMesaj.TabIndex = 5;
-            this.lblMesaj.Text = "Mesaj İçeriği";
+            this.panel5.Controls.Add(this.TxtMesaj);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(10, 48);
+            this.panel5.Name = "panel5";
+            this.panel5.Padding = new System.Windows.Forms.Padding(150, 0, 150, 0);
+            this.panel5.Size = new System.Drawing.Size(998, 133);
+            this.panel5.TabIndex = 5;
+            // 
+            // TxtMesaj
+            // 
+            this.TxtMesaj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.TxtMesaj.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtMesaj.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TxtMesaj.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.TxtMesaj.ForeColor = System.Drawing.Color.White;
+            this.TxtMesaj.Location = new System.Drawing.Point(150, 0);
+            this.TxtMesaj.Name = "TxtMesaj";
+            this.TxtMesaj.Size = new System.Drawing.Size(698, 133);
+            this.TxtMesaj.TabIndex = 6;
+            this.TxtMesaj.Text = "";
             // 
             // lblBaslik
             // 
@@ -203,6 +217,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -213,7 +228,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblMesaj;
         private System.Windows.Forms.Label lblBaslik;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button BtnOk;
@@ -221,5 +235,7 @@
         private System.Windows.Forms.Button BtnNo;
         private System.Windows.Forms.Button BtnYes;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.RichTextBox TxtMesaj;
     }
 }
