@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.Utils;
+using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static KarmaLib.KarmaLib;
 using static KarmaObjects.ObjectsDefaults;
 
 namespace KarmaObjects
@@ -22,12 +24,13 @@ namespace KarmaObjects
         private ButtonEdit _Guide;
         private bool _ShowPassword = false;
         KarmaFieldTypes _FieldType;
+        KarmaFieldNumericTypes _NumericType;
         public KarmaTextBox()
         {
             InitializeComponent();
             SetFieldType(KarmaFieldTypes.String);
         }
-        
+
         public BorderStyles BorderStyle { get; set; } = BorderStyles.UltraFlat;
         public KarmaTextBox(IContainer container)
         {
@@ -36,6 +39,30 @@ namespace KarmaObjects
             InitializeComponent();
         }
 
+        public KarmaFieldNumericTypes KarmaNumericType
+        {
+            get
+            {
+                return _NumericType;
+            }
+            set
+            {
+                _NumericType = value;
+                SetNumericType();
+            }
+        }
+
+        private void SetNumericType()
+        {
+            if (_FieldType == KarmaFieldTypes.Numeric)
+            {
+                _Numeric.Properties.EditFormat.FormatType = FormatType.Numeric;
+                _Numeric.Properties.Mask.EditMask = "N" + GetOndalik(KarmaNumericType).ToString();
+                _Numeric.Properties.Mask.UseMaskAsDisplayFormat = true;
+                _Numeric.Properties.DisplayFormat.FormatType = FormatType.Custom;
+                _Numeric.Properties.DisplayFormat.FormatString = "N" + GetOndalik(KarmaNumericType).ToString();
+            }
+        }
         public bool KarmaPasswordTextBox
         {
             get { return _ShowPassword; }
@@ -51,6 +78,12 @@ namespace KarmaObjects
                     _ShowPassword = false;
                 }
             }
+        }
+
+        protected override void OnGotFocus(EventArgs e)
+        {
+            Controls[0].Focus();
+            base.OnGotFocus(e);
         }
 
         public KarmaFieldTypes KarmaFieldType
@@ -82,7 +115,7 @@ namespace KarmaObjects
                         _Sonuc = _Guide.Text;
                         break;
                     default:
-                        _Sonuc = "";
+                        _Sonuc = Controls[0].Text;
                         break;
                 }
                 return _Sonuc;
@@ -116,8 +149,10 @@ namespace KarmaObjects
             }
         }
 
-        public override Color BackColor { get => base.BackColor; 
-        set
+        public override Color BackColor
+        {
+            get => base.BackColor;
+            set
             {
                 base.BackColor = value;
             }
@@ -129,7 +164,7 @@ namespace KarmaObjects
         {
             Controls[0].BackColor = base.BackColor;
             base.OnCreateControl();
-        }        
+        }
         private void SetFieldType(KarmaFieldTypes _Type)
         {
             _FieldType = _Type;
@@ -177,6 +212,7 @@ namespace KarmaObjects
                         _Numeric.BackColor = BackColor;
                         _Numeric.StyleController = KarmaStyle();
                         _Numeric.Dock = DockStyle.Fill;
+                        SetNumericType();
                     }
                     break;
                 case KarmaFieldTypes.Guide:
@@ -276,12 +312,5 @@ namespace KarmaObjects
         Guide
     }
 
-    public enum KarmaFieldNumericTypes
-    {
-        Miktar,
-        Fiyat,
-        Tutar,
-        TamSayi,
-        Oran
-    }
+
 }

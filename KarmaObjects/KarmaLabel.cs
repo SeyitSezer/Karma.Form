@@ -4,12 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static KarmaLib.KarmaLib;
 
 namespace KarmaObjects
 {
     public class KarmaLabel : Label, KarmaObject
     {
-        public Control KarmaFocusControl { get; set; }
+        private Control _Control;
+        public Control KarmaFocusControl 
+        { 
+            get 
+            { 
+                return _Control; 
+            } 
+            set
+            {
+                _Control = value;
+                if (!AppRunning && !(_Control is null))
+                {
+                    _Control.Top = Top - 2;
+                    _Control.Left = Left + Width + 10;
+                }
+            }
+        }
         public bool ReadOnly { get; set; }
 
         public KarmaLabel()
@@ -18,11 +35,6 @@ namespace KarmaObjects
         }
         protected override void OnCreateControl()
         {
-            if (!(KarmaFocusControl is null))
-            {
-                KarmaFocusControl.Top = Top + 2;
-                KarmaFocusControl.Left = Left + Width + 10;
-            }
             base.OnCreateControl();
         }
     }

@@ -20,16 +20,16 @@ namespace Karma_Form
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            MainStatusBar.BackColor = Color.FromArgb(60, 60, 60);
-            MainMenu.BackColor = MainStatusBar.BackColor;
-            MainStatusBar.ForeColor = Color.White;
-            MainMenu.ForeColor = Color.White;
+            //MainStatusBar.BackColor = Color.FromArgb(60, 60, 60);
+            //MainMenu.BackColor = MainStatusBar.BackColor;
+            //MainStatusBar.ForeColor = Color.White;
+            //MainMenu.ForeColor = Color.White;
         }
 
         private void BtnToolCari_Click(object sender, EventArgs e)
         {
             Point _local = new Point(DesktopTab.Width / 2, DesktopTab.Height / 2);
-            MnuRadial.ShowPopup(_local, true);
+            //MnuRadial.ShowPopup(_local, true);
         }
     }
 }

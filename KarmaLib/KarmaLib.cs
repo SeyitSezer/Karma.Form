@@ -13,6 +13,7 @@ namespace KarmaLib
 {
     public static class KarmaLib
     {
+        private static string SecureKey = "SeyitSeyitSeyit1";
         public static Image KarmaBase64ToImage(string base64Image)
         {
             using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(base64Image)))
@@ -21,6 +22,7 @@ namespace KarmaLib
                 return image;
             }
         }
+        public static bool AppRunning { get; set; } = false;
 
         public static string KarmaBase64ToString(string base64string)
         {
@@ -63,5 +65,65 @@ namespace KarmaLib
             FrmBekle _WaitForm = new FrmBekle(currThread);
             _WaitForm.ShowDialog();
         }
+
+        public static bool LisansVarmi
+        {
+            get
+            {
+                return true;
+                //return File.Exists(Application.StartupPath + "//Karma.krl");
+            }
+        }
+        public static string SecurityKey
+        {
+            get
+            {
+                return SecureKey;
+            }
+            set
+            {
+                SecureKey = value;
+            }
+        }
+        public enum KarmaFieldNumericTypes
+        {
+            TamSayi,
+            Miktar,
+            Fiyat,
+            Tutar,
+            Genel
+        }
+
+        public static int GetOndalik(KarmaFieldNumericTypes _Type)
+        {
+            int i = 0;
+            switch (_Type)
+            {
+                case KarmaFieldNumericTypes.Miktar:
+                    i = MiktarDigit;
+                    break;
+                case KarmaFieldNumericTypes.Fiyat:
+                    i= FiyatDigit;
+                    break;
+                case KarmaFieldNumericTypes.Tutar:
+                    i = TutarDigit;
+                    break;
+                case KarmaFieldNumericTypes.TamSayi:
+                    i= 0;
+                    break;
+                case KarmaFieldNumericTypes.Genel:
+                    i= GenelDigit;
+                    break;
+                default:
+                    i = GenelDigit;
+                    break;
+            }
+            return i;
+        }
+        public static int MiktarDigit { get; set; } = 2;
+        public static int FiyatDigit { get; set; } = 2;
+        public static int GenelDigit { get; set; } = 2;
+        public static int TutarDigit { get; set; } = 3;
     }
+
 }

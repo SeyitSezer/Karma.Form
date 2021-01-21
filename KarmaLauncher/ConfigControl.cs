@@ -11,13 +11,13 @@ namespace KarmaLauncher
 {
     public partial class ConfigControl
     {
-        [CategoryAttribute("Veri Tabanı Bağlantı Ayarları"), DescriptionAttribute("Server")]
+        [Category("Veri Tabanı Bağlantı Ayarları"), Description("Server")]
         public string Server { get; set; }
-        [CategoryAttribute("Veri Tabanı Bağlantı Ayarları"), DescriptionAttribute("Varsayılan Veri Tabanı")]
-        public string DefaultVeriTabani { get; set; }
-        [CategoryAttribute("Veri Tabanı Bağlantı Ayarları"), DescriptionAttribute("Kullanıcı Adı")]
+        [Category("Veri Tabanı Bağlantı Ayarları"), Description("Varsayılan Veri Tabanı")]
+        public string VeriTabani { get; set; }
+        [Category("Veri Tabanı Bağlantı Ayarları"), Description("Kullanıcı Adı")]
         public string UserName { get; set; }
-        [CategoryAttribute("Veri Tabanı Bağlantı Ayarları"), DescriptionAttribute("Kullanıcı Şifresi")]
+        [Category("Veri Tabanı Bağlantı Ayarları"), Description("Kullanıcı Şifresi")]
         public string Password { get; set; }
     }
 }

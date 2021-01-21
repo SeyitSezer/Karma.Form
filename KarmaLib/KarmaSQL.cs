@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
 using static KarmaLib.KarmaLib;
+using System.IO;
 
 namespace KarmaLib
 {
@@ -18,10 +19,16 @@ namespace KarmaLib
             string Server, UserName, Password;
             try
             {
-                IniConfig _ReadConfig = new IniConfig(Application.StartupPath + "\\Config.ini");
-                Server = _ReadConfig.Read("Server");
-                UserName = _ReadConfig.Read("UserName");
-                Password = _ReadConfig.Read("Password");
+                if (File.Exists(Application.StartupPath + "\\Options\\Config.ini")) File.Delete(Application.StartupPath + "\\Options\\Config.ini");
+                KarmaSecurity.DosyaCoz(Application.StartupPath + "\\Options\\KarmaSettings.opt", Application.StartupPath + "\\Options\\Config.ini", SecurityKey);
+                IniConfig _ReadConfig = new IniConfig(Application.StartupPath + "\\Options\\Config.ini");
+                Server = _ReadConfig.Read("Karma","Server");
+                UserName = _ReadConfig.Read("Karma", "UserName");
+                Password = _ReadConfig.Read("Karma", "Password");
+                MiktarDigit = Convert.ToInt32(_ReadConfig.Read("Karma", "MiktarDigit"));
+                TutarDigit = Convert.ToInt32(_ReadConfig.Read("Karma", "TutarDigit"));
+                FiyatDigit = Convert.ToInt32(_ReadConfig.Read("Karma", "FiyatDigit"));
+                GenelDigit = Convert.ToInt32(_ReadConfig.Read("Karma", "GenelDigit"));
                 if (KarmaConnection.State != ConnectionState.Open)
                 {
                     if (!UseWindowsConnect)
@@ -35,7 +42,10 @@ namespace KarmaLib
             {
                 Mesaj("Veritabanına Bağlanırken Hata Oluştu!" + Environment.NewLine + x.Message, "Hata");
             }
-            
+            finally
+            {
+                File.Delete(Application.StartupPath + "\\Options\\Config.ini");
+            }
         }
 
         public static void Insert(string TableName, List<string> Columns, List<object> Values)

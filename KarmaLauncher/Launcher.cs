@@ -20,6 +20,7 @@ namespace KarmaLauncher
     {
         public Launcher()
         {
+            AppRunning = true;
             InitializeComponent();
             pictureBox1.Size = new Size(192, 192);
         }
@@ -33,34 +34,44 @@ namespace KarmaLauncher
         }
         void Test()
         {
+            return;
             for (int i = 0; i < 10000; i++)
             {
-                karmaLabel5.Text = i.ToString();
+                //karmaLabel5.Text = i.ToString();
             }
         }
         private void BtnGiris_Click(object sender, EventArgs e)
         {
-            Mesaj(KarmaLib.AppLib.FileVersion());
-            if (string.IsNullOrEmpty(Sirket.Text))
+            var a = new Config();
+            a.Show();
+            return;
+            if (!File.Exists(Application.StartupPath + "//KarmaSettings.opt"))
             {
-                Mesaj("Şirket Seçimi Yapılmadı!");
-                Sirket.Focus();
-                return;
-            }
-            if(string.IsNullOrEmpty(Yil.Text))
-            {
-                Mesaj("Yıl Seçimi Yapılmadı!");
-                Yil.Focus();
-                return;
-            }
-            if (File.Exists("Karma.Form.exe"))
-            {
-                Process.Start("Karma.Form.exe", "KarmaLauncher " + Sirket.Text + " " + Yil.Text);
+                
             }
             else
             {
-                Mesaj("Karma.Form Bulunamadı!");
-                Application.Exit();
+                if (string.IsNullOrEmpty(Sirket.Text))
+                {
+                    Mesaj("Şirket Seçimi Yapılmadı!");
+                    Sirket.Focus();
+                    return;
+                }
+                if (string.IsNullOrEmpty(Yil.Text))
+                {
+                    Mesaj("Yıl Seçimi Yapılmadı!");
+                    Yil.Focus();
+                    return;
+                }
+                if (File.Exists("Karma.Form.exe"))
+                {
+                    Process.Start("Karma.Form.exe", "KarmaLauncher " + Sirket.Text + " " + Yil.Text);
+                }
+                else
+                {
+                    Mesaj("Karma.Form Bulunamadı!");
+                    Application.Exit();
+                }
             }
         }
     }
