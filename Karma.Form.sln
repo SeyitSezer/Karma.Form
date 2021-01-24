@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KarmaLib", "KarmaLib\KarmaL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KarmaLauncher", "KarmaLauncher\KarmaLauncher.csproj", "{7CB13A6A-9D98-4BFE-8C2F-B2806D4EFE56}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KarmaStokLib", "KarmaStokLib\KarmaStokLib.csproj", "{D0BF6DCA-0DAD-4269-8A11-C3BC1CA852F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{7CB13A6A-9D98-4BFE-8C2F-B2806D4EFE56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CB13A6A-9D98-4BFE-8C2F-B2806D4EFE56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CB13A6A-9D98-4BFE-8C2F-B2806D4EFE56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0BF6DCA-0DAD-4269-8A11-C3BC1CA852F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0BF6DCA-0DAD-4269-8A11-C3BC1CA852F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0BF6DCA-0DAD-4269-8A11-C3BC1CA852F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0BF6DCA-0DAD-4269-8A11-C3BC1CA852F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

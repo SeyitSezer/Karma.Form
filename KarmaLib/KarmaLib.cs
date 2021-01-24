@@ -43,7 +43,7 @@ namespace KarmaLib
             _Mesaj.ShowDialog();
         }
 
-        public static DialogResult Sor(string Mesaj, string Baslik = "Karma Bildirim Sistemi", bool DefaultDeger= false)
+        public static DialogResult Sor(string Mesaj, string Baslik = "Onayınız Gerekiyor", bool DefaultDeger= false)
         {
             FrmMesajAlt _Soru = new FrmMesajAlt(Mesaj, false, DefaultDeger, Baslik);
             _Soru.ShowDialog();

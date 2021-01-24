@@ -42,15 +42,13 @@ namespace KarmaLauncher
         }
         private void BtnGiris_Click(object sender, EventArgs e)
         {
-            var a = new Config();
-            a.Show();
-            return;
-            if (!File.Exists(Application.StartupPath + "//KarmaSettings.opt"))
+            if (!File.Exists(Application.StartupPath + "\\Options\\KarmaSettings.opt") && DialogResult.Yes == Sor("Yapılandırma Ayarları Eksik, Şimdi Ayarlamak İster Misiniz?"))
             {
-                
+                var a = new Config();
+                a.ShowDialog();
             }
             else
-            {
+            {/*
                 if (string.IsNullOrEmpty(Sirket.Text))
                 {
                     Mesaj("Şirket Seçimi Yapılmadı!");
@@ -62,10 +60,12 @@ namespace KarmaLauncher
                     Mesaj("Yıl Seçimi Yapılmadı!");
                     Yil.Focus();
                     return;
-                }
-                if (File.Exists("Karma.Form.exe"))
+                }*/
+                if (File.Exists(Application.StartupPath + "\\Karma_Form.exe"))
                 {
-                    Process.Start("Karma.Form.exe", "KarmaLauncher " + Sirket.Text + " " + Yil.Text);
+                    //Process.Start(Application.StartupPath + "\\Karma_Form.exe", "\"KarmaLauncher\" \"" + Sirket.Text + "\" \"" + Yil.Text + "\"");
+                    Process.Start(Application.StartupPath + "\\Karma_Form.exe", "KarmaLauncher");
+                    Application.Exit();
                 }
                 else
                 {

@@ -1,11 +1,15 @@
 ﻿using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static KarmaLib.KarmaLib;
+using static KarmaLib.KarmaSQL;
 
 namespace KarmaObjects
 {
@@ -20,21 +24,29 @@ namespace KarmaObjects
         {
             
         }
+        public string KarmaSQLText { get; set; }
+        public bool KarmaSQLCalistir { get; set; } = false;
         protected override void OnCreateControl()
         {
-            KarmaView.GridControl = this;
-            KarmaView.Name = this.Name.Replace("Grid","View");
-            KarmaView.OptionsFind.AlwaysVisible = true;
-            KarmaView.OptionsFind.FindNullPrompt = "Arama Yapmak İçin Buraya Yazın";
-            KarmaView.OptionsFind.ShowFindButton = false;
-            KarmaView.OptionsView.BestFitMode = GridBestFitMode.Fast;
-            KarmaView.GroupPanelText = "Gruplamak İçin Sütunu Sürükleyip Buraya Bırakın";
-            KarmaView.FocusRectStyle = DrawFocusRectStyle.RowFullFocus;
-            ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { KarmaView });
-            MainView = KarmaView;
-            KarmaView.OptionsMenu.EnableGroupPanelMenu = false;
-            KarmaView.OptionsMenu.EnableColumnMenu = false;
+            if(ViewCollection.Count == 0 && !AppRunning)
+            {
+                KarmaView.GridControl = this;
+                KarmaView.Name = this.Name.Replace("Grd", "View");
+                KarmaView.OptionsFind.AlwaysVisible = true;
+                KarmaView.OptionsFind.FindNullPrompt = "Arama Yapmak İçin Buraya Yazın";
+                KarmaView.OptionsFind.ShowFindButton = false;
+                KarmaView.OptionsView.BestFitMode = GridBestFitMode.Fast;
+                KarmaView.GroupPanelText = "Gruplamak İçin Sütunu Sürükleyip Buraya Bırakın";
+                KarmaView.FocusRectStyle = DrawFocusRectStyle.RowFullFocus;
+                ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { KarmaView });
+                MainView = KarmaView;
+                KarmaView.OptionsMenu.EnableGroupPanelMenu = false;
+                KarmaView.OptionsMenu.EnableColumnMenu = false;
+            }
+           
             base.OnCreateControl();
+            ((GridView)MainView).OptionsBehavior.Editable = false;
+            ((GridView)MainView).OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDown;
             if (!(ContextMenuStrip is null)) _PopupMenu = ContextMenuStrip;
             else
             {
@@ -42,6 +54,10 @@ namespace KarmaObjects
                 ContextMenuStrip = _PopupMenu;
             }
             SetPopupMenu();
+            if(KarmaSQLCalistir && !string.IsNullOrEmpty(KarmaSQLText))
+            {
+                DataSource = GetSQLData(KarmaSQLText);
+            }
         }
 
         public void GetData(string SQLText)
@@ -126,5 +142,10 @@ namespace KarmaObjects
             if (_FileName != "") ExportToCsv(_FileName);
         }
         #endregion
+
+        public object GetValueByColumnName(string ColumnName)
+        {
+            return ((GridView)MainView).GetRowCellValue(((GridView)MainView).FocusedRowHandle,ColumnName);
+        }
     }
 }

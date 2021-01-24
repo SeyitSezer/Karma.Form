@@ -13,6 +13,7 @@ namespace KarmaLib
 {
     public partial class FrmMesajAlt : DevExpress.XtraEditors.XtraForm
     {
+        bool varsayilan, mesajmi;
         public FrmMesajAlt(string Mesaj, bool MesajMi = true, bool Varsayilan = false, string Baslik = "Karma Bildirim Sistemi")
         {
             InitializeComponent();
@@ -20,16 +21,23 @@ namespace KarmaLib
             BtnNo.Visible = !MesajMi;
             BtnYes.Visible = !MesajMi;
             BtnCancel.Visible = !MesajMi;
+            mesajmi = MesajMi;
+            varsayilan = Varsayilan;
             TxtMesaj.Text = Mesaj;
             lblBaslik.Text = Baslik;
-            if(!MesajMi)
-            {
-                if (Varsayilan) BtnYes.Focus();
-                else BtnNo.Focus();
-            }
             //panel3.BackColor = Color.FromArgb(60, Color.Fuchsia);
             //panel4.BackColor = Color.FromArgb(60, Color.Fuchsia);
         }
+
+        private void FrmMesajAlt_Shown(object sender, EventArgs e)
+        {
+            if (!mesajmi)
+            {
+                if (varsayilan) BtnYes.Focus();
+                else BtnNo.Focus();
+            }
+        }
+
 
         private void ButtonsClick(object sender, EventArgs e)
         {

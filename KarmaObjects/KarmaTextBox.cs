@@ -16,7 +16,6 @@ namespace KarmaObjects
 {
     public partial class KarmaTextBox : Control, KarmaObject
     {
-        private string _GuideValue = "";
         private CalcEdit _Numeric;
         private TextEdit _String;
         private DateEdit _Date;
@@ -28,14 +27,19 @@ namespace KarmaObjects
         public KarmaTextBox()
         {
             InitializeComponent();
+            BackColor = Color.FromArgb(60, 60, 60);
             SetFieldType(KarmaFieldTypes.String);
         }
-
+        public string KarmaFieldName { get; set; }
+        public string KarmaGuideTableName { get; set; }
+        public string KarmaGuideColumnName { get; set; }
+        public string KarmaGuideFields { get; set; }
+        public string KarmaGuideFilter { get; set; }
+        public string KarmaGuideName { get; set; }
         public BorderStyles BorderStyle { get; set; } = BorderStyles.UltraFlat;
         public KarmaTextBox(IContainer container)
         {
             container.Add(this);
-
             InitializeComponent();
         }
 
@@ -220,6 +224,7 @@ namespace KarmaObjects
                         _Guide = new ButtonEdit();
                         Controls.Clear();
                         _Guide.ButtonClick += _Guide_ButtonClick; ;
+                        _Guide.KeyDown += _Guide_KeyDown; ;
                         Controls.Add(_Guide);
                         _Guide.BorderStyle = BorderStyle;
                         _Guide.BackColor = BackColor;
@@ -233,8 +238,24 @@ namespace KarmaObjects
 
         }
 
-        private void _Guide_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        private void _Guide_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Control && e.KeyCode == Keys.F)
+            {
+                e.Handled = true;
+                if (KarmaFieldType == KarmaFieldTypes.Guide)
+                {
+                    _Guide_ButtonClick(this, null);
+                }
+            }
+        }
+
+        private void _Guide_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            KarmaRehber rehber = new KarmaRehber(KarmaGuideTableName, KarmaGuideFields, KarmaGuideColumnName, KarmaGuideFilter, KarmaGuideName);
+            rehber.ShowDialog();
+            Text = rehber.Sonuc;
+            if(!(KarmaOnGuideClick is null))
             KarmaOnGuideClick(sender, e);
         }
 
@@ -311,6 +332,5 @@ namespace KarmaObjects
         Numeric,
         Guide
     }
-
 
 }

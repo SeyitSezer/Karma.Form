@@ -8,6 +8,10 @@ using System.Data;
 using System.Windows.Forms;
 using static KarmaLib.KarmaLib;
 using System.IO;
+using DevExpress.Data.Db;
+using DevExpress.DataAccess.Native.Sql;
+using DevExpress.DataAccess.Sql;
+using DevExpress.DataAccess.ConnectionParameters;
 
 namespace KarmaLib
 {
@@ -115,6 +119,24 @@ namespace KarmaLib
             {
                 Mesaj(HataMesajiHazirla(_Update.CommandText, x.Message, typeof(KarmaSQL), KarmaConnection.Database), "Hata");
             }
+        }
+
+        public static DataTable GetSQLData(string SQLText)
+        {
+            DataTable _Result = new DataTable();
+
+            SqlDataAdapter _GetData = new SqlDataAdapter(SQLText, KarmaConnection);
+            _GetData.Fill(_Result);
+            return _Result;
+        }
+
+        public static DataSet GetSQLDataSet(string SQLText)
+        {
+            DataSet _Result = new DataSet();
+
+            SqlDataAdapter _GetData = new SqlDataAdapter(SQLText, KarmaConnection);
+            _GetData.Fill(_Result);
+            return _Result;
         }
     }
 }
