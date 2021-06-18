@@ -32,14 +32,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KarmaForm));
             this.PnlNavigator = new KarmaObjects.KarmaPanel(this.components);
+            this.BtnNew = new KarmaObjects.KarmaButton(this.components);
             this.BtnDelete = new KarmaObjects.KarmaButton(this.components);
             this.BtnClear = new KarmaObjects.KarmaButton(this.components);
             this.BtnSave = new KarmaObjects.KarmaButton(this.components);
-            this.BtnNew = new KarmaObjects.KarmaButton(this.components);
-            this.BtnLast = new KarmaObjects.KarmaButton(this.components);
-            this.BtnNext = new KarmaObjects.KarmaButton(this.components);
-            this.BtnPrevious = new KarmaObjects.KarmaButton(this.components);
             this.BtnFirst = new KarmaObjects.KarmaButton(this.components);
+            this.BtnPrevious = new KarmaObjects.KarmaButton(this.components);
+            this.BtnNext = new KarmaObjects.KarmaButton(this.components);
+            this.BtnLast = new KarmaObjects.KarmaButton(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PnlNavigator)).BeginInit();
             this.PnlNavigator.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +67,24 @@
             this.PnlNavigator.Size = new System.Drawing.Size(1070, 24);
             this.PnlNavigator.TabIndex = 1;
             // 
+            // BtnNew
+            // 
+            this.BtnNew.Appearance.ForeColor = System.Drawing.Color.White;
+            this.BtnNew.Appearance.Options.UseForeColor = true;
+            this.BtnNew.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BtnNew.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnNew.ImageOptions.Image")));
+            this.BtnNew.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.BtnNew.KarmaButtonType = KarmaObjects.KarmaButtonTypes.Özel;
+            this.BtnNew.KarmaMasterPanel = null;
+            this.BtnNew.KarmaMasterTextBox = null;
+            this.BtnNew.Location = new System.Drawing.Point(828, 2);
+            this.BtnNew.Name = "BtnNew";
+            this.BtnNew.Size = new System.Drawing.Size(30, 20);
+            this.BtnNew.TabIndex = 4;
+            this.BtnNew.TabStop = false;
+            this.BtnNew.TasinabilirMi = false;
+            this.BtnNew.Click += new System.EventHandler(this.BtnNew_Click);
+            // 
             // BtnDelete
             // 
             this.BtnDelete.Appearance.ForeColor = System.Drawing.Color.White;
@@ -83,6 +101,7 @@
             this.BtnDelete.TabIndex = 7;
             this.BtnDelete.TabStop = false;
             this.BtnDelete.TasinabilirMi = false;
+            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // BtnClear
             // 
@@ -100,6 +119,7 @@
             this.BtnClear.TabIndex = 6;
             this.BtnClear.TabStop = false;
             this.BtnClear.TasinabilirMi = false;
+            this.BtnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
             // BtnSave
             // 
@@ -117,74 +137,7 @@
             this.BtnSave.TabIndex = 5;
             this.BtnSave.TabStop = false;
             this.BtnSave.TasinabilirMi = false;
-            // 
-            // BtnNew
-            // 
-            this.BtnNew.Appearance.ForeColor = System.Drawing.Color.White;
-            this.BtnNew.Appearance.Options.UseForeColor = true;
-            this.BtnNew.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BtnNew.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnNew.ImageOptions.Image")));
-            this.BtnNew.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.BtnNew.KarmaButtonType = KarmaObjects.KarmaButtonTypes.Özel;
-            this.BtnNew.KarmaMasterPanel = null;
-            this.BtnNew.KarmaMasterTextBox = null;
-            this.BtnNew.Location = new System.Drawing.Point(828, 2);
-            this.BtnNew.Name = "BtnNew";
-            this.BtnNew.Size = new System.Drawing.Size(30, 20);
-            this.BtnNew.TabIndex = 4;
-            this.BtnNew.TabStop = false;
-            this.BtnNew.TasinabilirMi = false;
-            // 
-            // BtnLast
-            // 
-            this.BtnLast.Appearance.ForeColor = System.Drawing.Color.White;
-            this.BtnLast.Appearance.Options.UseForeColor = true;
-            this.BtnLast.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BtnLast.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnLast.ImageOptions.Image")));
-            this.BtnLast.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.BtnLast.KarmaButtonType = KarmaObjects.KarmaButtonTypes.Özel;
-            this.BtnLast.KarmaMasterPanel = null;
-            this.BtnLast.KarmaMasterTextBox = null;
-            this.BtnLast.Location = new System.Drawing.Point(1038, 2);
-            this.BtnLast.Name = "BtnLast";
-            this.BtnLast.Size = new System.Drawing.Size(30, 20);
-            this.BtnLast.TabIndex = 3;
-            this.BtnLast.TabStop = false;
-            this.BtnLast.TasinabilirMi = false;
-            // 
-            // BtnNext
-            // 
-            this.BtnNext.Appearance.ForeColor = System.Drawing.Color.White;
-            this.BtnNext.Appearance.Options.UseForeColor = true;
-            this.BtnNext.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BtnNext.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnNext.ImageOptions.Image")));
-            this.BtnNext.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.BtnNext.KarmaButtonType = KarmaObjects.KarmaButtonTypes.Özel;
-            this.BtnNext.KarmaMasterPanel = null;
-            this.BtnNext.KarmaMasterTextBox = null;
-            this.BtnNext.Location = new System.Drawing.Point(1008, 2);
-            this.BtnNext.Name = "BtnNext";
-            this.BtnNext.Size = new System.Drawing.Size(30, 20);
-            this.BtnNext.TabIndex = 2;
-            this.BtnNext.TabStop = false;
-            this.BtnNext.TasinabilirMi = false;
-            // 
-            // BtnPrevious
-            // 
-            this.BtnPrevious.Appearance.ForeColor = System.Drawing.Color.White;
-            this.BtnPrevious.Appearance.Options.UseForeColor = true;
-            this.BtnPrevious.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BtnPrevious.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnPrevious.ImageOptions.Image")));
-            this.BtnPrevious.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.BtnPrevious.KarmaButtonType = KarmaObjects.KarmaButtonTypes.Özel;
-            this.BtnPrevious.KarmaMasterPanel = null;
-            this.BtnPrevious.KarmaMasterTextBox = null;
-            this.BtnPrevious.Location = new System.Drawing.Point(978, 2);
-            this.BtnPrevious.Name = "BtnPrevious";
-            this.BtnPrevious.Size = new System.Drawing.Size(30, 20);
-            this.BtnPrevious.TabIndex = 1;
-            this.BtnPrevious.TabStop = false;
-            this.BtnPrevious.TasinabilirMi = false;
+            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // BtnFirst
             // 
@@ -202,6 +155,61 @@
             this.BtnFirst.TabIndex = 0;
             this.BtnFirst.TabStop = false;
             this.BtnFirst.TasinabilirMi = false;
+            this.BtnFirst.Click += new System.EventHandler(this.BtnFirst_Click);
+            // 
+            // BtnPrevious
+            // 
+            this.BtnPrevious.Appearance.ForeColor = System.Drawing.Color.White;
+            this.BtnPrevious.Appearance.Options.UseForeColor = true;
+            this.BtnPrevious.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BtnPrevious.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnPrevious.ImageOptions.Image")));
+            this.BtnPrevious.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.BtnPrevious.KarmaButtonType = KarmaObjects.KarmaButtonTypes.Özel;
+            this.BtnPrevious.KarmaMasterPanel = null;
+            this.BtnPrevious.KarmaMasterTextBox = null;
+            this.BtnPrevious.Location = new System.Drawing.Point(978, 2);
+            this.BtnPrevious.Name = "BtnPrevious";
+            this.BtnPrevious.Size = new System.Drawing.Size(30, 20);
+            this.BtnPrevious.TabIndex = 1;
+            this.BtnPrevious.TabStop = false;
+            this.BtnPrevious.TasinabilirMi = false;
+            this.BtnPrevious.Click += new System.EventHandler(this.BtnPrevious_Click);
+            // 
+            // BtnNext
+            // 
+            this.BtnNext.Appearance.ForeColor = System.Drawing.Color.White;
+            this.BtnNext.Appearance.Options.UseForeColor = true;
+            this.BtnNext.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BtnNext.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnNext.ImageOptions.Image")));
+            this.BtnNext.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.BtnNext.KarmaButtonType = KarmaObjects.KarmaButtonTypes.Özel;
+            this.BtnNext.KarmaMasterPanel = null;
+            this.BtnNext.KarmaMasterTextBox = null;
+            this.BtnNext.Location = new System.Drawing.Point(1008, 2);
+            this.BtnNext.Name = "BtnNext";
+            this.BtnNext.Size = new System.Drawing.Size(30, 20);
+            this.BtnNext.TabIndex = 2;
+            this.BtnNext.TabStop = false;
+            this.BtnNext.TasinabilirMi = false;
+            this.BtnNext.Click += new System.EventHandler(this.BtnNext_Click);
+            // 
+            // BtnLast
+            // 
+            this.BtnLast.Appearance.ForeColor = System.Drawing.Color.White;
+            this.BtnLast.Appearance.Options.UseForeColor = true;
+            this.BtnLast.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BtnLast.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnLast.ImageOptions.Image")));
+            this.BtnLast.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.BtnLast.KarmaButtonType = KarmaObjects.KarmaButtonTypes.Özel;
+            this.BtnLast.KarmaMasterPanel = null;
+            this.BtnLast.KarmaMasterTextBox = null;
+            this.BtnLast.Location = new System.Drawing.Point(1038, 2);
+            this.BtnLast.Name = "BtnLast";
+            this.BtnLast.Size = new System.Drawing.Size(30, 20);
+            this.BtnLast.TabIndex = 3;
+            this.BtnLast.TabStop = false;
+            this.BtnLast.TasinabilirMi = false;
+            this.BtnLast.Click += new System.EventHandler(this.BtnLast_Click);
             // 
             // KarmaForm
             // 

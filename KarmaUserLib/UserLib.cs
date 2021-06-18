@@ -8,6 +8,5 @@ namespace KarmaUserLib
 {
     public static class UserLib
     {
-
     }
 }

@@ -14,6 +14,7 @@ using static KarmaLib.KarmaSQL;
 using KarmaStokLib;
 using DevExpress.XtraTab;
 using System.Threading;
+using KarmaUserLib;
 
 namespace Karma_Form
 {
@@ -57,6 +58,11 @@ namespace Karma_Form
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = (DialogResult.Yes != Sor("Program Kapatılacak, Devam Edilsin Mi?", "Onayınız Gerekiyor"));
+        }
+
+        private void MnuUserSettings_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            PleaseWait(new Thread(() => CreateForm(new FrmUserSettings())));
         }
     }
 }

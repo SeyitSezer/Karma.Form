@@ -160,6 +160,10 @@
       <Project>{d0bf6dca-0dad-4269-8a11-c3bc1ca852f9}</Project>
       <Name>KarmaStokLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KarmaUserLib\KarmaUserLib.csproj">
+      <Project>{01822a38-66d4-45df-9bb4-11357c74cff8}</Project>
+      <Name>KarmaUserLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\user-silhouette.png" />

@@ -39,7 +39,8 @@
             this.MnuSistem = new DevExpress.XtraBars.BarSubItem();
             this.MnuGenelAyar = new DevExpress.XtraBars.BarButtonItem();
             this.MnuBildirimAyar = new DevExpress.XtraBars.BarButtonItem();
-            this.MnuKullanici = new DevExpress.XtraBars.BarButtonItem();
+            this.MnuUserSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.MnuKullanici = new DevExpress.XtraBars.BarSubItem();
             this.MnuCikis = new DevExpress.XtraBars.BarButtonItem();
             this.MnuIslemler = new DevExpress.XtraBars.BarSubItem();
             this.MnuStokYonetimi = new DevExpress.XtraBars.BarSubItem();
@@ -109,7 +110,7 @@
             this.DesktopTab.Controls.Add(this.karmaPanel1);
             this.DesktopTab.Name = "DesktopTab";
             this.DesktopTab.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
-            this.DesktopTab.Size = new System.Drawing.Size(1214, 529);
+            this.DesktopTab.Size = new System.Drawing.Size(1214, 531);
             this.DesktopTab.Text = "Masaüstü   ";
             // 
             // karmaPanel1
@@ -123,7 +124,7 @@
             this.karmaPanel1.KarmaTableName = null;
             this.karmaPanel1.Location = new System.Drawing.Point(0, 0);
             this.karmaPanel1.Name = "karmaPanel1";
-            this.karmaPanel1.Size = new System.Drawing.Size(1214, 529);
+            this.karmaPanel1.Size = new System.Drawing.Size(1214, 531);
             this.karmaPanel1.TabIndex = 0;
             // 
             // MainBarManager
@@ -188,9 +189,10 @@
             this.MnuFiyatYonetimi,
             this.MnuKaydet,
             this.MnuSil,
-            this.MnuYeniKayit});
+            this.MnuYeniKayit,
+            this.MnuUserSettings});
             this.MainBarManager.MainMenu = this.MainMenu;
-            this.MainBarManager.MaxItemId = 52;
+            this.MainBarManager.MaxItemId = 54;
             this.MainBarManager.StatusBar = this.StatusBar;
             // 
             // StatusBar
@@ -245,10 +247,19 @@
             this.MnuBildirimAyar.Id = 5;
             this.MnuBildirimAyar.Name = "MnuBildirimAyar";
             // 
+            // MnuUserSettings
+            // 
+            this.MnuUserSettings.Caption = "Kullanıcı Tercihleri";
+            this.MnuUserSettings.Id = 52;
+            this.MnuUserSettings.Name = "MnuUserSettings";
+            this.MnuUserSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MnuUserSettings_ItemClick);
+            // 
             // MnuKullanici
             // 
             this.MnuKullanici.Caption = "Kullanıcı İşlemleri";
             this.MnuKullanici.Id = 6;
+            this.MnuKullanici.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.MnuUserSettings)});
             this.MnuKullanici.Name = "MnuKullanici";
             // 
             // MnuCikis
@@ -544,7 +555,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.MainBarManager;
-            this.barDockControlTop.Size = new System.Drawing.Size(1216, 25);
+            this.barDockControlTop.Size = new System.Drawing.Size(1216, 23);
             // 
             // barDockControlBottom
             // 
@@ -558,17 +569,17 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 25);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 23);
             this.barDockControlLeft.Manager = this.MainBarManager;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 556);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 558);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1216, 25);
+            this.barDockControlRight.Location = new System.Drawing.Point(1216, 23);
             this.barDockControlRight.Manager = this.MainBarManager;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 556);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 558);
             // 
             // MnuStokTransfer
             // 
@@ -604,10 +615,11 @@
             this.MainTabControl.AppearancePage.HeaderActive.Options.UseBackColor = true;
             this.MainTabControl.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
             this.MainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainTabControl.Location = new System.Drawing.Point(0, 25);
+            this.MainTabControl.KarmaCloseButtonMessageActive = true;
+            this.MainTabControl.Location = new System.Drawing.Point(0, 23);
             this.MainTabControl.Name = "MainTabControl";
             this.MainTabControl.SelectedTabPage = this.DesktopTab;
-            this.MainTabControl.Size = new System.Drawing.Size(1216, 556);
+            this.MainTabControl.Size = new System.Drawing.Size(1216, 558);
             this.MainTabControl.TabIndex = 2;
             this.MainTabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.DesktopTab});
@@ -670,7 +682,6 @@
         private DevExpress.XtraBars.BarSubItem MnuSistem;
         private DevExpress.XtraBars.BarButtonItem MnuGenelAyar;
         private DevExpress.XtraBars.BarButtonItem MnuBildirimAyar;
-        private DevExpress.XtraBars.BarButtonItem MnuKullanici;
         private DevExpress.XtraBars.BarButtonItem MnuCikis;
         private DevExpress.XtraBars.Bar StatusBar;
         private DevExpress.XtraBars.Bar MainMenu;
@@ -718,6 +729,8 @@
         private DevExpress.XtraBars.BarButtonItem MnuSil;
         private DevExpress.XtraBars.BarButtonItem MnuYeniKayit;
         private KarmaObjects.KarmaPanel karmaPanel1;
+        private DevExpress.XtraBars.BarButtonItem MnuUserSettings;
+        private DevExpress.XtraBars.BarSubItem MnuKullanici;
     }
 }
 
