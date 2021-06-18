@@ -62,7 +62,7 @@ namespace KarmaLib
                 {
                     _cols += i + ",";
                 }
-                _cols = _cols.Substring(0, _cols.Length - 2) + ") VALUES(";
+                _cols = _cols.Substring(0, _cols.Length - 1) + ") VALUES(";
                 string _params = "";
                 int _paramsay = 1;
                 foreach (object vals in Values)
@@ -71,7 +71,7 @@ namespace KarmaLib
                     _params += "@P" + _paramsay.ToString() + ",";
                     _paramsay++;
                 }
-                _params = _params.Substring(0, _params.Length - 2) + ")";
+                _params = _params.Substring(0, _params.Length - 1) + ")";
                 _Insert.CommandText += _cols + _params;
                 _Insert.ExecuteNonQuery();
             }
@@ -81,7 +81,7 @@ namespace KarmaLib
             }
         }
 
-        public static void Delete(string TableName, string FilterNotWhere)
+        public static void DeleteData(string TableName, string FilterNotWhere)
         {
             SqlCommand _delete = new SqlCommand("DELETE " + TableName + " WHERE 1=1 AND " + FilterNotWhere, KarmaConnection);
             try
@@ -94,7 +94,7 @@ namespace KarmaLib
             }
         }
 
-        public static void Update(string TableName, List<string> Columns, List<object> Values, string FilterNotWhere)
+        public static void UpdateData(string TableName, List<string> Columns, List<object> Values, string FilterNotWhere)
         {
             SqlCommand _Update = new SqlCommand("UPDATE " + TableName + " SET ", KarmaConnection);
             try

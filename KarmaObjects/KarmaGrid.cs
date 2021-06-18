@@ -18,35 +18,35 @@ namespace KarmaObjects
         public GridView KarmaView = new GridView();
         #region Menü İşlemleri
         private ContextMenuStrip _PopupMenu;
-        ToolStripMenuItem _ExportOptions ,_ExportCSV, _ExportDocX, _ExportPDF, _ExportXLS, _ExportXLSX, _ExportHTML, _ExportTxt;
+        ToolStripMenuItem _ExportOptions, _ExportCSV, _ExportDocX, _ExportPDF, _ExportXLS, _ExportXLSX, _ExportHTML, _ExportTxt
+            , _Yenile;
         #endregion
         public KarmaGrid()
         {
-            
+
         }
+        public KarmaPanel MasterPanel;
         public string KarmaSQLText { get; set; }
         public bool KarmaSQLCalistir { get; set; } = false;
         protected override void OnCreateControl()
         {
-            if(ViewCollection.Count == 0 && !AppRunning)
-            {
-                KarmaView.GridControl = this;
-                KarmaView.Name = this.Name.Replace("Grd", "View");
-                KarmaView.OptionsFind.AlwaysVisible = true;
-                KarmaView.OptionsFind.FindNullPrompt = "Arama Yapmak İçin Buraya Yazın";
-                KarmaView.OptionsFind.ShowFindButton = false;
-                KarmaView.OptionsView.BestFitMode = GridBestFitMode.Fast;
-                KarmaView.GroupPanelText = "Gruplamak İçin Sütunu Sürükleyip Buraya Bırakın";
-                KarmaView.FocusRectStyle = DrawFocusRectStyle.RowFullFocus;
-                ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { KarmaView });
-                MainView = KarmaView;
-                KarmaView.OptionsMenu.EnableGroupPanelMenu = false;
-                KarmaView.OptionsMenu.EnableColumnMenu = false;
-            }
-           
+
             base.OnCreateControl();
+            ((GridView)MainView).GridControl = this;
+            ((GridView)MainView).Name = this.Name.Replace("Grd", "View");
+            ((GridView)MainView).OptionsFind.AlwaysVisible = true;
+            ((GridView)MainView).OptionsFind.FindNullPrompt = "Arama Yapmak İçin Buraya Yazın";
+            ((GridView)MainView).OptionsFind.ShowFindButton = false;
+            ((GridView)MainView).OptionsView.BestFitMode = GridBestFitMode.Fast;
+            ((GridView)MainView).GroupPanelText = "Gruplamak İçin Sütunu Sürükleyip Buraya Bırakın";
+            ((GridView)MainView).FocusRectStyle = DrawFocusRectStyle.RowFullFocus;
+            //ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { KarmaView });
+            ((GridView)MainView).OptionsMenu.EnableGroupPanelMenu = false;
+            ((GridView)MainView).OptionsMenu.EnableColumnMenu = false;
             ((GridView)MainView).OptionsBehavior.Editable = false;
             ((GridView)MainView).OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDown;
+            ((GridView)MainView).OptionsFind.FindDelay = 100;
+            ((GridView)MainView).OptionsFind.FindMode = DevExpress.XtraEditors.FindMode.Always;
             if (!(ContextMenuStrip is null)) _PopupMenu = ContextMenuStrip;
             else
             {
@@ -54,7 +54,7 @@ namespace KarmaObjects
                 ContextMenuStrip = _PopupMenu;
             }
             SetPopupMenu();
-            if(KarmaSQLCalistir && !string.IsNullOrEmpty(KarmaSQLText))
+            if (AppRunning && KarmaSQLCalistir && !string.IsNullOrEmpty(KarmaSQLText))
             {
                 DataSource = GetSQLData(KarmaSQLText);
             }
@@ -62,7 +62,8 @@ namespace KarmaObjects
 
         public void GetData(string SQLText)
         {
-
+            KarmaSQLText = SQLText;
+            DataSource = GetSQLData(SQLText);
         }
 
         #region Menu İşlemleri
@@ -90,11 +91,20 @@ namespace KarmaObjects
             _ExportXLSX = new ToolStripMenuItem("XLSX Olarak Kaydet");
             _ExportXLSX.Click += MnuExportXLSXClick;
 
-            _ExportOptions.DropDownItems.AddRange(new ToolStripMenuItem[]{ _ExportCSV , _ExportDocX, _ExportPDF, _ExportXLS, _ExportXLSX, _ExportHTML, _ExportTxt });
+            _Yenile = new ToolStripMenuItem("Yeniden Yükle");
+            _Yenile.Click += _Yenile_Click;
+
+            _ExportOptions.DropDownItems.AddRange(new ToolStripMenuItem[] { _ExportCSV, _ExportDocX, _ExportPDF, _ExportXLS, _ExportXLSX, _ExportHTML, _ExportTxt });
             _PopupMenu.Items.Add(_ExportOptions);
+            _PopupMenu.Items.Add(_Yenile);
         }
 
-        private string _SaveExportFileName(string FileType) 
+        private void _Yenile_Click(object sender, EventArgs e)
+        {
+            GetData(KarmaSQLText);
+        }
+
+        private string _SaveExportFileName(string FileType)
         {
             SaveFileDialog _ExpSaveDialog = new SaveFileDialog();
             _ExpSaveDialog.Filter = FileType + " Dosyası|*." + FileType;
@@ -117,7 +127,7 @@ namespace KarmaObjects
             if (_FileName != "") ExportToCsv(_FileName);
         }
         public void MnuExportPDFClick(object Sender, EventArgs e)
-        { 
+        {
             var _FileName = _SaveExportFileName("Pdf");
             if (_FileName != "") ExportToCsv(_FileName);
         }
@@ -145,7 +155,16 @@ namespace KarmaObjects
 
         public object GetValueByColumnName(string ColumnName)
         {
-            return ((GridView)MainView).GetRowCellValue(((GridView)MainView).FocusedRowHandle,ColumnName);
+            return ((GridView)MainView).GetRowCellValue(((GridView)MainView).FocusedRowHandle, ColumnName);
+        }
+        protected override void OnDoubleClick(EventArgs ev)
+        {
+            if(!(MasterPanel is null))
+            {
+                MasterPanel.KarmaLoadFromGrid();
+                MasterPanel.Focus();
+            }
+            base.OnDoubleClick(ev);
         }
     }
 }

@@ -13,6 +13,7 @@ namespace KarmaLib
 {
     public static class KarmaLib
     {
+        public static Form MainForm { get; set; }
         private static string SecureKey = "SeyitSeyitSeyit1";
         public static Image KarmaBase64ToImage(string base64Image)
         {
@@ -39,13 +40,26 @@ namespace KarmaLib
 
         public static void Mesaj(string Mesaj, string Baslik = "Karma Bildirim Sistemi")
         {
-            FrmMesajAlt _Mesaj = new FrmMesajAlt(Mesaj, true, true, Baslik);
+            FrmMesajAlt _Mesaj = new FrmMesajAlt(Mesaj, true, true, Baslik)
+            {
+                Size = new Size(MainForm.Width - 4, MainForm.Height),
+                WindowState = FormWindowState.Normal,
+                StartPosition = FormStartPosition.Manual,
+                Location = new Point(MainForm.Location.X + 2, MainForm.Location.Y),
+            };
             _Mesaj.ShowDialog();
         }
 
         public static DialogResult Sor(string Mesaj, string Baslik = "Onayınız Gerekiyor", bool DefaultDeger= false)
         {
-            FrmMesajAlt _Soru = new FrmMesajAlt(Mesaj, false, DefaultDeger, Baslik);
+            FrmMesajAlt _Soru = new FrmMesajAlt(Mesaj, false, DefaultDeger, Baslik)
+            {
+                Size = new Size(MainForm.Width - 4, MainForm.Height),
+                WindowState = FormWindowState.Normal,
+                StartPosition = FormStartPosition.Manual,
+                Location = new Point(MainForm.Location.X +2, MainForm.Location.Y),
+            };
+            
             _Soru.ShowDialog();
             return _Soru.DialogResult;
         }

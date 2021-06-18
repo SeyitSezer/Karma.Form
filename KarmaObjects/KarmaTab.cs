@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static KarmaLib.KarmaLib;
 
 namespace KarmaObjects
 {
@@ -24,11 +25,17 @@ namespace KarmaObjects
 
             InitializeComponent();
         }
+
+        public bool KarmaCloseButtonMessageActive { get; set; } = true;
         protected override void OnCloseButtonClick(object sender, EventArgs e)
         {
             base.OnCloseButtonClick(sender, e);
             ClosePageButtonEventArgs _a = e as ClosePageButtonEventArgs;
-            TabPages.Remove((_a.Page as XtraTabPage));
+            if (KarmaCloseButtonMessageActive && Sor(_a.Page.Text + " Kapatılsın mı?") == System.Windows.Forms.DialogResult.Yes)
+            {
+                TabPages.Remove((_a.Page as XtraTabPage));
+            }
+
         }
     }
 }

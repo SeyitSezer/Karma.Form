@@ -33,7 +33,6 @@ namespace KarmaObjects
             a.OptionsFind.AlwaysVisible = true;
             a.OptionsFind.ShowFindButton = false;
             a.OptionsFind.FindNullPrompt = "Aramak İstediğiniz Tümceyi Buraya Yazın...";
-            //a.OptionsFind.
             a.OptionsView.ShowGroupPanel = false;
             a.OptionsBehavior.Editable = false;
             a.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDown;
@@ -47,7 +46,18 @@ namespace KarmaObjects
 
         private void gridView1_DoubleClick(object sender, EventArgs e)
         {
-            Sonuc = GrdRehber.GetValueByColumnName(DonecekAlan).ToString();
+            try
+            {
+                Sonuc = !(GrdRehber.GetValueByColumnName(DonecekAlan) is null) ? GrdRehber.GetValueByColumnName(DonecekAlan).ToString() : "";
+            }
+            catch (Exception)
+            {
+                Sonuc = "";
+            }
+            finally
+            {
+                Close();
+            }
             Close();
         }
     }

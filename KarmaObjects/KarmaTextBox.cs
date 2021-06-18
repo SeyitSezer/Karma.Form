@@ -152,7 +152,13 @@ namespace KarmaObjects
                 }
             }
         }
-
+        public bool IsNull 
+        { 
+            get 
+            { 
+                return string.IsNullOrEmpty(Text); 
+            } 
+        }
         public override Color BackColor
         {
             get => base.BackColor;
@@ -255,8 +261,8 @@ namespace KarmaObjects
             KarmaRehber rehber = new KarmaRehber(KarmaGuideTableName, KarmaGuideFields, KarmaGuideColumnName, KarmaGuideFilter, KarmaGuideName);
             rehber.ShowDialog();
             Text = rehber.Sonuc;
-            if(!(KarmaOnGuideClick is null))
-            KarmaOnGuideClick(sender, e);
+            if (!(KarmaOnGuideClick is null))
+                KarmaOnGuideClick(sender, e);
         }
 
         public event OnGuideClick KarmaOnGuideClick;
@@ -318,9 +324,75 @@ namespace KarmaObjects
         public DateTime ToDateTime()
         {
             if (KarmaFieldType == KarmaFieldTypes.Date)
+                return Convert.ToDateTime(_Date.Text);
+            else
+                return DateTime.MinValue;
+        }
+        public DateTime ToTime()
+        {
+            if (KarmaFieldType == KarmaFieldTypes.Time)
                 return Convert.ToDateTime(_Time.Text);
             else
                 return DateTime.MinValue;
+        }
+
+        public object GetFieldData
+        {
+            get
+            {
+                object deger;
+                switch (KarmaFieldType)
+                {
+                    case KarmaFieldTypes.String:
+                        deger = ToString();
+                        break;
+                    case KarmaFieldTypes.Date:
+                        deger = ToDateTime();
+                        break;
+                    case KarmaFieldTypes.Time:
+                        deger = ToTime();
+                        break;
+                    case KarmaFieldTypes.Numeric:
+                        deger = ToDecimal();
+                        break;
+                    case KarmaFieldTypes.Guide:
+                        deger =  ToString();
+                        break;
+                    default:
+                        deger = "";
+                        break;
+                }
+                return deger;
+            }
+        }
+        public string GetSQLText
+        {
+            get
+            {
+                string deger;
+                switch (KarmaFieldType)
+                {
+                    case KarmaFieldTypes.String:
+                        deger = "'" +ToString().Replace("'","''") + "'";
+                        break;
+                    case KarmaFieldTypes.Date:
+                        deger = "'" + ToDateTime().ToString("yyyy-MM-dd") + "'";
+                        break;
+                    case KarmaFieldTypes.Time:
+                        deger = ToTime().ToString("hh-mm-ss");
+                        break;
+                    case KarmaFieldTypes.Numeric:
+                        deger = ToDecimal().ToString().Replace(",",".");
+                        break;
+                    case KarmaFieldTypes.Guide:
+                        deger = "'" + ToString().Replace("'", "''") + "'";
+                        break;
+                    default:
+                        deger = "null";
+                        break;
+                }
+                return deger;
+            }
         }
     }
 

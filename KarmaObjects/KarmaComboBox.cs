@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static KarmaLib.KarmaSQL;
+using static KarmaLib.KarmaLib;
 
 namespace KarmaObjects
 {
@@ -25,15 +26,16 @@ namespace KarmaObjects
 
         protected override void OnCreateControl()
         {
-            if (KarmaValueType == KarmaValueTypes.Lookup)
+            if (AppRunning && KarmaValueType == KarmaValueTypes.Lookup)
             {
                 if(!string.IsNullOrEmpty(KarmaLookUpTable) && !string.IsNullOrEmpty(KarmaLookupDisplayField) && !string.IsNullOrEmpty(KarmaLookupValueField))
                 {
-                    Properties.DataSource = GetSQLData("SELECT " + KarmaLookupValueField + "," + KarmaLookupDisplayField + " FROM " + KarmaLookUpTable + " WHERE 1=1 AND" + KarmaLookupFilter);
+                    Properties.DataSource = GetSQLData("SELECT " + KarmaLookupValueField + "," + KarmaLookupDisplayField + " FROM " + KarmaLookUpTable + " WHERE 1=1 " + KarmaLookupFilter);
                     Properties.DisplayMember = KarmaLookupDisplayField;
                     Properties.ValueMember = KarmaLookupValueField;
                 }
             }
+            Properties.NullValuePrompt = "";
             base.OnCreateControl();
         }
         public decimal ToDecimal()
@@ -67,6 +69,56 @@ namespace KarmaObjects
                 return Convert.ToDateTime(EditValue);
             else
                 return DateTime.MinValue;
+        }
+        public DateTime ToTime()
+        {
+            if (KarmaFieldType == KarmaFieldTypes.Time)
+                return Convert.ToDateTime(EditValue);
+            else
+                return DateTime.MinValue;
+        }
+        public object GetFieldData
+        {
+            get
+            {
+                object deger;
+                switch (KarmaValueType)
+                {
+                    case KarmaValueTypes.ItemIndex:
+                        deger = ItemIndex;
+                        break;
+                    case KarmaValueTypes.Text:
+                        deger = Text;
+                        break;
+                    case KarmaValueTypes.Lookup:
+                        switch (KarmaFieldType)
+                        {
+                            case KarmaFieldTypes.String:
+                                deger = ToString();
+                                break;
+                            case KarmaFieldTypes.Date:
+                                deger = ToDateTime();
+                                break;
+                            case KarmaFieldTypes.Time:
+                                deger = ToTime();
+                                break;
+                            case KarmaFieldTypes.Numeric:
+                                deger = ToDecimal();
+                                break;
+                            case KarmaFieldTypes.Guide:
+                                deger = EditValue;
+                                break;
+                            default:
+                                deger = EditValue;
+                                break;
+                        }
+                        break;
+                    default:
+                        deger = EditValue;
+                        break;
+                }
+                return deger;
+            }
         }
     }
     public enum KarmaValueTypes

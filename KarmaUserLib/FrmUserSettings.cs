@@ -1,4 +1,4 @@
-﻿using KarmaObjects;
+﻿using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,18 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace KarmaStokLib
+namespace KarmaUserLib
 {
-    public partial class FrmStok : KarmaForm
+    public partial class FrmUserSettings : DevExpress.XtraEditors.XtraForm
     {
-        public FrmStok()
+        public FrmUserSettings()
         {
             InitializeComponent();
-        }
-
-        private void GrdStoklar_DoubleClick(object sender, EventArgs e)
-        {
-            karmaTab1.SelectedTabPage = PgeStokIslem;
         }
     }
 }

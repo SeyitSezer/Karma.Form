@@ -46,7 +46,7 @@
             this.WaitPanel.ImageHorzOffset = 10;
             this.WaitPanel.Location = new System.Drawing.Point(0, 0);
             this.WaitPanel.Name = "WaitPanel";
-            this.WaitPanel.Size = new System.Drawing.Size(304, 91);
+            this.WaitPanel.Size = new System.Drawing.Size(261, 84);
             this.WaitPanel.TabIndex = 0;
             this.WaitPanel.Text = "WaitPanel";
             this.WaitPanel.WaitAnimationType = DevExpress.Utils.Animation.WaitingAnimatorType.Line;
@@ -59,14 +59,14 @@
             // 
             this.Appearance.BackColor = System.Drawing.Color.Blue;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 343);
+            this.ClientSize = new System.Drawing.Size(261, 318);
             this.Controls.Add(this.WaitPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimizeBox = false;
             this.Name = "FrmBekle";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmBekle";
             this.TransparencyKey = System.Drawing.Color.Blue;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmBekle_FormClosing);

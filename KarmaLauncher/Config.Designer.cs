@@ -369,7 +369,6 @@
             // 
             // karmaPanel1
             // 
-            this.karmaPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.karmaPanel1.Controls.Add(this.BtnKaydet);
             this.karmaPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.karmaPanel1.KarmaColumnNames = null;
