@@ -42,6 +42,7 @@
             this.karmaLabel2 = new KarmaObjects.KarmaLabel();
             this.karmaLabel1 = new KarmaObjects.KarmaLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.karmaPanel1)).BeginInit();
             this.karmaPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Yil.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Sirket.Properties)).BeginInit();
@@ -70,7 +71,9 @@
             this.karmaPanel1.Controls.Add(this.karmaLabel2);
             this.karmaPanel1.Controls.Add(this.karmaLabel1);
             this.karmaPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.karmaPanel1.KarmaChildPanels = null;
             this.karmaPanel1.KarmaColumnNames = null;
+            this.karmaPanel1.KarmaGridControl = null;
             this.karmaPanel1.KarmaMasterButton = null;
             this.karmaPanel1.KarmaMasterTextBox = null;
             this.karmaPanel1.KarmaTableName = null;
@@ -81,21 +84,33 @@
             // 
             // Yil
             // 
+            this.Yil.KarmaFieldName = null;
+            this.Yil.KarmaFieldType = KarmaObjects.KarmaFieldTypes.String;
+            this.Yil.KarmaLookupDisplayField = null;
+            this.Yil.KarmaLookupFilter = null;
+            this.Yil.KarmaLookUpTable = null;
+            this.Yil.KarmaLookupValueField = null;
+            this.Yil.KarmaValueType = KarmaObjects.KarmaValueTypes.ItemIndex;
             this.Yil.Location = new System.Drawing.Point(127, 152);
             this.Yil.Name = "Yil";
             this.Yil.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.Yil.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.Yil.Size = new System.Drawing.Size(227, 20);
             this.Yil.TabIndex = 4;
             // 
             // Sirket
             // 
+            this.Sirket.KarmaFieldName = null;
+            this.Sirket.KarmaFieldType = KarmaObjects.KarmaFieldTypes.String;
+            this.Sirket.KarmaLookupDisplayField = null;
+            this.Sirket.KarmaLookupFilter = null;
+            this.Sirket.KarmaLookUpTable = null;
+            this.Sirket.KarmaLookupValueField = null;
+            this.Sirket.KarmaValueType = KarmaObjects.KarmaValueTypes.ItemIndex;
             this.Sirket.Location = new System.Drawing.Point(127, 125);
             this.Sirket.Name = "Sirket";
             this.Sirket.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.Sirket.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.Sirket.Size = new System.Drawing.Size(227, 20);
             this.Sirket.TabIndex = 3;
             // 
@@ -103,7 +118,14 @@
             // 
             this.Password.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.Password.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.Password.KarmaFieldName = null;
             this.Password.KarmaFieldType = KarmaObjects.KarmaFieldTypes.String;
+            this.Password.KarmaGuideColumnName = null;
+            this.Password.KarmaGuideFields = null;
+            this.Password.KarmaGuideFilter = null;
+            this.Password.KarmaGuideName = null;
+            this.Password.KarmaGuideTableName = null;
+            this.Password.KarmaNumericType = KarmaLib.KarmaLib.KarmaFieldNumericTypes.TamSayi;
             this.Password.KarmaPasswordTextBox = true;
             this.Password.Location = new System.Drawing.Point(127, 37);
             this.Password.Name = "Password";
@@ -115,7 +137,14 @@
             // 
             this.UserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.UserName.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.UserName.KarmaFieldName = null;
             this.UserName.KarmaFieldType = KarmaObjects.KarmaFieldTypes.String;
+            this.UserName.KarmaGuideColumnName = null;
+            this.UserName.KarmaGuideFields = null;
+            this.UserName.KarmaGuideFilter = null;
+            this.UserName.KarmaGuideName = null;
+            this.UserName.KarmaGuideTableName = null;
+            this.UserName.KarmaNumericType = KarmaLib.KarmaLib.KarmaFieldNumericTypes.TamSayi;
             this.UserName.KarmaPasswordTextBox = false;
             this.UserName.Location = new System.Drawing.Point(127, 10);
             this.UserName.Name = "UserName";
@@ -126,10 +155,13 @@
             // BtnGiris
             // 
             this.BtnGiris.Appearance.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Bold);
-            this.BtnGiris.Appearance.ForeColor = System.Drawing.Color.Yellow;
+            this.BtnGiris.Appearance.ForeColor = System.Drawing.Color.White;
             this.BtnGiris.Appearance.Options.UseFont = true;
             this.BtnGiris.Appearance.Options.UseForeColor = true;
             this.BtnGiris.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnGiris.ImageOptions.Image")));
+            this.BtnGiris.KarmaButtonType = KarmaObjects.KarmaButtonTypes.Özel;
+            this.BtnGiris.KarmaMasterPanel = null;
+            this.BtnGiris.KarmaMasterTextBox = null;
             this.BtnGiris.Location = new System.Drawing.Point(234, 63);
             this.BtnGiris.Name = "BtnGiris";
             this.BtnGiris.Size = new System.Drawing.Size(120, 49);
@@ -195,6 +227,7 @@
             this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.Appearance.ForeColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
+            this.Appearance.Options.UseFont = true;
             this.Appearance.Options.UseForeColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -209,7 +242,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Karma.Form - Launcher";
             this.Load += new System.EventHandler(this.Launcher_Load);
+            this.Controls.SetChildIndex(this.pictureBox1, 0);
+            this.Controls.SetChildIndex(this.karmaPanel1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.karmaPanel1)).EndInit();
             this.karmaPanel1.ResumeLayout(false);
             this.karmaPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Yil.Properties)).EndInit();

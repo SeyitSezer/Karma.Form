@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.DataAccess.Native.Data;
+using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
@@ -19,6 +20,8 @@ namespace KarmaObjects
         public KarmaPanel()
         {
             InitializeComponent();
+            if (!(Parent is null))
+            BackColor = Parent.BackColor;
         }
 
         public KarmaPanel(IContainer container)
@@ -118,6 +121,59 @@ namespace KarmaObjects
                         }
                     }
 
+                }
+            }
+        }
+
+        public void KarmaLoadFromTable()
+        {
+            if (!(KarmaMasterTextBox is null) && !string.IsNullOrEmpty(KarmaTableName) && !KarmaMasterTextBox.IsNull)
+            {
+                List<string> Columns = new List<string>();
+                List<object> Values = new List<object>();
+                var x = GetSQLData("SELECT * FROM " + KarmaTableName + " WHERE " + KarmaMasterTextBox.KarmaFieldName + "=" + KarmaMasterTextBox.GetSQLText);
+                if (x.Rows.Count > 0)
+                {
+                    foreach (Control a in Controls)
+                    {
+                        foreach (System.Data.DataColumn c in x.Columns)
+                        {
+                            if (a is KarmaTextBox && a != KarmaMasterTextBox)
+                            {
+                                if ((a as KarmaTextBox).KarmaFieldName == c.ColumnName)
+                                    (a as KarmaTextBox).Text = x.Rows[0][c].ToString();
+                            }
+                            else if (a is KarmaComboBox)
+                            {
+                                if ((a as KarmaComboBox).KarmaFieldName == c.ColumnName)
+                                {
+                                    if ((a as KarmaComboBox).KarmaValueType == KarmaValueTypes.ItemIndex)
+                                        (a as KarmaComboBox).ItemIndex = x.Rows[0][c].ToInt();
+                                    if ((a as KarmaComboBox).KarmaValueType == KarmaValueTypes.Text)
+                                        (a as KarmaComboBox).SelectedText = x.Rows[0][c].ToString();
+                                    if ((a as KarmaComboBox).KarmaValueType == KarmaValueTypes.Lookup)
+                                    {
+                                        switch ((a as KarmaComboBox).KarmaFieldType)
+                                        {
+                                            case KarmaFieldTypes.String: (a as KarmaComboBox).EditValue = x.Rows[0][c].ToString();
+                                                break;
+                                            case KarmaFieldTypes.Date: (a as KarmaComboBox).EditValue = Convert.ToDateTime(x.Rows[0][c].ToString());
+                                                break;
+                                            case KarmaFieldTypes.Time: (a as KarmaComboBox).EditValue = Convert.ToDateTime(x.Rows[0][c].ToString());
+                                                break;
+                                            case KarmaFieldTypes.Numeric: (a as KarmaComboBox).EditValue = x.Rows[0][c].ToInt();
+                                                break;
+                                            case KarmaFieldTypes.Guide: (a as KarmaComboBox).EditValue = x.Rows[0][c].ToString();
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                        
+                                    }
+                                }                                    
+                            }
+                        }
+                    }
                 }
             }
         }

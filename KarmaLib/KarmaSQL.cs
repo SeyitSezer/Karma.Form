@@ -15,6 +15,72 @@ using DevExpress.DataAccess.ConnectionParameters;
 
 namespace KarmaLib
 {
+    public class KarmaColumnHelper
+    {
+        public enum _ColType
+        {
+            _nvarchar,
+            _varchar,
+            _integer,
+            _float,
+            _datetime,
+            _binary
+        }
+        public string ColumnName;
+        public _ColType DataType;
+        public int ColumnLenth;
+        public bool Nullable;
+        public int OrdinalPosition;
+        public int NumericLength;
+    }
+    public static class KarmaTableHelper
+    {
+        public static List<KarmaColumnHelper> GetTableColumnList(string TableName)
+        {
+            var _list = new List<KarmaColumnHelper>();
+            var _cols = KarmaSQL.GetSQLData($"SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME ='{TableName}'");
+            foreach (DataRow col in _cols.Rows)
+            {
+                var itm = new KarmaColumnHelper
+                {
+                    ColumnName = col["COLUMN_NAME"].ToString(),
+                    ColumnLenth = col["CHARACTER_MAXIMUM_LENGTH"].ToInt(),
+                    Nullable = col["IS_NULLABLE"].ToBool(),
+                    OrdinalPosition = col["ORDINAL_POSITION"].ToInt(),
+                    NumericLength = col["NUMERIC_PRECISION"].ToInt(),
+                };
+                switch (col["DATA_TYPE"].ToString())
+                {
+                    case "int":
+                        itm.DataType = KarmaColumnHelper._ColType._integer;
+                        break;
+                    case "nvarchar":
+                        itm.DataType = KarmaColumnHelper._ColType._nvarchar;
+                        break;
+                    case "varchar":
+                        itm.DataType = KarmaColumnHelper._ColType._varchar;
+                        break;
+                    case "decimal":
+                        itm.DataType = KarmaColumnHelper._ColType._float;
+                        break;
+                    case "float":
+                        itm.DataType = KarmaColumnHelper._ColType._float;
+                        break;
+                    case "datetime":
+                        itm.DataType = KarmaColumnHelper._ColType._datetime;
+                        break;
+                    case "smalldatetime":
+                        itm.DataType = KarmaColumnHelper._ColType._datetime;
+                        break;
+                    default:
+                        break;
+                }
+                _list.Add(itm);
+            }
+            
+            return _list;
+        }
+    }
     public static class KarmaSQL
     {
         public static SqlConnection KarmaConnection = new SqlConnection();
@@ -51,6 +117,7 @@ namespace KarmaLib
                 File.Delete(Application.StartupPath + "\\Options\\Config.ini");
             }
         }
+
 
         public static void Insert(string TableName, List<string> Columns, List<object> Values)
         {
@@ -139,4 +206,5 @@ namespace KarmaLib
             return _Result;
         }
     }
+
 }

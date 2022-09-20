@@ -17,6 +17,8 @@ namespace KarmaObjects
         }
         bool NavigatorPanel, NavFirstButton, NavPreviousButton, NavNextButton, NavLastButton, NavNewButton, NavSaveButton, NavClearButton, NavDeleteButton;
 
+        public string KarmaTableName { get; set; }
+
         public bool KarmaNavigatorPanel { get { return NavigatorPanel; } set { NavigatorPanel = value; SetNavigatorPanel(); } }
         public bool KarmaNavFirstButton { get { return NavFirstButton; } set { NavFirstButton = value; SetNavigatorPanel(); } }
         public bool KarmaNavPreviousButton { get { return NavPreviousButton; } set { NavPreviousButton = value; SetNavigatorPanel(); } }

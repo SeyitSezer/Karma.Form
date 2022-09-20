@@ -14,17 +14,17 @@ namespace Karma_Form
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //if (!string.IsNullOrEmpty(args[0]) && args[0] == "KarmaLauncher")
+            if (args.Length > 0 && !string.IsNullOrEmpty(args[0]) && args[0] == "KarmaLauncher")
             {
                 Application.Run(new MainForm());
             }
-            /*else
+            else
             {
                 KarmaLib.KarmaLib.Mesaj("Lütfen Programı Başlatıcıdan Başlatın!");
                 Process.Start("KarmaLauncher.exe");
                 //Application.Run(new MainForm());
                 Application.Exit();
-            }*/
+            }
         }
     }
 }

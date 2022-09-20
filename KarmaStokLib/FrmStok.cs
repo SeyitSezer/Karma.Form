@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KarmaLib;
+using static KarmaLib.KarmaLib;
 
 namespace KarmaStokLib
 {
@@ -22,5 +24,7 @@ namespace KarmaStokLib
         {
             karmaTab1.SelectedTabPage = PgeStokIslem;
         }
+
+        
     }
 }

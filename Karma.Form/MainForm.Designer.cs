@@ -39,8 +39,8 @@
             this.MnuSistem = new DevExpress.XtraBars.BarSubItem();
             this.MnuGenelAyar = new DevExpress.XtraBars.BarButtonItem();
             this.MnuBildirimAyar = new DevExpress.XtraBars.BarButtonItem();
-            this.MnuUserSettings = new DevExpress.XtraBars.BarButtonItem();
             this.MnuKullanici = new DevExpress.XtraBars.BarSubItem();
+            this.MnuUserSettings = new DevExpress.XtraBars.BarButtonItem();
             this.MnuCikis = new DevExpress.XtraBars.BarButtonItem();
             this.MnuIslemler = new DevExpress.XtraBars.BarSubItem();
             this.MnuStokYonetimi = new DevExpress.XtraBars.BarSubItem();
@@ -111,11 +111,13 @@
             this.DesktopTab.Name = "DesktopTab";
             this.DesktopTab.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
             this.DesktopTab.Size = new System.Drawing.Size(1214, 531);
-            this.DesktopTab.Text = "Masaüstü   ";
+            this.DesktopTab.Text = "Ana Sayfa";
             // 
             // karmaPanel1
             // 
+            this.karmaPanel1.AllowTouchScroll = true;
             this.karmaPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.karmaPanel1.InvertTouchScroll = true;
             this.karmaPanel1.KarmaChildPanels = null;
             this.karmaPanel1.KarmaColumnNames = null;
             this.karmaPanel1.KarmaGridControl = null;
@@ -247,13 +249,6 @@
             this.MnuBildirimAyar.Id = 5;
             this.MnuBildirimAyar.Name = "MnuBildirimAyar";
             // 
-            // MnuUserSettings
-            // 
-            this.MnuUserSettings.Caption = "Kullanıcı Tercihleri";
-            this.MnuUserSettings.Id = 52;
-            this.MnuUserSettings.Name = "MnuUserSettings";
-            this.MnuUserSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MnuUserSettings_ItemClick);
-            // 
             // MnuKullanici
             // 
             this.MnuKullanici.Caption = "Kullanıcı İşlemleri";
@@ -261,6 +256,13 @@
             this.MnuKullanici.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.MnuUserSettings)});
             this.MnuKullanici.Name = "MnuKullanici";
+            // 
+            // MnuUserSettings
+            // 
+            this.MnuUserSettings.Caption = "Kullanıcı Tercihleri";
+            this.MnuUserSettings.Id = 52;
+            this.MnuUserSettings.Name = "MnuUserSettings";
+            this.MnuUserSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MnuUserSettings_ItemClick);
             // 
             // MnuCikis
             // 
@@ -555,31 +557,31 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.MainBarManager;
-            this.barDockControlTop.Size = new System.Drawing.Size(1216, 23);
+            this.barDockControlTop.Size = new System.Drawing.Size(1216, 20);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 581);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 580);
             this.barDockControlBottom.Manager = this.MainBarManager;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1216, 21);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1216, 22);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 23);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
             this.barDockControlLeft.Manager = this.MainBarManager;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 558);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 560);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1216, 23);
+            this.barDockControlRight.Location = new System.Drawing.Point(1216, 20);
             this.barDockControlRight.Manager = this.MainBarManager;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 558);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 560);
             // 
             // MnuStokTransfer
             // 
@@ -616,10 +618,10 @@
             this.MainTabControl.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
             this.MainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainTabControl.KarmaCloseButtonMessageActive = true;
-            this.MainTabControl.Location = new System.Drawing.Point(0, 23);
+            this.MainTabControl.Location = new System.Drawing.Point(0, 20);
             this.MainTabControl.Name = "MainTabControl";
             this.MainTabControl.SelectedTabPage = this.DesktopTab;
-            this.MainTabControl.Size = new System.Drawing.Size(1216, 558);
+            this.MainTabControl.Size = new System.Drawing.Size(1216, 560);
             this.MainTabControl.TabIndex = 2;
             this.MainTabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.DesktopTab});
@@ -647,16 +649,13 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.EnableAcrylicAccent = true;
             this.Font = new System.Drawing.Font("Roboto", 9F);
+            this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.Name = "MainForm";
             this.Text = "Karma";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.Controls.SetChildIndex(this.barDockControlTop, 0);
-            this.Controls.SetChildIndex(this.barDockControlBottom, 0);
-            this.Controls.SetChildIndex(this.barDockControlRight, 0);
-            this.Controls.SetChildIndex(this.barDockControlLeft, 0);
-            this.Controls.SetChildIndex(this.MainTabControl, 0);
             this.DesktopTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.karmaPanel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainBarManager)).EndInit();

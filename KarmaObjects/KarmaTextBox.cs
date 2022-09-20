@@ -394,6 +394,15 @@ namespace KarmaObjects
                 return deger;
             }
         }
+
+        protected override void OnLeave(EventArgs e)
+        {
+            if (Parent is KarmaPanel && (Parent as KarmaPanel).KarmaMasterTextBox == this)
+            {
+                (Parent as KarmaPanel).KarmaLoadFromTable();
+            }
+            base.OnLeave(e);
+        }
     }
 
     public enum KarmaFieldTypes

@@ -28,9 +28,9 @@ namespace KarmaLauncher
 
         private void Launcher_Load(object sender, EventArgs e)
         {
-            this.Size = new Size(520, 224);
-            BtnGiris.Left = UserName.Left + UserName.Width - 120;
-            BtnGiris.Top = Password.Top + 29;
+            //this.Size = new Size(520, 224);
+            //BtnGiris.Left = UserName.Left + UserName.Width - 120;
+            //BtnGiris.Top = Password.Top + 29;
         }
         void Test()
         {

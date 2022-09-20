@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using DevExpress.XtraBars;
 using static KarmaLib.KarmaLib;
 using static KarmaLib.KarmaSQL;
+using static KarmaLib.KarmaTableHelper;
 using KarmaStokLib;
 using DevExpress.XtraTab;
 using System.Threading;
@@ -44,8 +45,9 @@ namespace Karma_Form
         private void MainForm_Load(object sender, EventArgs e)
         {
             KarmaLib.KarmaLib.MainForm = this;
-            ConnectDB("Karma");
+            ConnectDB("SzrBase");
             AppRunning = true;
+            GetTableColumnList("tblStocks");
         }
 
 

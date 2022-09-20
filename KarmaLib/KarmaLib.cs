@@ -40,24 +40,36 @@ namespace KarmaLib
 
         public static void Mesaj(string Mesaj, string Baslik = "Karma Bildirim Sistemi")
         {
-            FrmMesajAlt _Mesaj = new FrmMesajAlt(Mesaj, true, true, Baslik)
+            FrmMesajAlt _Mesaj = new FrmMesajAlt(Mesaj, true, true, Baslik);
+            if (!(MainForm is null))
             {
-                Size = new Size(MainForm.Width - 4, MainForm.Height),
-                WindowState = FormWindowState.Normal,
-                StartPosition = FormStartPosition.Manual,
-                Location = new Point(MainForm.Location.X + 2, MainForm.Location.Y),
-            };
+                _Mesaj.Size = new Size(MainForm.Width - 4, MainForm.Height);
+                _Mesaj.WindowState = FormWindowState.Normal;
+                _Mesaj.StartPosition = FormStartPosition.Manual;
+                _Mesaj.Location = new Point(MainForm.Location.X + 2, MainForm.Location.Y);
+            }
+            else
+            {
+                _Mesaj.Height = 200;
+                _Mesaj.StartPosition = FormStartPosition.CenterScreen;
+            }
             _Mesaj.ShowDialog();
         }
 
         public static DialogResult Sor(string Mesaj, string Baslik = "Onayınız Gerekiyor", bool DefaultDeger= false)
         {
-            FrmMesajAlt _Soru = new FrmMesajAlt(Mesaj, false, DefaultDeger, Baslik)
+            FrmMesajAlt _Soru = new FrmMesajAlt(Mesaj, false, DefaultDeger, Baslik);
+            if (!(MainForm is null))
             {
-                Size = new Size(MainForm.Width - 4, MainForm.Height),
-                WindowState = FormWindowState.Normal,
-                StartPosition = FormStartPosition.Manual,
-                Location = new Point(MainForm.Location.X +2, MainForm.Location.Y),
+                _Soru.Size = new Size(MainForm.Width - 4, MainForm.Height);
+                _Soru.WindowState = FormWindowState.Normal;
+                _Soru.StartPosition = FormStartPosition.Manual;
+                _Soru.Location = new Point(MainForm.Location.X + 2, MainForm.Location.Y);
+            }
+            else
+            {
+                _Soru.Height = 200;
+                _Soru.StartPosition = FormStartPosition.CenterScreen;
             };
             
             _Soru.ShowDialog();
@@ -138,6 +150,39 @@ namespace KarmaLib
         public static int FiyatDigit { get; set; } = 2;
         public static int GenelDigit { get; set; } = 2;
         public static int TutarDigit { get; set; } = 3;
+
+        public static int ToInt(this object _obj)
+        {
+            if (_obj is DBNull) return -999;
+            else
+                return Convert.ToInt32(_obj);
+        }
+
+        public static int ToInt(this string _obj)
+        {
+            return Convert.ToInt32(_obj);
+        }
+        public static int ToInt(this double _obj)
+        {
+            return Convert.ToInt32(_obj);
+        }
+
+        public static bool ToBool(this object _obj)
+        {
+            try
+            {
+                return Convert.ToBoolean(_obj);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public static bool ToBool(this string _obj)
+        {
+            return Convert.ToBoolean(_obj);
+        }
     }
 
 }

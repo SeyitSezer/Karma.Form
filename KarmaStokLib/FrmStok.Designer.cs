@@ -77,7 +77,9 @@
             // 
             this.karmaTab1.AppearancePage.HeaderActive.BackColor = System.Drawing.Color.OrangeRed;
             this.karmaTab1.AppearancePage.HeaderActive.Options.UseBackColor = true;
+            this.karmaTab1.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
             this.karmaTab1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.karmaTab1.KarmaCloseButtonMessageActive = true;
             this.karmaTab1.Location = new System.Drawing.Point(0, 0);
             this.karmaTab1.Name = "karmaTab1";
             this.karmaTab1.SelectedTabPage = this.PgeStokList;
@@ -194,7 +196,7 @@
             this.PgeStokIslem.Controls.Add(this.PnlStokMas);
             this.PgeStokIslem.Name = "PgeStokIslem";
             this.PgeStokIslem.Size = new System.Drawing.Size(1194, 592);
-            this.PgeStokIslem.Text = "Stok Kart Bilgisi";
+            this.PgeStokIslem.Text = "Stok Bilgisi";
             // 
             // karmaPanel2
             // 
@@ -301,7 +303,6 @@
             this.karmaComboBox3.KarmaValueType = KarmaObjects.KarmaValueTypes.Lookup;
             this.karmaComboBox3.Location = new System.Drawing.Point(140, 115);
             this.karmaComboBox3.Name = "karmaComboBox3";
-            this.karmaComboBox3.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9F);
             this.karmaComboBox3.Properties.Appearance.Options.UseFont = true;
             this.karmaComboBox3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -320,7 +321,6 @@
             this.karmaComboBox2.KarmaValueType = KarmaObjects.KarmaValueTypes.Lookup;
             this.karmaComboBox2.Location = new System.Drawing.Point(140, 93);
             this.karmaComboBox2.Name = "karmaComboBox2";
-            this.karmaComboBox2.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9F);
             this.karmaComboBox2.Properties.Appearance.Options.UseFont = true;
             this.karmaComboBox2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -339,7 +339,6 @@
             this.karmaComboBox1.KarmaValueType = KarmaObjects.KarmaValueTypes.ItemIndex;
             this.karmaComboBox1.Location = new System.Drawing.Point(140, 71);
             this.karmaComboBox1.Name = "karmaComboBox1";
-            this.karmaComboBox1.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 9F);
             this.karmaComboBox1.Properties.Appearance.Options.UseFont = true;
             this.karmaComboBox1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -476,8 +475,9 @@
             this.KarmaNavNextButton = true;
             this.KarmaNavPreviousButton = true;
             this.KarmaNavSaveButton = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmStok";
-            this.Text = "Stok Kartları";
+            this.Text = "Stoklar";
             this.Controls.SetChildIndex(this.karmaTab1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.karmaTab1)).EndInit();
             this.karmaTab1.ResumeLayout(false);

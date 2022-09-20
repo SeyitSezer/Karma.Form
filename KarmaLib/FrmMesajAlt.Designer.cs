@@ -81,7 +81,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 252);
             this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(9, 9, 9, 9);
+            this.panel1.Padding = new System.Windows.Forms.Padding(9);
             this.panel1.Size = new System.Drawing.Size(872, 207);
             this.panel1.TabIndex = 0;
             // 
@@ -139,7 +139,7 @@
             this.BtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.BtnOk.Dock = System.Windows.Forms.DockStyle.Right;
             this.BtnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnOk.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.BtnOk.ForeColor = System.Drawing.Color.White;
             this.BtnOk.Location = new System.Drawing.Point(313, 0);
             this.BtnOk.Name = "BtnOk";
             this.BtnOk.Size = new System.Drawing.Size(103, 31);
@@ -154,7 +154,7 @@
             this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancel.Dock = System.Windows.Forms.DockStyle.Right;
             this.BtnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCancel.ForeColor = System.Drawing.Color.DarkOrchid;
+            this.BtnCancel.ForeColor = System.Drawing.Color.Aqua;
             this.BtnCancel.Location = new System.Drawing.Point(416, 0);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(103, 31);
@@ -184,7 +184,7 @@
             this.BtnYes.DialogResult = System.Windows.Forms.DialogResult.Yes;
             this.BtnYes.Dock = System.Windows.Forms.DockStyle.Right;
             this.BtnYes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnYes.ForeColor = System.Drawing.Color.Green;
+            this.BtnYes.ForeColor = System.Drawing.Color.Lime;
             this.BtnYes.Location = new System.Drawing.Point(622, 0);
             this.BtnYes.Name = "BtnYes";
             this.BtnYes.Size = new System.Drawing.Size(103, 31);

@@ -62,7 +62,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>97A07FA7960F7D8BD7997B030EA37F93EFB52D12</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>50D71DF1B5A85291EC5BF095127E7D67D611E54C</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>Karma.Form_TemporaryKey.pfx</ManifestKeyFile>
