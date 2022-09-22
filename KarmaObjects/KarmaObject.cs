@@ -9,5 +9,9 @@ namespace KarmaObjects
     public interface KarmaObject
     {
         bool ReadOnly { get; set; }
+        string KarmaFieldName { get; set; }
+        string GetSQLText { get; }
+        object GetFieldData { get; }
+        bool IsNull { get; }
     }
 }

@@ -8,7 +8,7 @@ using static KarmaLib.KarmaLib;
 
 namespace KarmaObjects
 {
-    public class KarmaLabel : Label, KarmaObject
+    public class KarmaLabel : Label
     {
         private Control _Control;
         public Control KarmaFocusControl 

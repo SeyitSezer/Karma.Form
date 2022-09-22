@@ -13,6 +13,7 @@ namespace KarmaObjects
 {
     public partial class KarmaTab : XtraTabControl
     {
+        bool _closeButton = false;
         public KarmaTab()
         {
             InitializeComponent();
@@ -36,6 +37,17 @@ namespace KarmaObjects
                 TabPages.Remove((_a.Page as XtraTabPage));
             }
 
+        }
+
+        public bool KarmaCloseButton { get { return _closeButton; }
+            set
+            {
+                _closeButton = value;
+                foreach(XtraTabPage page in TabPages)
+                {
+                    page.ShowCloseButton = value ? DevExpress.Utils.DefaultBoolean.True : DevExpress.Utils.DefaultBoolean.False;
+                }
+            }
         }
     }
 }

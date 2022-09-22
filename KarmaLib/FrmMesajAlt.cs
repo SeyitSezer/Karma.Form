@@ -25,8 +25,8 @@ namespace KarmaLib
             varsayilan = Varsayilan;
             TxtMesaj.Text = Mesaj;
             lblBaslik.Text = Baslik;
-            //panel3.BackColor = Color.FromArgb(60, Color.Fuchsia);
-            //panel4.BackColor = Color.FromArgb(60, Color.Fuchsia);
+            //panel3.BackColor = Color.FromArgb(60, Color.Yellow);
+            //panel4.BackColor = Color.FromArgb(60, Color.Yellow);
         }
 
         private void FrmMesajAlt_Shown(object sender, EventArgs e)

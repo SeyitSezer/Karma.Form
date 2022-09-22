@@ -10,32 +10,68 @@ using static KarmaLib.KarmaLib;
 
 namespace KarmaObjects
 {
-    public partial class KarmaComboBox : LookUpEdit
+    public partial class KarmaComboBox : LookUpEdit, KarmaObject
     {
         public KarmaComboBox()
         {
             Font = ObjectsDefaults.GenelYaziTipi();
+            Properties.NullValuePrompt = "Seçiniz";
+            Properties.NullText = "Seçiniz";
+
         }
+        KarmaComboBox altobj, ustobj;
+        public string GetSQLText
+        {
+            get
+            {
+                if (GetFieldData is null)
+                    return "''";
+                else
+                    return "'" + GetFieldData.ToString() + "'";
+            }
+        }
+        public void RefreshDataSource()
+        {
+            string ekFiltre = "";
+            if (!(KarmaMasterObject is null))
+            {
+                if (!KarmaMasterObject.IsNull)
+                    ekFiltre = " AND " + KarmaMasterFieldName + " = " + KarmaMasterObject.GetSQLText;
+            }
+            if (!string.IsNullOrEmpty(KarmaLookUpTable) && !string.IsNullOrEmpty(KarmaLookupDisplayField) && !string.IsNullOrEmpty(KarmaLookupValueField))
+            {
+                Properties.DataSource = GetSQLData("SELECT " + KarmaLookupValueField + "," + KarmaLookupDisplayField + " FROM " + KarmaLookUpTable + " WHERE 1=1 " + KarmaLookupFilter + ekFiltre);
+                Properties.DisplayMember = KarmaLookupDisplayField;
+                Properties.ValueMember = KarmaLookupValueField;
+            }
+        }
+        public bool IsNull { get => GetFieldData is null; }
         public string KarmaFieldName { get; set; }
         public string KarmaLookUpTable { get; set; }
         public string KarmaLookupDisplayField { get; set; }
         public string KarmaLookupValueField { get; set; }
         public string KarmaLookupFilter { get; set; }
-        public KarmaValueTypes KarmaValueType { get;set; }
+        public KarmaValueTypes KarmaValueType { get; set; }
         public KarmaFieldTypes KarmaFieldType { get; set; }
+        public KarmaComboBox KarmaMasterObject { get => ustobj; set { ustobj = value; if (!(ustobj is null)) ustobj.altobj = this; } }
+        public string KarmaMasterFieldName { get; set; }
 
+        protected override void OnEditValueChanged()
+        {
+            if (AppRunning && !(altobj is null))
+            {
+                altobj.Enabled = !IsNull;
+                if (altobj.KarmaValueType == KarmaValueTypes.Lookup)
+                    altobj.RefreshDataSource();
+            }
+            base.OnEditValueChanged();
+        }
         protected override void OnCreateControl()
         {
             if (AppRunning && KarmaValueType == KarmaValueTypes.Lookup)
             {
-                if(!string.IsNullOrEmpty(KarmaLookUpTable) && !string.IsNullOrEmpty(KarmaLookupDisplayField) && !string.IsNullOrEmpty(KarmaLookupValueField))
-                {
-                    Properties.DataSource = GetSQLData("SELECT " + KarmaLookupValueField + "," + KarmaLookupDisplayField + " FROM " + KarmaLookUpTable + " WHERE 1=1 " + KarmaLookupFilter);
-                    Properties.DisplayMember = KarmaLookupDisplayField;
-                    Properties.ValueMember = KarmaLookupValueField;
-                }
+                RefreshDataSource();
             }
-            Properties.NullValuePrompt = "";
             base.OnCreateControl();
         }
         public decimal ToDecimal()
@@ -50,7 +86,10 @@ namespace KarmaObjects
 
         public override string ToString()
         {
-            return EditValue.ToString();
+            if (EditValue is null)
+                return "";
+            else
+                return EditValue.ToString();
         }
 
         public int ToInteger()

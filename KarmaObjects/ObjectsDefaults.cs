@@ -12,7 +12,7 @@ namespace KarmaObjects
     {
         public static Font GenelYaziTipi()
         {
-            return new Font("Roboto", 9);
+            return new Font("Roboto", 11);
         }
         private static StyleController _Style = new StyleController();
         public static StyleController KarmaStyle()

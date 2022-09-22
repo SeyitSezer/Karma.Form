@@ -1,6 +1,7 @@
 ﻿using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
+using KarmaObjects.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,12 @@ namespace KarmaObjects
 {
     public partial class KarmaTextBox : Control, KarmaObject
     {
+        SerializableAppearanceObject serializableAppearanceObject1 = new SerializableAppearanceObject();
+        SerializableAppearanceObject serializableAppearanceObject2 = new SerializableAppearanceObject();
+        SerializableAppearanceObject serializableAppearanceObject3 = new SerializableAppearanceObject();
+        SerializableAppearanceObject serializableAppearanceObject4 = new SerializableAppearanceObject();
+        EditorButtonImageOptions editorButtonImageOptions1 = new EditorButtonImageOptions();
+        ComponentResourceManager resources = new ComponentResourceManager(typeof(KarmaForm));
         private CalcEdit _Numeric;
         private TextEdit _String;
         private DateEdit _Date;
@@ -229,6 +236,10 @@ namespace KarmaObjects
                     {
                         _Guide = new ButtonEdit();
                         Controls.Clear();
+                        _Guide.Properties.Buttons.Clear();
+                        editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+                        _Guide.Properties.Buttons.AddRange(new EditorButton[] {
+            new EditorButton(ButtonPredefines.Search, "", 22, true, true, false, editorButtonImageOptions1, new KeyShortcut((Keys.Control | Keys.F)), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
                         _Guide.ButtonClick += _Guide_ButtonClick; ;
                         _Guide.KeyDown += _Guide_KeyDown; ;
                         Controls.Add(_Guide);

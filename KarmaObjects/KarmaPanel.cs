@@ -15,15 +15,21 @@ using static KarmaLib.KarmaSQL;
 
 namespace KarmaObjects
 {
-    public partial class KarmaPanel : PanelControl
+    public partial class KarmaPanel : GroupControl
     {
         public KarmaPanel()
         {
             InitializeComponent();
             if (!(Parent is null))
-            BackColor = Parent.BackColor;
+                BackColor = Parent.BackColor;
+            if (Text.Length <= 0 || Text == Name) ShowCaption = false;
         }
-
+        public override string Text { get
+            {
+                ShowCaption = (base.Text.Length > 0 && base.Text != Name);
+                return base.Text;
+            } 
+            set => base.Text = value; }
         public KarmaPanel(IContainer container)
         {
             container.Add(this);
@@ -33,10 +39,22 @@ namespace KarmaObjects
         KarmaGrid controlgrid;
         public string KarmaTableName { get; set; }
         public string KarmaColumnNames { get; set; }
-        public KarmaTextBox KarmaMasterTextBox { get; set; }
+        public KarmaObject KarmaMasterTextBox { get; set; }
+        public KarmaObject KarmaSecTextBox { get; set; }
         public KarmaButton KarmaMasterButton { get; set; }
         public KarmaGrid KarmaGridControl { get { return controlgrid; } set { controlgrid = value; if (!(controlgrid is null)) controlgrid.MasterPanel = this; } }
         public KarmaPanel[] KarmaChildPanels { get; set; }
+        string SQLFilter
+        {
+            get
+            {
+                string x = KarmaMasterTextBox.KarmaFieldName + "=" + KarmaMasterTextBox.GetSQLText;
+                if (!(KarmaSecTextBox is null))
+                    x += " AND " + KarmaSecTextBox.KarmaFieldName + "=" + KarmaSecTextBox.GetSQLText;
+
+                return x;
+            }
+        }
 
         public void KarmaOnPost()
         {
@@ -46,23 +64,30 @@ namespace KarmaObjects
                 List<object> Values = new List<object>();
                 Columns.Add(KarmaMasterTextBox.KarmaFieldName);
                 Values.Add(KarmaMasterTextBox.GetFieldData);
+                if (!(KarmaSecTextBox is null))
+                {
+                    Columns.Add(KarmaSecTextBox.KarmaFieldName);
+                    Values.Add(KarmaSecTextBox.GetFieldData);
+                }
                 foreach (Control a in Controls)
                 {
-                    if (a is KarmaTextBox && a != KarmaMasterTextBox)
+                    if (a is KarmaObject && a != KarmaMasterTextBox)
                     {
-                        Columns.Add((a as KarmaTextBox).KarmaFieldName);
-                        Values.Add((a as KarmaTextBox).GetFieldData);
+                        if ((!(KarmaSecTextBox is null) && a != KarmaSecTextBox) || KarmaSecTextBox is null)
+                        {
+                            if (!string.IsNullOrEmpty((a as KarmaObject).KarmaFieldName))
+                            {
+                                Columns.Add((a as KarmaObject).KarmaFieldName);
+                                Values.Add((a as KarmaObject).GetFieldData);
+                            }
+                        }
                     }
-                    else if (a is KarmaComboBox)
-                    {
-                        Columns.Add((a as KarmaComboBox).KarmaFieldName);
-                        Values.Add((a as KarmaComboBox).GetFieldData);
-                    }
+                    
                 }
-                if (GetSQLData("SELECT * FROM " + KarmaTableName + " WHERE " + KarmaMasterTextBox.KarmaFieldName + "=" + KarmaMasterTextBox.GetSQLText).Rows.Count == 0)
+                if (GetSQLData("SELECT * FROM " + KarmaTableName + " WHERE " + SQLFilter).Rows.Count == 0)
                     Insert(KarmaTableName, Columns, Values);
                 else
-                    UpdateData(KarmaTableName, Columns, Values, " AND " + KarmaMasterTextBox.KarmaFieldName + "=" + KarmaMasterTextBox.GetSQLText);
+                    UpdateData(KarmaTableName, Columns, Values, " AND " + SQLFilter);
                 KarmaOnNew();
                 if (!(KarmaGridControl is null))
                 {
@@ -75,7 +100,7 @@ namespace KarmaObjects
         {
             if (!(KarmaMasterTextBox is null) && !string.IsNullOrEmpty(KarmaTableName) && !KarmaMasterTextBox.IsNull)
             {
-                DeleteData(KarmaTableName, KarmaMasterTextBox.KarmaFieldName + "=" + KarmaMasterTextBox.GetSQLText);
+                DeleteData(KarmaTableName, SQLFilter);
             }
             KarmaOnNew();
             if (!(KarmaGridControl is null))
@@ -131,7 +156,7 @@ namespace KarmaObjects
             {
                 List<string> Columns = new List<string>();
                 List<object> Values = new List<object>();
-                var x = GetSQLData("SELECT * FROM " + KarmaTableName + " WHERE " + KarmaMasterTextBox.KarmaFieldName + "=" + KarmaMasterTextBox.GetSQLText);
+                var x = GetSQLData("SELECT * FROM " + KarmaTableName + " WHERE " + SQLFilter);
                 if (x.Rows.Count > 0)
                 {
                     foreach (Control a in Controls)
@@ -155,22 +180,27 @@ namespace KarmaObjects
                                     {
                                         switch ((a as KarmaComboBox).KarmaFieldType)
                                         {
-                                            case KarmaFieldTypes.String: (a as KarmaComboBox).EditValue = x.Rows[0][c].ToString();
+                                            case KarmaFieldTypes.String:
+                                                (a as KarmaComboBox).EditValue = x.Rows[0][c].ToString();
                                                 break;
-                                            case KarmaFieldTypes.Date: (a as KarmaComboBox).EditValue = Convert.ToDateTime(x.Rows[0][c].ToString());
+                                            case KarmaFieldTypes.Date:
+                                                (a as KarmaComboBox).EditValue = Convert.ToDateTime(x.Rows[0][c].ToString());
                                                 break;
-                                            case KarmaFieldTypes.Time: (a as KarmaComboBox).EditValue = Convert.ToDateTime(x.Rows[0][c].ToString());
+                                            case KarmaFieldTypes.Time:
+                                                (a as KarmaComboBox).EditValue = Convert.ToDateTime(x.Rows[0][c].ToString());
                                                 break;
-                                            case KarmaFieldTypes.Numeric: (a as KarmaComboBox).EditValue = x.Rows[0][c].ToInt();
+                                            case KarmaFieldTypes.Numeric:
+                                                (a as KarmaComboBox).EditValue = x.Rows[0][c].ToInt();
                                                 break;
-                                            case KarmaFieldTypes.Guide: (a as KarmaComboBox).EditValue = x.Rows[0][c].ToString();
+                                            case KarmaFieldTypes.Guide:
+                                                (a as KarmaComboBox).EditValue = x.Rows[0][c].ToString();
                                                 break;
                                             default:
                                                 break;
                                         }
-                                        
+
                                     }
-                                }                                    
+                                }
                             }
                         }
                     }

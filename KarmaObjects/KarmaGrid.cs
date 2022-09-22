@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,8 +14,15 @@ using static KarmaLib.KarmaSQL;
 
 namespace KarmaObjects
 {
+    
     public class KarmaGrid : GridControl
     {
+        void KarmaView_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            e.Info.ImageIndex = -1;
+            if (e.RowHandle >= 0)
+                e.Info.DisplayText = (e.RowHandle+1).ToString();
+        }
         public GridView KarmaView = new GridView();
         #region Menü İşlemleri
         private ContextMenuStrip _PopupMenu;
@@ -23,15 +31,14 @@ namespace KarmaObjects
         #endregion
         public KarmaGrid()
         {
-
         }
         public KarmaPanel MasterPanel;
         public string KarmaSQLText { get; set; }
         public bool KarmaSQLCalistir { get; set; } = false;
         protected override void OnCreateControl()
         {
-
             base.OnCreateControl();
+            //((GridView)MainView).IndicatorWidth = 30;
             ((GridView)MainView).GridControl = this;
             ((GridView)MainView).Name = this.Name.Replace("Grd", "View");
             ((GridView)MainView).OptionsFind.AlwaysVisible = true;
@@ -47,6 +54,7 @@ namespace KarmaObjects
             ((GridView)MainView).OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDown;
             ((GridView)MainView).OptionsFind.FindDelay = 100;
             ((GridView)MainView).OptionsFind.FindMode = DevExpress.XtraEditors.FindMode.Always;
+            ((GridView)MainView).CustomDrawRowIndicator += KarmaView_CustomDrawRowIndicator;
             if (!(ContextMenuStrip is null)) _PopupMenu = ContextMenuStrip;
             else
             {
@@ -159,7 +167,7 @@ namespace KarmaObjects
         }
         protected override void OnDoubleClick(EventArgs ev)
         {
-            if(!(MasterPanel is null))
+            if (!(MasterPanel is null))
             {
                 MasterPanel.KarmaLoadFromGrid();
                 MasterPanel.Focus();
