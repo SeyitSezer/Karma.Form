@@ -16,6 +16,7 @@ using KarmaStokLib;
 using DevExpress.XtraTab;
 using System.Threading;
 using KarmaUserLib;
+using KarmaLib;
 
 namespace Karma_Form
 {
@@ -47,7 +48,9 @@ namespace Karma_Form
             KarmaLib.KarmaLib.MainForm = this;
             ConnectDB("SzrBase");
             AppRunning = true;
-            GetTableColumnList("tblStocks");
+            StatusServerName.Caption = $"Çalışılan Şirket: {DatabaseName}({AppServer})";
+            AppVersion.Caption = VersionInfos.KarmaFormExe;
+            //GetTableColumnList("tblStocks");
         }
 
 
@@ -59,12 +62,21 @@ namespace Karma_Form
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = (DialogResult.Yes != Sor("Program Kapatılacak, Devam Edilsin Mi?", "Onayınız Gerekiyor"));
+            e.Cancel = (DialogResult.Yes != Sor("Program Kapatılacak, Devam Edilsin Mi?", 1, "Onayınız Gerekiyor"));
         }
 
         private void MnuUserSettings_ItemClick(object sender, ItemClickEventArgs e)
         {
             PleaseWait(new Thread(() => CreateForm(new FrmUserSettings())));
         }
-    }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+        private void tileItem2_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
+        {
+            PleaseWait(new Thread(() => CreateForm(new FrmStok())));
+        }
+    }        
 }

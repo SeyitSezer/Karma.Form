@@ -10,8 +10,8 @@ namespace KarmaObjects
 {
     public class KarmaLabel : Label
     {
-        private Control _Control;
-        public Control KarmaFocusControl 
+        private KarmaObject _Control;
+        public KarmaObject KarmaFocusControl 
         { 
             get 
             { 
@@ -20,11 +20,11 @@ namespace KarmaObjects
             set
             {
                 _Control = value;
-                if (!AppRunning && !(_Control is null))
-                {
-                    _Control.Top = Top - 2;
-                    _Control.Left = Left + Width + 10;
-                }
+                //if (!AppRunning && !(_Control is null))
+                //{
+                //    ((Control)_Control).Top = Top - 2;
+                //    ((Control)_Control).Left = Left + Width + 10;
+                //}
             }
         }
         public bool ReadOnly { get; set; }

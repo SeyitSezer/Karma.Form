@@ -13,8 +13,9 @@ namespace KarmaLib
 {
     public partial class FrmMesajAlt : DevExpress.XtraEditors.XtraForm
     {
+        int Sayac = 0;
         bool varsayilan, mesajmi;
-        public FrmMesajAlt(string Mesaj, bool MesajMi = true, bool Varsayilan = false, string Baslik = "Karma Bildirim Sistemi")
+        public FrmMesajAlt(string Mesaj, bool MesajMi = true, bool Varsayilan = false, int beklemeSure = 0, string Baslik = "Karma Bildirim Sistemi")
         {
             InitializeComponent();
                 BtnOk.Visible = MesajMi;
@@ -27,6 +28,18 @@ namespace KarmaLib
             lblBaslik.Text = Baslik;
             //panel3.BackColor = Color.FromArgb(60, Color.Yellow);
             //panel4.BackColor = Color.FromArgb(60, Color.Yellow);
+            Sayac = beklemeSure;
+            if(Sayac > 0)
+            {
+                BtnYes.Enabled = BtnOk.Enabled = BtnNo.Enabled = false;
+                lblBekle.Text = $"Lütfen {Sayac} saniye bekleyiniz...";
+                TmrBtnEnabled.Enabled = true;
+            }
+            else
+            {
+                lblBekle.Text = "";
+            }
+            
         }
 
         private void FrmMesajAlt_Shown(object sender, EventArgs e)
@@ -38,6 +51,23 @@ namespace KarmaLib
             }
         }
 
+        private void TmrBtnEnabled_Tick(object sender, EventArgs e)
+        {
+            if(Sayac != 1)
+            {
+                Sayac--;
+                lblBekle.Text = $"Lütfen {Sayac} saniye bekleyiniz...";
+            }
+            else
+            {
+                lblBekle.Text = "";
+                BtnYes.Enabled = true;
+                BtnOk.Enabled = true;
+                //BtnCancel.Enabled = true;
+                BtnNo.Enabled = true;
+            }
+
+        }
 
         private void ButtonsClick(object sender, EventArgs e)
         {

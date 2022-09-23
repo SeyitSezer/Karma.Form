@@ -35,9 +35,15 @@
             // 
             // WaitPanel
             // 
-            this.WaitPanel.AnimationToTextDistance = 20;
+            this.WaitPanel.AnimationToTextDistance = 0;
             this.WaitPanel.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.WaitPanel.Appearance.Font = new System.Drawing.Font("Roboto", 10F);
             this.WaitPanel.Appearance.Options.UseBackColor = true;
+            this.WaitPanel.Appearance.Options.UseFont = true;
+            this.WaitPanel.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 20F);
+            this.WaitPanel.AppearanceCaption.Options.UseFont = true;
+            this.WaitPanel.AppearanceDescription.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.WaitPanel.AppearanceDescription.Options.UseFont = true;
             this.WaitPanel.Caption = "İşlem Devam Ediyor";
             this.WaitPanel.CaptionToDescriptionDistance = 20;
             this.WaitPanel.ContentAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -46,7 +52,7 @@
             this.WaitPanel.ImageHorzOffset = 10;
             this.WaitPanel.Location = new System.Drawing.Point(0, 0);
             this.WaitPanel.Name = "WaitPanel";
-            this.WaitPanel.Size = new System.Drawing.Size(261, 84);
+            this.WaitPanel.Size = new System.Drawing.Size(422, 124);
             this.WaitPanel.TabIndex = 0;
             this.WaitPanel.Text = "WaitPanel";
             this.WaitPanel.WaitAnimationType = DevExpress.Utils.Animation.WaitingAnimatorType.Line;
@@ -61,7 +67,7 @@
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(261, 318);
+            this.ClientSize = new System.Drawing.Size(422, 318);
             this.Controls.Add(this.WaitPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimizeBox = false;

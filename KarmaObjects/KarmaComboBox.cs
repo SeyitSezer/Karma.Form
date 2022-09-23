@@ -17,7 +17,7 @@ namespace KarmaObjects
             Font = ObjectsDefaults.GenelYaziTipi();
             Properties.NullValuePrompt = "Seçiniz";
             Properties.NullText = "Seçiniz";
-
+            EnterMoveNextControl = true;
         }
         KarmaComboBox altobj, ustobj;
         public string GetSQLText

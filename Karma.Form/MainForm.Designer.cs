@@ -29,12 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.MainTimer = new System.Windows.Forms.Timer(this.components);
             this.DesktopTab = new DevExpress.XtraTab.XtraTabPage();
+            this.tileControl1 = new DevExpress.XtraEditors.TileControl();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.stokIslemleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stokKartlarıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tileGroup2 = new DevExpress.XtraEditors.TileGroup();
+            this.tileItem2 = new DevExpress.XtraEditors.TileItem();
             this.MainBarManager = new DevExpress.XtraBars.BarManager(this.components);
-            this.StatusBar = new DevExpress.XtraBars.Bar();
-            this.MainMenu = new DevExpress.XtraBars.Bar();
+            this.AppMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.MnuSistem = new DevExpress.XtraBars.BarSubItem();
             this.MnuGenelAyar = new DevExpress.XtraBars.BarButtonItem();
             this.MnuBildirimAyar = new DevExpress.XtraBars.BarButtonItem();
@@ -80,6 +87,10 @@
             this.MnuSatisRapor = new DevExpress.XtraBars.BarSubItem();
             this.MnuSatinalmaRapor = new DevExpress.XtraBars.BarSubItem();
             this.MnuYonetselRaporlar = new DevExpress.XtraBars.BarSubItem();
+            this.MainMenu = new DevExpress.XtraBars.Bar();
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.StatusServerName = new DevExpress.XtraBars.BarStaticItem();
+            this.AppVersion = new DevExpress.XtraBars.BarStaticItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -89,14 +100,13 @@
             this.MnuSil = new DevExpress.XtraBars.BarButtonItem();
             this.MnuYeniKayit = new DevExpress.XtraBars.BarButtonItem();
             this.MainTabControl = new KarmaObjects.KarmaTab(this.components);
-            this.AppMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
-            this.karmaPanel1 = new KarmaObjects.KarmaPanel(this.components);
+            this.tileItem1 = new DevExpress.XtraEditors.TileItem();
             this.DesktopTab.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainBarManager)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AppMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainTabControl)).BeginInit();
             this.MainTabControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AppMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.karmaPanel1)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabPage2
@@ -107,11 +117,108 @@
             // 
             // DesktopTab
             // 
-            this.DesktopTab.Controls.Add(this.karmaPanel1);
+            this.DesktopTab.Controls.Add(this.tileControl1);
             this.DesktopTab.Name = "DesktopTab";
             this.DesktopTab.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
             this.DesktopTab.Size = new System.Drawing.Size(1214, 531);
-            this.DesktopTab.Text = "     Ana Sayfa     ";
+            this.DesktopTab.Text = "Ana Sayfa";
+            // 
+            // tileControl1
+            // 
+            this.tileControl1.AllowItemHover = true;
+            this.tileControl1.AppearanceGroupText.ForeColor = System.Drawing.Color.White;
+            this.tileControl1.AppearanceGroupText.Options.UseForeColor = true;
+            this.tileControl1.BackgroundImage = global::Karma_Form.Properties.Resources.Back;
+            this.tileControl1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tileControl1.ContextMenuStrip = this.contextMenuStrip1;
+            this.tileControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tileControl1.Groups.Add(this.tileGroup2);
+            this.tileControl1.ItemContentAnimation = DevExpress.XtraEditors.TileItemContentAnimationType.Fade;
+            this.tileControl1.ItemTextShowMode = DevExpress.XtraEditors.TileItemContentShowMode.Always;
+            this.tileControl1.Location = new System.Drawing.Point(0, 0);
+            this.tileControl1.MaxId = 4;
+            this.tileControl1.Name = "tileControl1";
+            this.MainBarManager.SetPopupContextMenu(this.tileControl1, this.AppMenu);
+            this.tileControl1.ShowGroupText = true;
+            this.tileControl1.Size = new System.Drawing.Size(1214, 531);
+            this.tileControl1.TabIndex = 0;
+            this.tileControl1.Text = "tileControl1";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stokIslemleriToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(145, 26);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // stokIslemleriToolStripMenuItem
+            // 
+            this.stokIslemleriToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stokKartlarıToolStripMenuItem});
+            this.stokIslemleriToolStripMenuItem.Name = "stokIslemleriToolStripMenuItem";
+            this.stokIslemleriToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.stokIslemleriToolStripMenuItem.Text = "Stok İşlemleri";
+            // 
+            // stokKartlarıToolStripMenuItem
+            // 
+            this.stokKartlarıToolStripMenuItem.Name = "stokKartlarıToolStripMenuItem";
+            this.stokKartlarıToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.stokKartlarıToolStripMenuItem.Text = "Stok Kartları";
+            // 
+            // tileGroup2
+            // 
+            this.tileGroup2.Items.Add(this.tileItem2);
+            this.tileGroup2.Name = "tileGroup2";
+            this.tileGroup2.Text = "Hızlı Seçimler";
+            // 
+            // tileItem2
+            // 
+            this.tileItem2.AppearanceItem.Normal.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.tileItem2.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.Blue;
+            this.tileItem2.AppearanceItem.Normal.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
+            this.tileItem2.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileItem2.ContentAnimation = DevExpress.XtraEditors.TileItemContentAnimationType.Fade;
+            tileItemElement1.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI Light", 17F);
+            tileItemElement1.Appearance.Hovered.Options.UseFont = true;
+            tileItemElement1.Appearance.Hovered.Options.UseTextOptions = true;
+            tileItemElement1.Appearance.Hovered.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement1.Appearance.Hovered.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement1.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Light", 17F);
+            tileItemElement1.Appearance.Normal.Options.UseFont = true;
+            tileItemElement1.Appearance.Normal.Options.UseTextOptions = true;
+            tileItemElement1.Appearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement1.Appearance.Normal.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement1.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI Light", 17F);
+            tileItemElement1.Appearance.Selected.Options.UseFont = true;
+            tileItemElement1.Appearance.Selected.Options.UseTextOptions = true;
+            tileItemElement1.Appearance.Selected.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement1.Appearance.Selected.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement1.Text = "Stok Kartları";
+            tileItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileItemElement1.TextLocation = new System.Drawing.Point(4, 0);
+            tileItemElement2.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9F);
+            tileItemElement2.Appearance.Hovered.Options.UseFont = true;
+            tileItemElement2.Appearance.Hovered.Options.UseTextOptions = true;
+            tileItemElement2.Appearance.Hovered.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            tileItemElement2.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 9F);
+            tileItemElement2.Appearance.Normal.Options.UseFont = true;
+            tileItemElement2.Appearance.Normal.Options.UseTextOptions = true;
+            tileItemElement2.Appearance.Normal.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            tileItemElement2.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 9F);
+            tileItemElement2.Appearance.Selected.Options.UseFont = true;
+            tileItemElement2.Appearance.Selected.Options.UseTextOptions = true;
+            tileItemElement2.Appearance.Selected.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            tileItemElement2.MaxWidth = 900;
+            tileItemElement2.Text = "Ürünlerle ilgili işlemler";
+            tileItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileItemElement2.TextLocation = new System.Drawing.Point(4, 27);
+            this.tileItem2.Elements.Add(tileItemElement1);
+            this.tileItem2.Elements.Add(tileItemElement2);
+            this.tileItem2.Id = 3;
+            this.tileItem2.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
+            this.tileItem2.Name = "tileItem2";
+            this.tileItem2.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileItem2_ItemClick);
             // 
             // MainBarManager
             // 
@@ -120,8 +227,8 @@
             this.MainBarManager.AllowShowToolbarsPopup = false;
             this.MainBarManager.AutoSaveInRegistry = true;
             this.MainBarManager.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.StatusBar,
-            this.MainMenu});
+            this.MainMenu,
+            this.bar1});
             this.MainBarManager.DockControls.Add(this.barDockControlTop);
             this.MainBarManager.DockControls.Add(this.barDockControlBottom);
             this.MainBarManager.DockControls.Add(this.barDockControlLeft);
@@ -176,38 +283,20 @@
             this.MnuKaydet,
             this.MnuSil,
             this.MnuYeniKayit,
-            this.MnuUserSettings});
+            this.MnuUserSettings,
+            this.StatusServerName,
+            this.AppVersion});
             this.MainBarManager.MainMenu = this.MainMenu;
-            this.MainBarManager.MaxItemId = 54;
-            this.MainBarManager.StatusBar = this.StatusBar;
+            this.MainBarManager.MaxItemId = 56;
+            this.MainBarManager.StatusBar = this.bar1;
             // 
-            // StatusBar
+            // AppMenu
             // 
-            this.StatusBar.BarName = "Bildirim Paneli";
-            this.StatusBar.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.StatusBar.DockCol = 0;
-            this.StatusBar.DockRow = 0;
-            this.StatusBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.StatusBar.OptionsBar.AllowQuickCustomization = false;
-            this.StatusBar.OptionsBar.DisableCustomization = true;
-            this.StatusBar.OptionsBar.DrawDragBorder = false;
-            this.StatusBar.OptionsBar.UseWholeRow = true;
-            this.StatusBar.Text = "Bildirim Paneli";
-            // 
-            // MainMenu
-            // 
-            this.MainMenu.BarName = "Ana Menü";
-            this.MainMenu.DockCol = 0;
-            this.MainMenu.DockRow = 0;
-            this.MainMenu.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.MainMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.AppMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.MnuSistem),
             new DevExpress.XtraBars.LinkPersistInfo(this.MnuIslemler),
             new DevExpress.XtraBars.LinkPersistInfo(this.MnuRaporlar)});
-            this.MainMenu.OptionsBar.DisableCustomization = true;
-            this.MainMenu.OptionsBar.MultiLine = true;
-            this.MainMenu.OptionsBar.UseWholeRow = true;
-            this.MainMenu.Text = "Ana Menü";
+            this.AppMenu.Name = "AppMenu";
             // 
             // MnuSistem
             // 
@@ -535,37 +624,80 @@
             this.MnuYonetselRaporlar.Id = 20;
             this.MnuYonetselRaporlar.Name = "MnuYonetselRaporlar";
             // 
+            // MainMenu
+            // 
+            this.MainMenu.BarName = "Ana Menü";
+            this.MainMenu.DockCol = 0;
+            this.MainMenu.DockRow = 0;
+            this.MainMenu.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.MainMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.MnuSistem),
+            new DevExpress.XtraBars.LinkPersistInfo(this.MnuIslemler),
+            new DevExpress.XtraBars.LinkPersistInfo(this.MnuRaporlar)});
+            this.MainMenu.OptionsBar.DisableCustomization = true;
+            this.MainMenu.OptionsBar.MultiLine = true;
+            this.MainMenu.OptionsBar.UseWholeRow = true;
+            this.MainMenu.Text = "Ana Menü";
+            // 
+            // bar1
+            // 
+            this.bar1.BarName = "Custom 3";
+            this.bar1.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.StatusServerName),
+            new DevExpress.XtraBars.LinkPersistInfo(this.AppVersion)});
+            this.bar1.OptionsBar.AllowQuickCustomization = false;
+            this.bar1.OptionsBar.DrawDragBorder = false;
+            this.bar1.OptionsBar.UseWholeRow = true;
+            this.bar1.Text = "Custom 3";
+            // 
+            // StatusServerName
+            // 
+            this.StatusServerName.Caption = "Seyit";
+            this.StatusServerName.Id = 54;
+            this.StatusServerName.Name = "StatusServerName";
+            // 
+            // AppVersion
+            // 
+            this.AppVersion.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.AppVersion.Caption = "Version";
+            this.AppVersion.Id = 55;
+            this.AppVersion.Name = "AppVersion";
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.MainBarManager;
-            this.barDockControlTop.Size = new System.Drawing.Size(1216, 20);
+            this.barDockControlTop.Size = new System.Drawing.Size(1216, 23);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 580);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 581);
             this.barDockControlBottom.Manager = this.MainBarManager;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1216, 22);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1216, 21);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 23);
             this.barDockControlLeft.Manager = this.MainBarManager;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 560);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 558);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1216, 20);
+            this.barDockControlRight.Location = new System.Drawing.Point(1216, 23);
             this.barDockControlRight.Manager = this.MainBarManager;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 560);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 558);
             // 
             // MnuStokTransfer
             // 
@@ -601,36 +733,23 @@
             this.MainTabControl.AppearancePage.HeaderActive.Options.UseBackColor = true;
             this.MainTabControl.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
             this.MainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainTabControl.KarmaCloseButton = false;
             this.MainTabControl.KarmaCloseButtonMessageActive = true;
-            this.MainTabControl.Location = new System.Drawing.Point(0, 20);
+            this.MainTabControl.Location = new System.Drawing.Point(0, 23);
             this.MainTabControl.Name = "MainTabControl";
+            this.MainTabControl.PaintStyleName = "Skin";
             this.MainTabControl.SelectedTabPage = this.DesktopTab;
-            this.MainTabControl.Size = new System.Drawing.Size(1216, 560);
+            this.MainTabControl.Size = new System.Drawing.Size(1216, 558);
             this.MainTabControl.TabIndex = 2;
             this.MainTabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.DesktopTab});
+            this.MainTabControl.TabPageWidth = 100;
+            this.MainTabControl.Transition.AllowTransition = DevExpress.Utils.DefaultBoolean.True;
+            this.MainTabControl.Transition.EasingMode = DevExpress.Data.Utils.EasingMode.EaseInOut;
             // 
-            // AppMenu
+            // tileItem1
             // 
-            this.AppMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.MnuSistem),
-            new DevExpress.XtraBars.LinkPersistInfo(this.MnuIslemler),
-            new DevExpress.XtraBars.LinkPersistInfo(this.MnuRaporlar)});
-            this.AppMenu.Name = "AppMenu";
-            // 
-            // karmaPanel1
-            // 
-            this.karmaPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.karmaPanel1.KarmaChildPanels = null;
-            this.karmaPanel1.KarmaColumnNames = null;
-            this.karmaPanel1.KarmaGridControl = null;
-            this.karmaPanel1.KarmaMasterButton = null;
-            this.karmaPanel1.KarmaMasterTextBox = null;
-            this.karmaPanel1.KarmaTableName = null;
-            this.karmaPanel1.Location = new System.Drawing.Point(0, 0);
-            this.karmaPanel1.Name = "karmaPanel1";
-            this.karmaPanel1.Size = new System.Drawing.Size(1214, 531);
-            this.karmaPanel1.TabIndex = 0;
+            this.tileItem1.Name = "tileItem1";
             // 
             // MainForm
             // 
@@ -648,7 +767,6 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.EnableAcrylicAccent = true;
-            this.Font = new System.Drawing.Font("Roboto", 9F);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.Name = "MainForm";
             this.Text = "Karma";
@@ -660,11 +778,11 @@
             this.Controls.SetChildIndex(this.barDockControlLeft, 0);
             this.Controls.SetChildIndex(this.MainTabControl, 0);
             this.DesktopTab.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainBarManager)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AppMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainTabControl)).EndInit();
             this.MainTabControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.AppMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.karmaPanel1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -685,7 +803,6 @@
         private DevExpress.XtraBars.BarButtonItem MnuGenelAyar;
         private DevExpress.XtraBars.BarButtonItem MnuBildirimAyar;
         private DevExpress.XtraBars.BarButtonItem MnuCikis;
-        private DevExpress.XtraBars.Bar StatusBar;
         private DevExpress.XtraBars.Bar MainMenu;
         private DevExpress.XtraBars.BarSubItem MnuIslemler;
         private DevExpress.XtraBars.BarSubItem MnuStokYonetimi;
@@ -732,7 +849,16 @@
         private DevExpress.XtraBars.BarButtonItem MnuYeniKayit;
         private DevExpress.XtraBars.BarButtonItem MnuUserSettings;
         private DevExpress.XtraBars.BarSubItem MnuKullanici;
-        private KarmaObjects.KarmaPanel karmaPanel1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private DevExpress.XtraEditors.TileControl tileControl1;
+        private System.Windows.Forms.ToolStripMenuItem stokIslemleriToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stokKartlarıToolStripMenuItem;
+        private DevExpress.XtraEditors.TileGroup tileGroup2;
+        private DevExpress.XtraEditors.TileItem tileItem2;
+        private DevExpress.XtraEditors.TileItem tileItem1;
+        private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraBars.BarStaticItem StatusServerName;
+        private DevExpress.XtraBars.BarStaticItem AppVersion;
     }
 }
 

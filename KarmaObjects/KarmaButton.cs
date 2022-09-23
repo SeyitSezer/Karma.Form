@@ -14,13 +14,13 @@ namespace KarmaObjects
 {
     public partial class KarmaButton : SimpleButton
     {
-        KarmaTextBox masterTextBox;
+        KarmaObject masterTextBox;
         public ContextMenuStrip ButtonMenu = new ContextMenuStrip();
         public ToolStripMenuItem MnuKaydet;
         public ToolStripMenuItem MnuSil;
         public ToolStripMenuItem MnuYeniKayit;
         public KarmaPanel KarmaMasterPanel { get; set; }
-        public KarmaTextBox KarmaMasterTextBox { get
+        public KarmaObject KarmaMasterTextBox { get
             {
                 return masterTextBox;
             }
@@ -29,7 +29,11 @@ namespace KarmaObjects
                 masterTextBox = value; 
                 if (!(value is null))
                 {
-                    Location = new Point(value.Left + value.Width + 2, value.Top);
+                    Location = new Point(((Control)value).Left + ((Control)value).Width + 2, ((Control)value).Top);
+                    if(value is KarmaTextBox)
+                    {
+                        (value as KarmaTextBox)._Btn = this;
+                    }
                 }
 
             }
@@ -73,6 +77,19 @@ namespace KarmaObjects
         }
         public KarmaButtonTypes KarmaButtonType { get; set; }
 
+        public void Post()
+        {
+            MnuKaydet.PerformClick();
+        }
+        public void NewRec()
+        {
+            MnuYeniKayit.PerformClick();
+        }
+        public void Delete()
+        {
+            MnuSil.PerformClick();
+        }
+        
         protected override void OnCreateControl()
         {
             BackColor = Color.FromArgb(45, 45, 45);

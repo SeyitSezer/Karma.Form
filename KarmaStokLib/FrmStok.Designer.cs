@@ -70,6 +70,19 @@
             this.karmaLabel7 = new KarmaObjects.KarmaLabel();
             this.karmaButton2 = new KarmaObjects.KarmaButton(this.components);
             this.Fiyat = new KarmaObjects.KarmaTextBox(this.components);
+            this.PnlStokAyar = new KarmaObjects.KarmaPanel(this.components);
+            this.karmaCheck6 = new KarmaObjects.KarmaCheck();
+            this.karmaCheck5 = new KarmaObjects.KarmaCheck();
+            this.karmaCheck4 = new KarmaObjects.KarmaCheck();
+            this.karmaCheck3 = new KarmaObjects.KarmaCheck();
+            this.karmaCheck2 = new KarmaObjects.KarmaCheck();
+            this.karmaCheck1 = new KarmaObjects.KarmaCheck();
+            this.karmaLabel16 = new KarmaObjects.KarmaLabel();
+            this.karmaLabel15 = new KarmaObjects.KarmaLabel();
+            this.karmaLabel14 = new KarmaObjects.KarmaLabel();
+            this.karmaLabel13 = new KarmaObjects.KarmaLabel();
+            this.karmaLabel12 = new KarmaObjects.KarmaLabel();
+            this.karmaLabel11 = new KarmaObjects.KarmaLabel();
             this.PnlStokMas = new KarmaObjects.KarmaPanel(this.components);
             this.karmaButton1 = new KarmaObjects.KarmaButton(this.components);
             this.StokAciklama = new KarmaObjects.KarmaTextBox(this.components);
@@ -107,6 +120,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.karmaPanel1)).BeginInit();
             this.karmaPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FiyatKodu.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PnlStokAyar)).BeginInit();
+            this.PnlStokAyar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.karmaCheck6.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.karmaCheck5.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.karmaCheck4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.karmaCheck3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.karmaCheck2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.karmaCheck1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PnlStokMas)).BeginInit();
             this.PnlStokMas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SKdv.Properties)).BeginInit();
@@ -138,7 +159,7 @@
             this.PgeStokList.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.PgeStokList.Name = "PgeStokList";
             this.PgeStokList.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
-            this.PgeStokList.Size = new System.Drawing.Size(1118, 639);
+            this.PgeStokList.Size = new System.Drawing.Size(1476, 641);
             this.PgeStokList.Text = "Stok Listesi";
             // 
             // GrdStoklar
@@ -152,7 +173,7 @@
             this.GrdStoklar.MainView = this.ViewStoklar;
             this.GrdStoklar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.GrdStoklar.Name = "GrdStoklar";
-            this.GrdStoklar.Size = new System.Drawing.Size(1118, 639);
+            this.GrdStoklar.Size = new System.Drawing.Size(1476, 641);
             this.GrdStoklar.TabIndex = 0;
             this.GrdStoklar.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.ViewStoklar});
@@ -263,7 +284,7 @@
             this.PgeStokIslem.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.PgeStokIslem.Name = "PgeStokIslem";
             this.PgeStokIslem.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
-            this.PgeStokIslem.Size = new System.Drawing.Size(1476, 639);
+            this.PgeStokIslem.Size = new System.Drawing.Size(1476, 641);
             this.PgeStokIslem.Text = "Stok Bilgisi";
             // 
             // karmaPanel3
@@ -281,7 +302,7 @@
             this.karmaPanel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.karmaPanel3.Name = "karmaPanel3";
             this.karmaPanel3.ShowCaption = false;
-            this.karmaPanel3.Size = new System.Drawing.Size(1476, 421);
+            this.karmaPanel3.Size = new System.Drawing.Size(1476, 423);
             this.karmaPanel3.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -292,12 +313,13 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.karmaPanel4, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.karmaPanel2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.PnlStokAyar, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1472, 417);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1472, 419);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // karmaPanel4
@@ -315,7 +337,7 @@
             this.karmaPanel4.Location = new System.Drawing.Point(444, 3);
             this.karmaPanel4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.karmaPanel4.Name = "karmaPanel4";
-            this.karmaPanel4.Size = new System.Drawing.Size(432, 411);
+            this.karmaPanel4.Size = new System.Drawing.Size(432, 413);
             this.karmaPanel4.TabIndex = 5;
             this.karmaPanel4.Text = "Grup Bilgileri";
             // 
@@ -329,7 +351,7 @@
             this.GrdStokGrup.MainView = this.ViewStokGrup;
             this.GrdStokGrup.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.GrdStokGrup.Name = "GrdStokGrup";
-            this.GrdStokGrup.Size = new System.Drawing.Size(428, 319);
+            this.GrdStokGrup.Size = new System.Drawing.Size(428, 321);
             this.GrdStokGrup.TabIndex = 1;
             this.GrdStokGrup.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.ViewStokGrup});
@@ -417,6 +439,7 @@
             // 
             // GrupDeger
             // 
+            this.GrupDeger.EnterMoveNextControl = true;
             this.GrupDeger.KarmaFieldName = "Deger";
             this.GrupDeger.KarmaFieldType = KarmaObjects.KarmaFieldTypes.String;
             this.GrupDeger.KarmaLookupDisplayField = "DegerDetay";
@@ -439,6 +462,7 @@
             // 
             // GrupKodu
             // 
+            this.GrupKodu.EnterMoveNextControl = true;
             this.GrupKodu.KarmaFieldName = "GrupKodu";
             this.GrupKodu.KarmaFieldType = KarmaObjects.KarmaFieldTypes.String;
             this.GrupKodu.KarmaLookupDisplayField = "GrupAciklama";
@@ -491,7 +515,6 @@
             this.karmaButton3.Appearance.Options.UseForeColor = true;
             this.karmaButton3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("karmaButton3.ImageOptions.Image")));
             this.karmaButton3.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.karmaButton3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("karmaButton3.ImageOptions.SvgImage")));
             this.karmaButton3.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.Full;
             this.karmaButton3.ImageOptions.SvgImageSize = new System.Drawing.Size(20, 20);
             this.karmaButton3.KarmaButtonType = KarmaObjects.KarmaButtonTypes.Topluİşlem;
@@ -516,6 +539,7 @@
             this.StokKodu.KarmaGuideFilter = null;
             this.StokKodu.KarmaGuideName = "Stok Rehberi";
             this.StokKodu.KarmaGuideTableName = "tblStok";
+            this.StokKodu.KarmaLastEdit = false;
             this.StokKodu.KarmaNumericType = KarmaLib.KarmaLib.KarmaFieldNumericTypes.TamSayi;
             this.StokKodu.KarmaPasswordTextBox = false;
             this.StokKodu.Location = new System.Drawing.Point(143, 26);
@@ -541,7 +565,7 @@
             this.karmaPanel2.Location = new System.Drawing.Point(4, 3);
             this.karmaPanel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.karmaPanel2.Name = "karmaPanel2";
-            this.karmaPanel2.Size = new System.Drawing.Size(432, 411);
+            this.karmaPanel2.Size = new System.Drawing.Size(432, 413);
             this.karmaPanel2.TabIndex = 4;
             this.karmaPanel2.Text = "Fiyat Bilgileri";
             // 
@@ -555,7 +579,7 @@
             this.GrdStokFiyat.MainView = this.ViewStokFiyat;
             this.GrdStokFiyat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.GrdStokFiyat.Name = "GrdStokFiyat";
-            this.GrdStokFiyat.Size = new System.Drawing.Size(428, 319);
+            this.GrdStokFiyat.Size = new System.Drawing.Size(428, 321);
             this.GrdStokFiyat.TabIndex = 1;
             this.GrdStokFiyat.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.ViewStokFiyat});
@@ -636,6 +660,7 @@
             // 
             // FiyatKodu
             // 
+            this.FiyatKodu.EnterMoveNextControl = true;
             this.FiyatKodu.KarmaFieldName = "FiyatKodu";
             this.FiyatKodu.KarmaFieldType = KarmaObjects.KarmaFieldTypes.String;
             this.FiyatKodu.KarmaLookupDisplayField = "FiyatAciklama";
@@ -688,7 +713,6 @@
             this.karmaButton2.Appearance.Options.UseForeColor = true;
             this.karmaButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("karmaButton2.ImageOptions.Image")));
             this.karmaButton2.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.karmaButton2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("karmaButton2.ImageOptions.SvgImage")));
             this.karmaButton2.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.Full;
             this.karmaButton2.ImageOptions.SvgImageSize = new System.Drawing.Size(20, 20);
             this.karmaButton2.KarmaButtonType = KarmaObjects.KarmaButtonTypes.Topluİşlem;
@@ -713,6 +737,7 @@
             this.Fiyat.KarmaGuideFilter = null;
             this.Fiyat.KarmaGuideName = null;
             this.Fiyat.KarmaGuideTableName = null;
+            this.Fiyat.KarmaLastEdit = false;
             this.Fiyat.KarmaNumericType = KarmaLib.KarmaLib.KarmaFieldNumericTypes.Fiyat;
             this.Fiyat.KarmaPasswordTextBox = false;
             this.Fiyat.Location = new System.Drawing.Point(240, 34);
@@ -721,6 +746,220 @@
             this.Fiyat.ReadOnly = false;
             this.Fiyat.Size = new System.Drawing.Size(142, 24);
             this.Fiyat.TabIndex = 1;
+            // 
+            // PnlStokAyar
+            // 
+            this.PnlStokAyar.Controls.Add(this.karmaCheck6);
+            this.PnlStokAyar.Controls.Add(this.karmaCheck5);
+            this.PnlStokAyar.Controls.Add(this.karmaCheck4);
+            this.PnlStokAyar.Controls.Add(this.karmaCheck3);
+            this.PnlStokAyar.Controls.Add(this.karmaCheck2);
+            this.PnlStokAyar.Controls.Add(this.karmaCheck1);
+            this.PnlStokAyar.Controls.Add(this.karmaLabel16);
+            this.PnlStokAyar.Controls.Add(this.karmaLabel15);
+            this.PnlStokAyar.Controls.Add(this.karmaLabel14);
+            this.PnlStokAyar.Controls.Add(this.karmaLabel13);
+            this.PnlStokAyar.Controls.Add(this.karmaLabel12);
+            this.PnlStokAyar.Controls.Add(this.karmaLabel11);
+            this.PnlStokAyar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PnlStokAyar.KarmaChildPanels = null;
+            this.PnlStokAyar.KarmaColumnNames = null;
+            this.PnlStokAyar.KarmaGridControl = null;
+            this.PnlStokAyar.KarmaMasterButton = null;
+            this.PnlStokAyar.KarmaMasterTextBox = null;
+            this.PnlStokAyar.KarmaSecTextBox = null;
+            this.PnlStokAyar.KarmaTableName = null;
+            this.PnlStokAyar.Location = new System.Drawing.Point(883, 3);
+            this.PnlStokAyar.Name = "PnlStokAyar";
+            this.PnlStokAyar.Size = new System.Drawing.Size(586, 413);
+            this.PnlStokAyar.TabIndex = 6;
+            this.PnlStokAyar.Text = "Stok Ayarları";
+            // 
+            // karmaCheck6
+            // 
+            this.karmaCheck6.EnterMoveNextControl = true;
+            this.karmaCheck6.KarmaCheckedText = "Evet";
+            this.karmaCheck6.KarmaCheckedValue = "Evet";
+            this.karmaCheck6.KarmaFieldName = "TalepYok";
+            this.karmaCheck6.KarmaUnCheckedText = "Hayır";
+            this.karmaCheck6.KarmaUnCheckedValue = "Hayır";
+            this.karmaCheck6.Location = new System.Drawing.Point(143, 193);
+            this.karmaCheck6.Name = "karmaCheck6";
+            this.karmaCheck6.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 11F);
+            this.karmaCheck6.Properties.Appearance.Options.UseFont = true;
+            this.karmaCheck6.Properties.OffText = "Hayır";
+            this.karmaCheck6.Properties.OnText = "Evet";
+            this.karmaCheck6.Properties.ValueOff = "Hayır";
+            this.karmaCheck6.Properties.ValueOn = "Evet";
+            this.karmaCheck6.Size = new System.Drawing.Size(130, 22);
+            this.karmaCheck6.TabIndex = 11;
+            // 
+            // karmaCheck5
+            // 
+            this.karmaCheck5.EnterMoveNextControl = true;
+            this.karmaCheck5.KarmaCheckedText = "Evet";
+            this.karmaCheck5.KarmaCheckedValue = "Evet";
+            this.karmaCheck5.KarmaFieldName = "TeklifYok";
+            this.karmaCheck5.KarmaUnCheckedText = "Hayır";
+            this.karmaCheck5.KarmaUnCheckedValue = "Hayır";
+            this.karmaCheck5.Location = new System.Drawing.Point(143, 165);
+            this.karmaCheck5.Name = "karmaCheck5";
+            this.karmaCheck5.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 11F);
+            this.karmaCheck5.Properties.Appearance.Options.UseFont = true;
+            this.karmaCheck5.Properties.OffText = "Hayır";
+            this.karmaCheck5.Properties.OnText = "Evet";
+            this.karmaCheck5.Properties.ValueOff = "Hayır";
+            this.karmaCheck5.Properties.ValueOn = "Evet";
+            this.karmaCheck5.Size = new System.Drawing.Size(130, 22);
+            this.karmaCheck5.TabIndex = 10;
+            // 
+            // karmaCheck4
+            // 
+            this.karmaCheck4.EnterMoveNextControl = true;
+            this.karmaCheck4.KarmaCheckedText = "Evet";
+            this.karmaCheck4.KarmaCheckedValue = "Evet";
+            this.karmaCheck4.KarmaFieldName = "SiparisYok";
+            this.karmaCheck4.KarmaUnCheckedText = "Hayır";
+            this.karmaCheck4.KarmaUnCheckedValue = "Hayır";
+            this.karmaCheck4.Location = new System.Drawing.Point(143, 137);
+            this.karmaCheck4.Name = "karmaCheck4";
+            this.karmaCheck4.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 11F);
+            this.karmaCheck4.Properties.Appearance.Options.UseFont = true;
+            this.karmaCheck4.Properties.OffText = "Hayır";
+            this.karmaCheck4.Properties.OnText = "Evet";
+            this.karmaCheck4.Properties.ValueOff = "Hayır";
+            this.karmaCheck4.Properties.ValueOn = "Evet";
+            this.karmaCheck4.Size = new System.Drawing.Size(130, 22);
+            this.karmaCheck4.TabIndex = 9;
+            // 
+            // karmaCheck3
+            // 
+            this.karmaCheck3.EnterMoveNextControl = true;
+            this.karmaCheck3.KarmaCheckedText = "Evet";
+            this.karmaCheck3.KarmaCheckedValue = "Evet";
+            this.karmaCheck3.KarmaFieldName = "AlisYapilmaz";
+            this.karmaCheck3.KarmaUnCheckedText = "Hayır";
+            this.karmaCheck3.KarmaUnCheckedValue = "Hayır";
+            this.karmaCheck3.Location = new System.Drawing.Point(143, 109);
+            this.karmaCheck3.Name = "karmaCheck3";
+            this.karmaCheck3.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 11F);
+            this.karmaCheck3.Properties.Appearance.Options.UseFont = true;
+            this.karmaCheck3.Properties.OffText = "Hayır";
+            this.karmaCheck3.Properties.OnText = "Evet";
+            this.karmaCheck3.Properties.ValueOff = "Hayır";
+            this.karmaCheck3.Properties.ValueOn = "Evet";
+            this.karmaCheck3.Size = new System.Drawing.Size(130, 22);
+            this.karmaCheck3.TabIndex = 8;
+            // 
+            // karmaCheck2
+            // 
+            this.karmaCheck2.EnterMoveNextControl = true;
+            this.karmaCheck2.KarmaCheckedText = "Evet";
+            this.karmaCheck2.KarmaCheckedValue = "Evet";
+            this.karmaCheck2.KarmaFieldName = "SatisYapilmaz";
+            this.karmaCheck2.KarmaUnCheckedText = "Hayır";
+            this.karmaCheck2.KarmaUnCheckedValue = "Hayır";
+            this.karmaCheck2.Location = new System.Drawing.Point(143, 81);
+            this.karmaCheck2.Name = "karmaCheck2";
+            this.karmaCheck2.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 11F);
+            this.karmaCheck2.Properties.Appearance.Options.UseFont = true;
+            this.karmaCheck2.Properties.OffText = "Hayır";
+            this.karmaCheck2.Properties.OnText = "Evet";
+            this.karmaCheck2.Properties.ValueOff = "Hayır";
+            this.karmaCheck2.Properties.ValueOn = "Evet";
+            this.karmaCheck2.Size = new System.Drawing.Size(130, 22);
+            this.karmaCheck2.TabIndex = 7;
+            // 
+            // karmaCheck1
+            // 
+            this.karmaCheck1.EnterMoveNextControl = true;
+            this.karmaCheck1.KarmaCheckedText = "Evet";
+            this.karmaCheck1.KarmaCheckedValue = "Evet";
+            this.karmaCheck1.KarmaFieldName = "PasifStok";
+            this.karmaCheck1.KarmaUnCheckedText = "Hayır";
+            this.karmaCheck1.KarmaUnCheckedValue = "Hayır";
+            this.karmaCheck1.Location = new System.Drawing.Point(143, 53);
+            this.karmaCheck1.Name = "karmaCheck1";
+            this.karmaCheck1.Properties.Appearance.Font = new System.Drawing.Font("Roboto", 11F);
+            this.karmaCheck1.Properties.Appearance.Options.UseFont = true;
+            this.karmaCheck1.Properties.OffText = "Hayır";
+            this.karmaCheck1.Properties.OnText = "Evet";
+            this.karmaCheck1.Properties.ValueOff = "Hayır";
+            this.karmaCheck1.Properties.ValueOn = "Evet";
+            this.karmaCheck1.Size = new System.Drawing.Size(130, 22);
+            this.karmaCheck1.TabIndex = 6;
+            // 
+            // karmaLabel16
+            // 
+            this.karmaLabel16.AutoSize = true;
+            this.karmaLabel16.Font = new System.Drawing.Font("Roboto", 11F);
+            this.karmaLabel16.KarmaFocusControl = null;
+            this.karmaLabel16.Location = new System.Drawing.Point(26, 195);
+            this.karmaLabel16.Name = "karmaLabel16";
+            this.karmaLabel16.ReadOnly = false;
+            this.karmaLabel16.Size = new System.Drawing.Size(101, 18);
+            this.karmaLabel16.TabIndex = 5;
+            this.karmaLabel16.Text = "Talebe Kapalı";
+            // 
+            // karmaLabel15
+            // 
+            this.karmaLabel15.AutoSize = true;
+            this.karmaLabel15.Font = new System.Drawing.Font("Roboto", 11F);
+            this.karmaLabel15.KarmaFocusControl = null;
+            this.karmaLabel15.Location = new System.Drawing.Point(26, 167);
+            this.karmaLabel15.Name = "karmaLabel15";
+            this.karmaLabel15.ReadOnly = false;
+            this.karmaLabel15.Size = new System.Drawing.Size(101, 18);
+            this.karmaLabel15.TabIndex = 4;
+            this.karmaLabel15.Text = "Teklife Kapalı";
+            // 
+            // karmaLabel14
+            // 
+            this.karmaLabel14.AutoSize = true;
+            this.karmaLabel14.Font = new System.Drawing.Font("Roboto", 11F);
+            this.karmaLabel14.KarmaFocusControl = null;
+            this.karmaLabel14.Location = new System.Drawing.Point(26, 137);
+            this.karmaLabel14.Name = "karmaLabel14";
+            this.karmaLabel14.ReadOnly = false;
+            this.karmaLabel14.Size = new System.Drawing.Size(110, 18);
+            this.karmaLabel14.TabIndex = 3;
+            this.karmaLabel14.Text = "Siparişe Kapalı";
+            // 
+            // karmaLabel13
+            // 
+            this.karmaLabel13.AutoSize = true;
+            this.karmaLabel13.Font = new System.Drawing.Font("Roboto", 11F);
+            this.karmaLabel13.KarmaFocusControl = null;
+            this.karmaLabel13.Location = new System.Drawing.Point(26, 109);
+            this.karmaLabel13.Name = "karmaLabel13";
+            this.karmaLabel13.ReadOnly = false;
+            this.karmaLabel13.Size = new System.Drawing.Size(88, 18);
+            this.karmaLabel13.TabIndex = 2;
+            this.karmaLabel13.Text = "Alışa Kapalı";
+            // 
+            // karmaLabel12
+            // 
+            this.karmaLabel12.AutoSize = true;
+            this.karmaLabel12.Font = new System.Drawing.Font("Roboto", 11F);
+            this.karmaLabel12.KarmaFocusControl = null;
+            this.karmaLabel12.Location = new System.Drawing.Point(26, 81);
+            this.karmaLabel12.Name = "karmaLabel12";
+            this.karmaLabel12.ReadOnly = false;
+            this.karmaLabel12.Size = new System.Drawing.Size(97, 18);
+            this.karmaLabel12.TabIndex = 1;
+            this.karmaLabel12.Text = "Satışa Kapalı";
+            // 
+            // karmaLabel11
+            // 
+            this.karmaLabel11.AutoSize = true;
+            this.karmaLabel11.Font = new System.Drawing.Font("Roboto", 11F);
+            this.karmaLabel11.KarmaFocusControl = null;
+            this.karmaLabel11.Location = new System.Drawing.Point(26, 53);
+            this.karmaLabel11.Name = "karmaLabel11";
+            this.karmaLabel11.ReadOnly = false;
+            this.karmaLabel11.Size = new System.Drawing.Size(78, 18);
+            this.karmaLabel11.TabIndex = 0;
+            this.karmaLabel11.Text = "Pasif Stok";
             // 
             // PnlStokMas
             // 
@@ -758,7 +997,6 @@
             this.karmaButton1.Appearance.Options.UseForeColor = true;
             this.karmaButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("karmaButton1.ImageOptions.Image")));
             this.karmaButton1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.karmaButton1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("karmaButton1.ImageOptions.SvgImage")));
             this.karmaButton1.ImageOptions.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.Full;
             this.karmaButton1.ImageOptions.SvgImageSize = new System.Drawing.Size(20, 20);
             this.karmaButton1.KarmaButtonType = KarmaObjects.KarmaButtonTypes.Topluİşlem;
@@ -783,6 +1021,7 @@
             this.StokAciklama.KarmaGuideFilter = null;
             this.StokAciklama.KarmaGuideName = null;
             this.StokAciklama.KarmaGuideTableName = null;
+            this.StokAciklama.KarmaLastEdit = true;
             this.StokAciklama.KarmaNumericType = KarmaLib.KarmaLib.KarmaFieldNumericTypes.TamSayi;
             this.StokAciklama.KarmaPasswordTextBox = false;
             this.StokAciklama.Location = new System.Drawing.Point(143, 163);
@@ -794,6 +1033,7 @@
             // 
             // SKdv
             // 
+            this.SKdv.EnterMoveNextControl = true;
             this.SKdv.KarmaFieldName = "SatisKDVOrani";
             this.SKdv.KarmaFieldType = KarmaObjects.KarmaFieldTypes.Numeric;
             this.SKdv.KarmaLookupDisplayField = "Aciklama";
@@ -816,6 +1056,7 @@
             // 
             // AKdv
             // 
+            this.AKdv.EnterMoveNextControl = true;
             this.AKdv.KarmaFieldName = "AlisKDVOrani";
             this.AKdv.KarmaFieldType = KarmaObjects.KarmaFieldTypes.Numeric;
             this.AKdv.KarmaLookupDisplayField = "Aciklama";
@@ -838,6 +1079,7 @@
             // 
             // OlcuBr
             // 
+            this.OlcuBr.EnterMoveNextControl = true;
             this.OlcuBr.KarmaFieldName = "OlcuBr";
             this.OlcuBr.KarmaFieldType = KarmaObjects.KarmaFieldTypes.String;
             this.OlcuBr.KarmaLookupDisplayField = null;
@@ -882,6 +1124,7 @@
             this.StokAdi.KarmaGuideFilter = null;
             this.StokAdi.KarmaGuideName = null;
             this.StokAdi.KarmaGuideTableName = null;
+            this.StokAdi.KarmaLastEdit = false;
             this.StokAdi.KarmaNumericType = KarmaLib.KarmaLib.KarmaFieldNumericTypes.TamSayi;
             this.StokAdi.KarmaPasswordTextBox = false;
             this.StokAdi.Location = new System.Drawing.Point(143, 54);
@@ -967,7 +1210,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1478, 664);
             this.Controls.Add(this.karmaTab1);
-            this.Font = new System.Drawing.Font("Roboto", 9F);
             this.KarmaNavClearButton = true;
             this.KarmaNavDeleteButton = true;
             this.KarmaNavFirstButton = true;
@@ -1006,6 +1248,15 @@
             this.karmaPanel1.ResumeLayout(false);
             this.karmaPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FiyatKodu.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PnlStokAyar)).EndInit();
+            this.PnlStokAyar.ResumeLayout(false);
+            this.PnlStokAyar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.karmaCheck6.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.karmaCheck5.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.karmaCheck4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.karmaCheck3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.karmaCheck2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.karmaCheck1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PnlStokMas)).EndInit();
             this.PnlStokMas.ResumeLayout(false);
             this.PnlStokMas.PerformLayout();
@@ -1070,5 +1321,18 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private KarmaObjects.KarmaPanel PnlStokAyar;
+        private KarmaObjects.KarmaCheck karmaCheck6;
+        private KarmaObjects.KarmaCheck karmaCheck5;
+        private KarmaObjects.KarmaCheck karmaCheck4;
+        private KarmaObjects.KarmaCheck karmaCheck3;
+        private KarmaObjects.KarmaCheck karmaCheck2;
+        private KarmaObjects.KarmaCheck karmaCheck1;
+        private KarmaObjects.KarmaLabel karmaLabel16;
+        private KarmaObjects.KarmaLabel karmaLabel15;
+        private KarmaObjects.KarmaLabel karmaLabel14;
+        private KarmaObjects.KarmaLabel karmaLabel13;
+        private KarmaObjects.KarmaLabel karmaLabel12;
+        private KarmaObjects.KarmaLabel karmaLabel11;
     }
 }

@@ -37,6 +37,7 @@ namespace KarmaLib
     {
         public static List<KarmaColumnHelper> GetTableColumnList(string TableName)
         {
+            
             var _list = new List<KarmaColumnHelper>();
             var _cols = KarmaSQL.GetSQLData($"SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME ='{TableName}'");
             foreach (DataRow col in _cols.Rows)
@@ -107,10 +108,12 @@ namespace KarmaLib
                         KarmaConnection.ConnectionString = "Server=" + Server + "; Initial Catalog=" + DataBase + ";Integrated Security=True; Application Name=Karma;WSID=Karma;";
                     if (KarmaConnection.State == ConnectionState.Closed) KarmaConnection.Open();
                 }
+                AppServer = Server;
+                DatabaseName = DataBase;
             }
             catch (Exception x)
             {
-                Mesaj("Veritabanına Bağlanırken Hata Oluştu!" + Environment.NewLine + x.Message, "Hata");
+                Mesaj("Veritabanına Bağlanırken Hata Oluştu!" + Environment.NewLine + x.Message, 0, "Hata");
             }
             finally
             {
@@ -144,7 +147,7 @@ namespace KarmaLib
             }
             catch (Exception x)
             {
-                Mesaj(HataMesajiHazirla(_Insert.CommandText,  x.Message, typeof(KarmaSQL), KarmaConnection.Database), "Hata");
+                Mesaj(HataMesajiHazirla(_Insert.CommandText,  x.Message, typeof(KarmaSQL), KarmaConnection.Database),0, "Hata");
             }
         }
 
@@ -157,7 +160,7 @@ namespace KarmaLib
             }
             catch (Exception x)
             {
-                Mesaj(HataMesajiHazirla(_delete.CommandText, x.Message, typeof(KarmaSQL), KarmaConnection.Database), "Hata");
+                Mesaj(HataMesajiHazirla(_delete.CommandText, x.Message, typeof(KarmaSQL), KarmaConnection.Database),0, "Hata");
             }
         }
 
@@ -184,7 +187,7 @@ namespace KarmaLib
             }
             catch (Exception x)
             {
-                Mesaj(HataMesajiHazirla(_Update.CommandText, x.Message, typeof(KarmaSQL), KarmaConnection.Database), "Hata");
+                Mesaj(HataMesajiHazirla(_Update.CommandText, x.Message, typeof(KarmaSQL), KarmaConnection.Database),0, "Hata");
             }
         }
 

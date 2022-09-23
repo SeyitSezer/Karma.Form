@@ -31,6 +31,8 @@ namespace KarmaObjects
         private bool _ShowPassword = false;
         KarmaFieldTypes _FieldType;
         KarmaFieldNumericTypes _NumericType;
+        public bool KarmaLastEdit { get; set; } = false;
+        public KarmaButton _Btn;
         public KarmaTextBox()
         {
             InitializeComponent();
@@ -44,6 +46,17 @@ namespace KarmaObjects
         public string KarmaGuideFilter { get; set; }
         public string KarmaGuideName { get; set; }
         public BorderStyles BorderStyle { get; set; } = BorderStyles.UltraFlat;
+
+        public void xOnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+            {
+                if(KarmaLastEdit && !(_Btn is null))
+                {
+                    _Btn.Post();
+                }
+            }
+        }
         public KarmaTextBox(IContainer container)
         {
             container.Add(this);
@@ -196,6 +209,8 @@ namespace KarmaObjects
                         _String.StyleController = KarmaStyle();
                         _String.BackColor = BackColor;
                         _String.Dock = DockStyle.Fill;
+                        _String.EnterMoveNextControl = true;
+                        _String.KeyDown += xOnKeyDown;
                     }
                     break;
                 case KarmaFieldTypes.Date:
@@ -207,6 +222,8 @@ namespace KarmaObjects
                         _Date.BorderStyle = BorderStyle;
                         _Date.BackColor = BackColor;
                         _Date.Dock = DockStyle.Fill;
+                        _Date.EnterMoveNextControl = true;
+                        _Date.KeyDown += xOnKeyDown;
                     }
                     break;
                 case KarmaFieldTypes.Time:
@@ -218,6 +235,8 @@ namespace KarmaObjects
                         _Time.StyleController = KarmaStyle();
                         _Time.BackColor = BackColor;
                         _Time.Dock = DockStyle.Fill;
+                        _Time.EnterMoveNextControl = true;
+                        _Time.KeyDown += xOnKeyDown;
                     }
                     break;
                 case KarmaFieldTypes.Numeric:
@@ -230,6 +249,8 @@ namespace KarmaObjects
                         _Numeric.StyleController = KarmaStyle();
                         _Numeric.Dock = DockStyle.Fill;
                         SetNumericType();
+                        _Numeric.EnterMoveNextControl= true;
+                        _Numeric.KeyDown += xOnKeyDown;
                     }
                     break;
                 case KarmaFieldTypes.Guide:
@@ -247,6 +268,8 @@ namespace KarmaObjects
                         _Guide.BackColor = BackColor;
                         _Guide.StyleController = KarmaStyle();
                         _Guide.Dock = DockStyle.Fill;
+                        _Guide.EnterMoveNextControl= true;
+                        _Guide.KeyDown += xOnKeyDown;
                     }
                     break;
                 default:
@@ -254,6 +277,8 @@ namespace KarmaObjects
             }
 
         }
+
+      
 
         private void _Guide_KeyDown(object sender, KeyEventArgs e)
         {

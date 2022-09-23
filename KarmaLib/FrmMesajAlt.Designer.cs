@@ -28,22 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMesajAlt));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.TxtMesaj = new System.Windows.Forms.RichTextBox();
             this.lblBaslik = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.BtnOk = new System.Windows.Forms.Button();
-            this.BtnCancel = new System.Windows.Forms.Button();
-            this.BtnNo = new System.Windows.Forms.Button();
-            this.BtnYes = new System.Windows.Forms.Button();
+            this.BtnOk = new DevExpress.XtraEditors.SimpleButton();
+            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
+            this.BtnCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.BtnNo = new DevExpress.XtraEditors.SimpleButton();
+            this.BtnYes = new DevExpress.XtraEditors.SimpleButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.TxtMesaj = new System.Windows.Forms.RichTextBox();
+            this.TmrBtnEnabled = new System.Windows.Forms.Timer(this.components);
+            this.lblBekle = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -95,24 +101,11 @@
             this.panel5.Size = new System.Drawing.Size(854, 123);
             this.panel5.TabIndex = 5;
             // 
-            // TxtMesaj
-            // 
-            this.TxtMesaj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.TxtMesaj.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TxtMesaj.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TxtMesaj.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.TxtMesaj.ForeColor = System.Drawing.Color.White;
-            this.TxtMesaj.Location = new System.Drawing.Point(129, 20);
-            this.TxtMesaj.Name = "TxtMesaj";
-            this.TxtMesaj.Size = new System.Drawing.Size(596, 103);
-            this.TxtMesaj.TabIndex = 6;
-            this.TxtMesaj.Text = "";
-            // 
             // lblBaslik
             // 
             this.lblBaslik.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblBaslik.Font = new System.Drawing.Font("Roboto", 20F);
-            this.lblBaslik.ForeColor = System.Drawing.Color.Red;
+            this.lblBaslik.Font = new System.Drawing.Font("Roboto", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBaslik.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.lblBaslik.Location = new System.Drawing.Point(9, 9);
             this.lblBaslik.Name = "lblBaslik";
             this.lblBaslik.Padding = new System.Windows.Forms.Padding(129, 0, 0, 0);
@@ -122,6 +115,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lblBekle);
             this.panel2.Controls.Add(this.BtnOk);
             this.panel2.Controls.Add(this.BtnCancel);
             this.panel2.Controls.Add(this.BtnNo);
@@ -135,63 +129,81 @@
             // 
             // BtnOk
             // 
-            this.BtnOk.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnOk.Appearance.Options.UseTextOptions = true;
+            this.BtnOk.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.BtnOk.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.BtnOk.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.BtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.BtnOk.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BtnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnOk.ForeColor = System.Drawing.Color.White;
-            this.BtnOk.Location = new System.Drawing.Point(313, 0);
+            this.BtnOk.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnOk.ImageOptions.Image")));
+            this.BtnOk.Location = new System.Drawing.Point(305, 0);
             this.BtnOk.Name = "BtnOk";
-            this.BtnOk.Size = new System.Drawing.Size(103, 31);
-            this.BtnOk.TabIndex = 0;
+            this.BtnOk.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.True;
+            this.BtnOk.Size = new System.Drawing.Size(105, 31);
+            this.BtnOk.StyleController = this.styleController1;
+            this.BtnOk.TabIndex = 3;
             this.BtnOk.Text = "Tamam";
-            this.BtnOk.UseVisualStyleBackColor = true;
-            this.BtnOk.Click += new System.EventHandler(this.ButtonsClick);
+            // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold);
+            this.styleController1.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.styleController1.Appearance.Options.UseFont = true;
+            this.styleController1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.styleController1.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.styleController1.LookAndFeel.SkinName = "DevExpress Style";
+            this.styleController1.LookAndFeel.UseWindowsXPTheme = true;
             // 
             // BtnCancel
             // 
-            this.BtnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnCancel.Appearance.Options.UseTextOptions = true;
+            this.BtnCancel.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.BtnCancel.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.BtnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BtnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCancel.ForeColor = System.Drawing.Color.Aqua;
-            this.BtnCancel.Location = new System.Drawing.Point(416, 0);
+            this.BtnCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnCancel.ImageOptions.Image")));
+            this.BtnCancel.Location = new System.Drawing.Point(410, 0);
             this.BtnCancel.Name = "BtnCancel";
-            this.BtnCancel.Size = new System.Drawing.Size(103, 31);
-            this.BtnCancel.TabIndex = 1;
+            this.BtnCancel.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.True;
+            this.BtnCancel.Size = new System.Drawing.Size(105, 31);
+            this.BtnCancel.StyleController = this.styleController1;
+            this.BtnCancel.TabIndex = 2;
             this.BtnCancel.Text = "Vazgeç";
-            this.BtnCancel.UseVisualStyleBackColor = true;
-            this.BtnCancel.Click += new System.EventHandler(this.ButtonsClick);
             // 
             // BtnNo
             // 
-            this.BtnNo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnNo.Appearance.Options.UseTextOptions = true;
+            this.BtnNo.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.BtnNo.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.BtnNo.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.BtnNo.DialogResult = System.Windows.Forms.DialogResult.No;
             this.BtnNo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BtnNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnNo.ForeColor = System.Drawing.Color.Red;
-            this.BtnNo.Location = new System.Drawing.Point(519, 0);
+            this.BtnNo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnNo.ImageOptions.Image")));
+            this.BtnNo.Location = new System.Drawing.Point(515, 0);
             this.BtnNo.Name = "BtnNo";
-            this.BtnNo.Size = new System.Drawing.Size(103, 31);
-            this.BtnNo.TabIndex = 2;
+            this.BtnNo.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.True;
+            this.BtnNo.Size = new System.Drawing.Size(105, 31);
+            this.BtnNo.StyleController = this.styleController1;
+            this.BtnNo.TabIndex = 1;
             this.BtnNo.Text = "Hayır";
-            this.BtnNo.UseVisualStyleBackColor = true;
-            this.BtnNo.Click += new System.EventHandler(this.ButtonsClick);
             // 
             // BtnYes
             // 
-            this.BtnYes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnYes.Appearance.Options.UseTextOptions = true;
+            this.BtnYes.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.BtnYes.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.BtnYes.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.BtnYes.DialogResult = System.Windows.Forms.DialogResult.Yes;
             this.BtnYes.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BtnYes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnYes.ForeColor = System.Drawing.Color.Lime;
-            this.BtnYes.Location = new System.Drawing.Point(622, 0);
+            this.BtnYes.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("BtnYes.ImageOptions.Image")));
+            this.BtnYes.Location = new System.Drawing.Point(620, 0);
             this.BtnYes.Name = "BtnYes";
-            this.BtnYes.Size = new System.Drawing.Size(103, 31);
-            this.BtnYes.TabIndex = 3;
+            this.BtnYes.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.True;
+            this.BtnYes.Size = new System.Drawing.Size(105, 31);
+            this.BtnYes.StyleController = this.styleController1;
+            this.BtnYes.TabIndex = 0;
             this.BtnYes.Text = "Evet";
-            this.BtnYes.UseVisualStyleBackColor = true;
-            this.BtnYes.Click += new System.EventHandler(this.ButtonsClick);
             // 
             // panel3
             // 
@@ -202,14 +214,43 @@
             this.panel3.Size = new System.Drawing.Size(872, 243);
             this.panel3.TabIndex = 1;
             // 
+            // TxtMesaj
+            // 
+            this.TxtMesaj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.TxtMesaj.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtMesaj.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TxtMesaj.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold);
+            this.TxtMesaj.ForeColor = System.Drawing.Color.White;
+            this.TxtMesaj.Location = new System.Drawing.Point(129, 20);
+            this.TxtMesaj.Name = "TxtMesaj";
+            this.TxtMesaj.ReadOnly = true;
+            this.TxtMesaj.Size = new System.Drawing.Size(596, 103);
+            this.TxtMesaj.TabIndex = 6;
+            this.TxtMesaj.Text = "asd";
+            // 
+            // TmrBtnEnabled
+            // 
+            this.TmrBtnEnabled.Interval = 1000;
+            this.TmrBtnEnabled.Tick += new System.EventHandler(this.TmrBtnEnabled_Tick);
+            // 
+            // lblBekle
+            // 
+            this.lblBekle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblBekle.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblBekle.ForeColor = System.Drawing.Color.White;
+            this.lblBekle.Location = new System.Drawing.Point(0, 0);
+            this.lblBekle.Name = "lblBekle";
+            this.lblBekle.Size = new System.Drawing.Size(305, 31);
+            this.lblBekle.TabIndex = 4;
+            this.lblBekle.Text = "Lütfen x saniye bekleyiniz...";
+            this.lblBekle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // FrmMesajAlt
             // 
-            this.AcceptButton = this.BtnOk;
             this.Appearance.BackColor = System.Drawing.Color.Yellow;
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.BtnCancel;
             this.ClientSize = new System.Drawing.Size(878, 713);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
@@ -225,6 +266,7 @@
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -236,12 +278,15 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblBaslik;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button BtnOk;
-        private System.Windows.Forms.Button BtnCancel;
-        private System.Windows.Forms.Button BtnNo;
-        private System.Windows.Forms.Button BtnYes;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel5;
+        private DevExpress.XtraEditors.SimpleButton BtnOk;
+        private DevExpress.XtraEditors.StyleController styleController1;
+        private DevExpress.XtraEditors.SimpleButton BtnCancel;
+        private DevExpress.XtraEditors.SimpleButton BtnNo;
+        private DevExpress.XtraEditors.SimpleButton BtnYes;
         private System.Windows.Forms.RichTextBox TxtMesaj;
+        private System.Windows.Forms.Timer TmrBtnEnabled;
+        private System.Windows.Forms.Label lblBekle;
     }
 }
