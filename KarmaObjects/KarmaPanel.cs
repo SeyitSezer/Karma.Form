@@ -20,8 +20,8 @@ namespace KarmaObjects
         public KarmaPanel()
         {
             InitializeComponent();
-            if (!(Parent is null))
-                BackColor = Parent.BackColor;
+            //if (!(Parent is null))
+            //    BackColor = Parent.BackColor;
             if (Text.Length <= 0 || Text == Name) ShowCaption = false;
         }
         public override string Text { get

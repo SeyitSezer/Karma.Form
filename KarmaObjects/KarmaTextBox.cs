@@ -36,7 +36,6 @@ namespace KarmaObjects
         public KarmaTextBox()
         {
             InitializeComponent();
-            BackColor = Color.FromArgb(60, 60, 60);
             SetFieldType(KarmaFieldTypes.String);
         }
         public string KarmaFieldName { get; set; }
@@ -192,7 +191,7 @@ namespace KarmaObjects
 
         protected override void OnCreateControl()
         {
-            Controls[0].BackColor = base.BackColor;
+            //Controls[0].BackColor = base.BackColor;
             base.OnCreateControl();
         }
         private void SetFieldType(KarmaFieldTypes _Type)
@@ -207,7 +206,6 @@ namespace KarmaObjects
                         Controls.Add(_String);
                         _String.BorderStyle = BorderStyle;
                         _String.StyleController = KarmaStyle();
-                        _String.BackColor = BackColor;
                         _String.Dock = DockStyle.Fill;
                         _String.EnterMoveNextControl = true;
                         _String.KeyDown += xOnKeyDown;
@@ -220,7 +218,6 @@ namespace KarmaObjects
                         Controls.Add(_Date);
                         _Date.StyleController = KarmaStyle();
                         _Date.BorderStyle = BorderStyle;
-                        _Date.BackColor = BackColor;
                         _Date.Dock = DockStyle.Fill;
                         _Date.EnterMoveNextControl = true;
                         _Date.KeyDown += xOnKeyDown;
@@ -233,7 +230,6 @@ namespace KarmaObjects
                         Controls.Add(_Time);
                         _Time.BorderStyle = BorderStyle;
                         _Time.StyleController = KarmaStyle();
-                        _Time.BackColor = BackColor;
                         _Time.Dock = DockStyle.Fill;
                         _Time.EnterMoveNextControl = true;
                         _Time.KeyDown += xOnKeyDown;
@@ -245,7 +241,6 @@ namespace KarmaObjects
                         Controls.Clear();
                         Controls.Add(_Numeric);
                         _Numeric.BorderStyle = BorderStyle;
-                        _Numeric.BackColor = BackColor;
                         _Numeric.StyleController = KarmaStyle();
                         _Numeric.Dock = DockStyle.Fill;
                         SetNumericType();
@@ -265,7 +260,6 @@ namespace KarmaObjects
                         _Guide.KeyDown += _Guide_KeyDown; ;
                         Controls.Add(_Guide);
                         _Guide.BorderStyle = BorderStyle;
-                        _Guide.BackColor = BackColor;
                         _Guide.StyleController = KarmaStyle();
                         _Guide.Dock = DockStyle.Fill;
                         _Guide.EnterMoveNextControl= true;

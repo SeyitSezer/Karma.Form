@@ -1,0 +1,670 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SzrBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblFiyatTanim">
+          <Key>
+            <PropertyRef Name="FiyatKodu" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FiyatKodu" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="FiyatAciklama" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="tblKDVTanim">
+          <Key>
+            <PropertyRef Name="KDVKodu" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KDVKodu" Type="int" Nullable="false" />
+          <Property Name="Aciklama" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblStok">
+          <Key>
+            <PropertyRef Name="StokKodu" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StokKodu" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="StokAdi" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="AlisKDVOrani" Type="int" />
+          <Property Name="SatisKDVOrani" Type="int" />
+          <Property Name="OlcuBr" Type="nvarchar" MaxLength="10" />
+          <Property Name="Aciklama" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SzrBase.szradmin.tblStokAyar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblStokAyar">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="StokKodu" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StokKodu" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PasifStok" Type="bit" />
+          <Property Name="SatisYapilmaz" Type="bit" />
+          <Property Name="AlisYapilmaz" Type="bit" />
+          <Property Name="SiparisYok" Type="bit" />
+          <Property Name="TeklifYok" Type="bit" />
+          <Property Name="TalepYok" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblStokFiyat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StokKodu" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FiyatKodu" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="Fiyat" Type="decimal" Precision="28" Scale="18" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblStokGrup">
+          <Key>
+            <PropertyRef Name="StokKodu" />
+            <PropertyRef Name="GrupKodu" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StokKodu" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="GrupKodu" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="Deger" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblStokGrupDetay">
+          <Key>
+            <PropertyRef Name="GrupKodu" />
+            <PropertyRef Name="Deger" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GrupKodu" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="Deger" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="DegerDetay" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="tblStokGrupTanim">
+          <Key>
+            <PropertyRef Name="GrupKodu" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GrupKodu" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="GrupAciklama" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="tblTableColDefs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Language" Type="nvarchar" MaxLength="3" />
+          <Property Name="TableName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ColumnName" Type="nvarchar" MaxLength="150" />
+          <Property Name="ColumnDef" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SzrBase.szradmin.ViewStokFiyat' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewStokFiyat">
+          <Key>
+            <PropertyRef Name="FiyatID" />
+            <PropertyRef Name="StokKodu" />
+            <PropertyRef Name="FiyatKodu" />
+            <PropertyRef Name="Fiyat" />
+            <PropertyRef Name="StokFiyatID" />
+          </Key>
+          <Property Name="FiyatID" Type="int" Nullable="false" />
+          <Property Name="StokKodu" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FiyatKodu" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="FiyatAciklama" Type="nvarchar" MaxLength="150" />
+          <Property Name="Fiyat" Type="decimal" Precision="28" Scale="18" Nullable="false" />
+          <Property Name="StokFiyatID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SzrBase.szradmin.ViewStokGrup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewStokGrup">
+          <Key>
+            <PropertyRef Name="GrupID" />
+            <PropertyRef Name="StokKodu" />
+            <PropertyRef Name="GrupKodu" />
+            <PropertyRef Name="Deger" />
+          </Key>
+          <Property Name="GrupID" Type="int" Nullable="false" />
+          <Property Name="StokKodu" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="GrupKodu" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="GrupAciklama" Type="nvarchar" MaxLength="150" />
+          <Property Name="Deger" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="DegerDetay" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <Association Name="FK_tblStokAyar_tblStok">
+          <End Role="tblStok" Type="Self.tblStok" Multiplicity="1" />
+          <End Role="tblStokAyar" Type="Self.tblStokAyar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStok">
+              <PropertyRef Name="StokKodu" />
+            </Principal>
+            <Dependent Role="tblStokAyar">
+              <PropertyRef Name="StokKodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStokFiyat_tblFiyatTanim">
+          <End Role="tblFiyatTanim" Type="Self.tblFiyatTanim" Multiplicity="1" />
+          <End Role="tblStokFiyat" Type="Self.tblStokFiyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFiyatTanim">
+              <PropertyRef Name="FiyatKodu" />
+            </Principal>
+            <Dependent Role="tblStokFiyat">
+              <PropertyRef Name="FiyatKodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStokFiyat_tblStok">
+          <End Role="tblStok" Type="Self.tblStok" Multiplicity="1" />
+          <End Role="tblStokFiyat" Type="Self.tblStokFiyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStok">
+              <PropertyRef Name="StokKodu" />
+            </Principal>
+            <Dependent Role="tblStokFiyat">
+              <PropertyRef Name="StokKodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStokGrup_tblStok">
+          <End Role="tblStok" Type="Self.tblStok" Multiplicity="1" />
+          <End Role="tblStokGrup" Type="Self.tblStokGrup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStok">
+              <PropertyRef Name="StokKodu" />
+            </Principal>
+            <Dependent Role="tblStokGrup">
+              <PropertyRef Name="StokKodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStokGrup_tblStokGrupTanim">
+          <End Role="tblStokGrupTanim" Type="Self.tblStokGrupTanim" Multiplicity="1" />
+          <End Role="tblStokGrup" Type="Self.tblStokGrup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStokGrupTanim">
+              <PropertyRef Name="GrupKodu" />
+            </Principal>
+            <Dependent Role="tblStokGrup">
+              <PropertyRef Name="GrupKodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStokGrupDetay_tblStokGrupTanim">
+          <End Role="tblStokGrupTanim" Type="Self.tblStokGrupTanim" Multiplicity="1" />
+          <End Role="tblStokGrupDetay" Type="Self.tblStokGrupDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStokGrupTanim">
+              <PropertyRef Name="GrupKodu" />
+            </Principal>
+            <Dependent Role="tblStokGrupDetay">
+              <PropertyRef Name="GrupKodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fnDecodePassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="szradmin" ReturnType="nvarchar">
+          <Parameter Name="UserName" Type="int" Mode="In" />
+          <Parameter Name="Text" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="fnEncodePassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="szradmin" ReturnType="varbinary(max)">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="Text" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="SzrBaseModelStoreContainer">
+          <EntitySet Name="tblFiyatTanim" EntityType="Self.tblFiyatTanim" Schema="szradmin" store:Type="Tables" />
+          <EntitySet Name="tblKDVTanim" EntityType="Self.tblKDVTanim" Schema="szradmin" store:Type="Tables" />
+          <EntitySet Name="tblStok" EntityType="Self.tblStok" Schema="szradmin" store:Type="Tables" />
+          <EntitySet Name="tblStokFiyat" EntityType="Self.tblStokFiyat" Schema="szradmin" store:Type="Tables" />
+          <EntitySet Name="tblStokGrup" EntityType="Self.tblStokGrup" Schema="szradmin" store:Type="Tables" />
+          <EntitySet Name="tblStokGrupDetay" EntityType="Self.tblStokGrupDetay" Schema="szradmin" store:Type="Tables" />
+          <EntitySet Name="tblStokGrupTanim" EntityType="Self.tblStokGrupTanim" Schema="szradmin" store:Type="Tables" />
+          <EntitySet Name="tblTableColDefs" EntityType="Self.tblTableColDefs" Schema="szradmin" store:Type="Tables" />
+          <EntitySet Name="tblStokAyar" EntityType="Self.tblStokAyar" store:Type="Tables" store:Schema="szradmin">
+            <DefiningQuery>SELECT 
+    [tblStokAyar].[ID] AS [ID], 
+    [tblStokAyar].[StokKodu] AS [StokKodu], 
+    [tblStokAyar].[PasifStok] AS [PasifStok], 
+    [tblStokAyar].[SatisYapilmaz] AS [SatisYapilmaz], 
+    [tblStokAyar].[AlisYapilmaz] AS [AlisYapilmaz], 
+    [tblStokAyar].[SiparisYok] AS [SiparisYok], 
+    [tblStokAyar].[TeklifYok] AS [TeklifYok], 
+    [tblStokAyar].[TalepYok] AS [TalepYok]
+    FROM [szradmin].[tblStokAyar] AS [tblStokAyar]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewStokFiyat" EntityType="Self.ViewStokFiyat" store:Type="Views" store:Schema="szradmin">
+            <DefiningQuery>SELECT 
+    [ViewStokFiyat].[FiyatID] AS [FiyatID], 
+    [ViewStokFiyat].[StokKodu] AS [StokKodu], 
+    [ViewStokFiyat].[FiyatKodu] AS [FiyatKodu], 
+    [ViewStokFiyat].[FiyatAciklama] AS [FiyatAciklama], 
+    [ViewStokFiyat].[Fiyat] AS [Fiyat], 
+    [ViewStokFiyat].[StokFiyatID] AS [StokFiyatID]
+    FROM [szradmin].[ViewStokFiyat] AS [ViewStokFiyat]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewStokGrup" EntityType="Self.ViewStokGrup" store:Type="Views" store:Schema="szradmin">
+            <DefiningQuery>SELECT 
+    [ViewStokGrup].[GrupID] AS [GrupID], 
+    [ViewStokGrup].[StokKodu] AS [StokKodu], 
+    [ViewStokGrup].[GrupKodu] AS [GrupKodu], 
+    [ViewStokGrup].[GrupAciklama] AS [GrupAciklama], 
+    [ViewStokGrup].[Deger] AS [Deger], 
+    [ViewStokGrup].[DegerDetay] AS [DegerDetay]
+    FROM [szradmin].[ViewStokGrup] AS [ViewStokGrup]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tblStokAyar_tblStok" Association="Self.FK_tblStokAyar_tblStok">
+            <End Role="tblStok" EntitySet="tblStok" />
+            <End Role="tblStokAyar" EntitySet="tblStokAyar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStokFiyat_tblFiyatTanim" Association="Self.FK_tblStokFiyat_tblFiyatTanim">
+            <End Role="tblFiyatTanim" EntitySet="tblFiyatTanim" />
+            <End Role="tblStokFiyat" EntitySet="tblStokFiyat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStokFiyat_tblStok" Association="Self.FK_tblStokFiyat_tblStok">
+            <End Role="tblStok" EntitySet="tblStok" />
+            <End Role="tblStokFiyat" EntitySet="tblStokFiyat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStokGrup_tblStok" Association="Self.FK_tblStokGrup_tblStok">
+            <End Role="tblStok" EntitySet="tblStok" />
+            <End Role="tblStokGrup" EntitySet="tblStokGrup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStokGrup_tblStokGrupTanim" Association="Self.FK_tblStokGrup_tblStokGrupTanim">
+            <End Role="tblStokGrupTanim" EntitySet="tblStokGrupTanim" />
+            <End Role="tblStokGrup" EntitySet="tblStokGrup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStokGrupDetay_tblStokGrupTanim" Association="Self.FK_tblStokGrupDetay_tblStokGrupTanim">
+            <End Role="tblStokGrupTanim" EntitySet="tblStokGrupTanim" />
+            <End Role="tblStokGrupDetay" EntitySet="tblStokGrupDetay" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SzrBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblFiyatTanim">
+          <Key>
+            <PropertyRef Name="FiyatKodu" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FiyatKodu" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FiyatAciklama" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblStokFiyat" Relationship="Self.FK_tblStokFiyat_tblFiyatTanim" FromRole="tblFiyatTanim" ToRole="tblStokFiyat" />
+        </EntityType>
+        <EntityType Name="tblKDVTanim">
+          <Key>
+            <PropertyRef Name="KDVKodu" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KDVKodu" Type="Int32" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblStok">
+          <Key>
+            <PropertyRef Name="StokKodu" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StokKodu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StokAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AlisKDVOrani" Type="Int32" />
+          <Property Name="SatisKDVOrani" Type="Int32" />
+          <Property Name="OlcuBr" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblStokAyar" Relationship="Self.FK_tblStokAyar_tblStok" FromRole="tblStok" ToRole="tblStokAyar" />
+          <NavigationProperty Name="tblStokFiyat" Relationship="Self.FK_tblStokFiyat_tblStok" FromRole="tblStok" ToRole="tblStokFiyat" />
+          <NavigationProperty Name="tblStokGrup" Relationship="Self.FK_tblStokGrup_tblStok" FromRole="tblStok" ToRole="tblStokGrup" />
+        </EntityType>
+        <EntityType Name="tblStokFiyat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StokKodu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FiyatKodu" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fiyat" Type="Decimal" Precision="28" Scale="18" Nullable="false" />
+          <NavigationProperty Name="tblFiyatTanim" Relationship="Self.FK_tblStokFiyat_tblFiyatTanim" FromRole="tblStokFiyat" ToRole="tblFiyatTanim" />
+          <NavigationProperty Name="tblStok" Relationship="Self.FK_tblStokFiyat_tblStok" FromRole="tblStokFiyat" ToRole="tblStok" />
+        </EntityType>
+        <EntityType Name="tblStokGrup">
+          <Key>
+            <PropertyRef Name="StokKodu" />
+            <PropertyRef Name="GrupKodu" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StokKodu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GrupKodu" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Deger" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblStok" Relationship="Self.FK_tblStokGrup_tblStok" FromRole="tblStokGrup" ToRole="tblStok" />
+          <NavigationProperty Name="tblStokGrupTanim" Relationship="Self.FK_tblStokGrup_tblStokGrupTanim" FromRole="tblStokGrup" ToRole="tblStokGrupTanim" />
+        </EntityType>
+        <EntityType Name="tblStokGrupDetay">
+          <Key>
+            <PropertyRef Name="GrupKodu" />
+            <PropertyRef Name="Deger" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GrupKodu" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Deger" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DegerDetay" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblStokGrupTanim" Relationship="Self.FK_tblStokGrupDetay_tblStokGrupTanim" FromRole="tblStokGrupDetay" ToRole="tblStokGrupTanim" />
+        </EntityType>
+        <EntityType Name="tblStokGrupTanim">
+          <Key>
+            <PropertyRef Name="GrupKodu" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GrupKodu" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GrupAciklama" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblStokGrup" Relationship="Self.FK_tblStokGrup_tblStokGrupTanim" FromRole="tblStokGrupTanim" ToRole="tblStokGrup" />
+          <NavigationProperty Name="tblStokGrupDetay" Relationship="Self.FK_tblStokGrupDetay_tblStokGrupTanim" FromRole="tblStokGrupTanim" ToRole="tblStokGrupDetay" />
+        </EntityType>
+        <EntityType Name="tblTableColDefs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Language" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="TableName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ColumnName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ColumnDef" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblStokAyar">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="StokKodu" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StokKodu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasifStok" Type="Boolean" />
+          <Property Name="SatisYapilmaz" Type="Boolean" />
+          <Property Name="AlisYapilmaz" Type="Boolean" />
+          <Property Name="SiparisYok" Type="Boolean" />
+          <Property Name="TeklifYok" Type="Boolean" />
+          <Property Name="TalepYok" Type="Boolean" />
+          <NavigationProperty Name="tblStok" Relationship="Self.FK_tblStokAyar_tblStok" FromRole="tblStokAyar" ToRole="tblStok" />
+        </EntityType>
+        <EntityType Name="ViewStokFiyat">
+          <Key>
+            <PropertyRef Name="FiyatID" />
+            <PropertyRef Name="StokKodu" />
+            <PropertyRef Name="FiyatKodu" />
+            <PropertyRef Name="Fiyat" />
+            <PropertyRef Name="StokFiyatID" />
+          </Key>
+          <Property Name="FiyatID" Type="Int32" Nullable="false" />
+          <Property Name="StokKodu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FiyatKodu" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FiyatAciklama" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Fiyat" Type="Decimal" Precision="28" Scale="18" Nullable="false" />
+          <Property Name="StokFiyatID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ViewStokGrup">
+          <Key>
+            <PropertyRef Name="GrupID" />
+            <PropertyRef Name="StokKodu" />
+            <PropertyRef Name="GrupKodu" />
+            <PropertyRef Name="Deger" />
+          </Key>
+          <Property Name="GrupID" Type="Int32" Nullable="false" />
+          <Property Name="StokKodu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GrupKodu" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GrupAciklama" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Deger" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DegerDetay" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_tblStokFiyat_tblFiyatTanim">
+          <End Role="tblFiyatTanim" Type="Self.tblFiyatTanim" Multiplicity="1" />
+          <End Role="tblStokFiyat" Type="Self.tblStokFiyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFiyatTanim">
+              <PropertyRef Name="FiyatKodu" />
+            </Principal>
+            <Dependent Role="tblStokFiyat">
+              <PropertyRef Name="FiyatKodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStokAyar_tblStok">
+          <End Role="tblStok" Type="Self.tblStok" Multiplicity="1" />
+          <End Role="tblStokAyar" Type="Self.tblStokAyar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStok">
+              <PropertyRef Name="StokKodu" />
+            </Principal>
+            <Dependent Role="tblStokAyar">
+              <PropertyRef Name="StokKodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStokFiyat_tblStok">
+          <End Role="tblStok" Type="Self.tblStok" Multiplicity="1" />
+          <End Role="tblStokFiyat" Type="Self.tblStokFiyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStok">
+              <PropertyRef Name="StokKodu" />
+            </Principal>
+            <Dependent Role="tblStokFiyat">
+              <PropertyRef Name="StokKodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStokGrup_tblStok">
+          <End Role="tblStok" Type="Self.tblStok" Multiplicity="1" />
+          <End Role="tblStokGrup" Type="Self.tblStokGrup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStok">
+              <PropertyRef Name="StokKodu" />
+            </Principal>
+            <Dependent Role="tblStokGrup">
+              <PropertyRef Name="StokKodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStokGrup_tblStokGrupTanim">
+          <End Role="tblStokGrupTanim" Type="Self.tblStokGrupTanim" Multiplicity="1" />
+          <End Role="tblStokGrup" Type="Self.tblStokGrup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStokGrupTanim">
+              <PropertyRef Name="GrupKodu" />
+            </Principal>
+            <Dependent Role="tblStokGrup">
+              <PropertyRef Name="GrupKodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStokGrupDetay_tblStokGrupTanim">
+          <End Role="tblStokGrupTanim" Type="Self.tblStokGrupTanim" Multiplicity="1" />
+          <End Role="tblStokGrupDetay" Type="Self.tblStokGrupDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStokGrupTanim">
+              <PropertyRef Name="GrupKodu" />
+            </Principal>
+            <Dependent Role="tblStokGrupDetay">
+              <PropertyRef Name="GrupKodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SzrBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblFiyatTanim" EntityType="Self.tblFiyatTanim" />
+          <EntitySet Name="tblKDVTanim" EntityType="Self.tblKDVTanim" />
+          <EntitySet Name="tblStok" EntityType="Self.tblStok" />
+          <EntitySet Name="tblStokFiyat" EntityType="Self.tblStokFiyat" />
+          <EntitySet Name="tblStokGrup" EntityType="Self.tblStokGrup" />
+          <EntitySet Name="tblStokGrupDetay" EntityType="Self.tblStokGrupDetay" />
+          <EntitySet Name="tblStokGrupTanim" EntityType="Self.tblStokGrupTanim" />
+          <EntitySet Name="tblTableColDefs" EntityType="Self.tblTableColDefs" />
+          <EntitySet Name="tblStokAyar" EntityType="Self.tblStokAyar" />
+          <EntitySet Name="ViewStokFiyat" EntityType="Self.ViewStokFiyat" />
+          <EntitySet Name="ViewStokGrup" EntityType="Self.ViewStokGrup" />
+          <AssociationSet Name="FK_tblStokFiyat_tblFiyatTanim" Association="Self.FK_tblStokFiyat_tblFiyatTanim">
+            <End Role="tblFiyatTanim" EntitySet="tblFiyatTanim" />
+            <End Role="tblStokFiyat" EntitySet="tblStokFiyat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStokAyar_tblStok" Association="Self.FK_tblStokAyar_tblStok">
+            <End Role="tblStok" EntitySet="tblStok" />
+            <End Role="tblStokAyar" EntitySet="tblStokAyar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStokFiyat_tblStok" Association="Self.FK_tblStokFiyat_tblStok">
+            <End Role="tblStok" EntitySet="tblStok" />
+            <End Role="tblStokFiyat" EntitySet="tblStokFiyat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStokGrup_tblStok" Association="Self.FK_tblStokGrup_tblStok">
+            <End Role="tblStok" EntitySet="tblStok" />
+            <End Role="tblStokGrup" EntitySet="tblStokGrup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStokGrup_tblStokGrupTanim" Association="Self.FK_tblStokGrup_tblStokGrupTanim">
+            <End Role="tblStokGrupTanim" EntitySet="tblStokGrupTanim" />
+            <End Role="tblStokGrup" EntitySet="tblStokGrup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStokGrupDetay_tblStokGrupTanim" Association="Self.FK_tblStokGrupDetay_tblStokGrupTanim">
+            <End Role="tblStokGrupTanim" EntitySet="tblStokGrupTanim" />
+            <End Role="tblStokGrupDetay" EntitySet="tblStokGrupDetay" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SzrBaseModelStoreContainer" CdmEntityContainer="SzrBaseEntities">
+          <EntitySetMapping Name="tblFiyatTanim">
+            <EntityTypeMapping TypeName="SzrBaseModel.tblFiyatTanim">
+              <MappingFragment StoreEntitySet="tblFiyatTanim">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FiyatKodu" ColumnName="FiyatKodu" />
+                <ScalarProperty Name="FiyatAciklama" ColumnName="FiyatAciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblKDVTanim">
+            <EntityTypeMapping TypeName="SzrBaseModel.tblKDVTanim">
+              <MappingFragment StoreEntitySet="tblKDVTanim">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="KDVKodu" ColumnName="KDVKodu" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStok">
+            <EntityTypeMapping TypeName="SzrBaseModel.tblStok">
+              <MappingFragment StoreEntitySet="tblStok">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StokKodu" ColumnName="StokKodu" />
+                <ScalarProperty Name="StokAdi" ColumnName="StokAdi" />
+                <ScalarProperty Name="AlisKDVOrani" ColumnName="AlisKDVOrani" />
+                <ScalarProperty Name="SatisKDVOrani" ColumnName="SatisKDVOrani" />
+                <ScalarProperty Name="OlcuBr" ColumnName="OlcuBr" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStokFiyat">
+            <EntityTypeMapping TypeName="SzrBaseModel.tblStokFiyat">
+              <MappingFragment StoreEntitySet="tblStokFiyat">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StokKodu" ColumnName="StokKodu" />
+                <ScalarProperty Name="FiyatKodu" ColumnName="FiyatKodu" />
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStokGrup">
+            <EntityTypeMapping TypeName="SzrBaseModel.tblStokGrup">
+              <MappingFragment StoreEntitySet="tblStokGrup">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StokKodu" ColumnName="StokKodu" />
+                <ScalarProperty Name="GrupKodu" ColumnName="GrupKodu" />
+                <ScalarProperty Name="Deger" ColumnName="Deger" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStokGrupDetay">
+            <EntityTypeMapping TypeName="SzrBaseModel.tblStokGrupDetay">
+              <MappingFragment StoreEntitySet="tblStokGrupDetay">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GrupKodu" ColumnName="GrupKodu" />
+                <ScalarProperty Name="Deger" ColumnName="Deger" />
+                <ScalarProperty Name="DegerDetay" ColumnName="DegerDetay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStokGrupTanim">
+            <EntityTypeMapping TypeName="SzrBaseModel.tblStokGrupTanim">
+              <MappingFragment StoreEntitySet="tblStokGrupTanim">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GrupKodu" ColumnName="GrupKodu" />
+                <ScalarProperty Name="GrupAciklama" ColumnName="GrupAciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTableColDefs">
+            <EntityTypeMapping TypeName="SzrBaseModel.tblTableColDefs">
+              <MappingFragment StoreEntitySet="tblTableColDefs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+                <ScalarProperty Name="ColumnDef" ColumnName="ColumnDef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStokAyar">
+            <EntityTypeMapping TypeName="SzrBaseModel.tblStokAyar">
+              <MappingFragment StoreEntitySet="tblStokAyar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StokKodu" ColumnName="StokKodu" />
+                <ScalarProperty Name="PasifStok" ColumnName="PasifStok" />
+                <ScalarProperty Name="SatisYapilmaz" ColumnName="SatisYapilmaz" />
+                <ScalarProperty Name="AlisYapilmaz" ColumnName="AlisYapilmaz" />
+                <ScalarProperty Name="SiparisYok" ColumnName="SiparisYok" />
+                <ScalarProperty Name="TeklifYok" ColumnName="TeklifYok" />
+                <ScalarProperty Name="TalepYok" ColumnName="TalepYok" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewStokFiyat">
+            <EntityTypeMapping TypeName="SzrBaseModel.ViewStokFiyat">
+              <MappingFragment StoreEntitySet="ViewStokFiyat">
+                <ScalarProperty Name="FiyatID" ColumnName="FiyatID" />
+                <ScalarProperty Name="StokKodu" ColumnName="StokKodu" />
+                <ScalarProperty Name="FiyatKodu" ColumnName="FiyatKodu" />
+                <ScalarProperty Name="FiyatAciklama" ColumnName="FiyatAciklama" />
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+                <ScalarProperty Name="StokFiyatID" ColumnName="StokFiyatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewStokGrup">
+            <EntityTypeMapping TypeName="SzrBaseModel.ViewStokGrup">
+              <MappingFragment StoreEntitySet="ViewStokGrup">
+                <ScalarProperty Name="GrupID" ColumnName="GrupID" />
+                <ScalarProperty Name="StokKodu" ColumnName="StokKodu" />
+                <ScalarProperty Name="GrupKodu" ColumnName="GrupKodu" />
+                <ScalarProperty Name="GrupAciklama" ColumnName="GrupAciklama" />
+                <ScalarProperty Name="Deger" ColumnName="Deger" />
+                <ScalarProperty Name="DegerDetay" ColumnName="DegerDetay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

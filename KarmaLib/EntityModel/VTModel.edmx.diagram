@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="050ca0fe707f4768a2b6e2c58744b018" Name="Diagram1">
+        <EntityTypeShape EntityType="SzrBaseModel.tblFiyatTanim" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SzrBaseModel.tblKDVTanim" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SzrBaseModel.tblStok" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SzrBaseModel.tblStokFiyat" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SzrBaseModel.tblStokGrup" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SzrBaseModel.tblStokGrupDetay" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SzrBaseModel.tblStokGrupTanim" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SzrBaseModel.tblTableColDefs" Width="1.5" PointX="5.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="SzrBaseModel.tblStokAyar" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SzrBaseModel.ViewStokFiyat" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="SzrBaseModel.ViewStokGrup" Width="1.5" PointX="7.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="SzrBaseModel.FK_tblStokFiyat_tblFiyatTanim" ManuallyRouted="false" />
+        <AssociationConnector Association="SzrBaseModel.FK_tblStokAyar_tblStok" ManuallyRouted="false" />
+        <AssociationConnector Association="SzrBaseModel.FK_tblStokFiyat_tblStok" ManuallyRouted="false" />
+        <AssociationConnector Association="SzrBaseModel.FK_tblStokGrup_tblStok" ManuallyRouted="false" />
+        <AssociationConnector Association="SzrBaseModel.FK_tblStokGrup_tblStokGrupTanim" ManuallyRouted="false" />
+        <AssociationConnector Association="SzrBaseModel.FK_tblStokGrupDetay_tblStokGrupTanim" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

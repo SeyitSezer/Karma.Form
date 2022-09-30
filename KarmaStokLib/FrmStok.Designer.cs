@@ -159,13 +159,19 @@
             this.PgeStokList.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.PgeStokList.Name = "PgeStokList";
             this.PgeStokList.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
-            this.PgeStokList.Size = new System.Drawing.Size(1476, 641);
+            this.PgeStokList.Size = new System.Drawing.Size(1476, 639);
             this.PgeStokList.Text = "Stok Listesi";
             // 
             // GrdStoklar
             // 
             this.GrdStoklar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GrdStoklar.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.GrdStoklar.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.GrdStoklar.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.GrdStoklar.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.GrdStoklar.EmbeddedNavigator.Buttons.Remove.Visible = false;
             this.GrdStoklar.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.GrdStoklar.EmbeddedNavigator.TextStringFormat = "{1} Kayıttan {0}. kayıt";
             this.GrdStoklar.Font = new System.Drawing.Font("Roboto", 9F);
             this.GrdStoklar.KarmaSQLCalistir = true;
             this.GrdStoklar.KarmaSQLText = "SELECT * FROM tblStok";
@@ -173,7 +179,7 @@
             this.GrdStoklar.MainView = this.ViewStoklar;
             this.GrdStoklar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.GrdStoklar.Name = "GrdStoklar";
-            this.GrdStoklar.Size = new System.Drawing.Size(1476, 641);
+            this.GrdStoklar.Size = new System.Drawing.Size(1476, 639);
             this.GrdStoklar.TabIndex = 0;
             this.GrdStoklar.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.ViewStoklar});
@@ -196,18 +202,19 @@
             this.ViewStoklar.DetailHeight = 377;
             this.ViewStoklar.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.ViewStoklar.GridControl = this.GrdStoklar;
-            this.ViewStoklar.GroupPanelText = "Gruplamak İçin Sütunu Sürükleyip Buraya Bırakın";
+            this.ViewStoklar.GroupPanelText = "Gruplamak için sütunu sürükleyip buraya bırakın";
             this.ViewStoklar.Name = "ViewStoklar";
             this.ViewStoklar.OptionsBehavior.Editable = false;
             this.ViewStoklar.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDown;
             this.ViewStoklar.OptionsFind.AlwaysVisible = true;
             this.ViewStoklar.OptionsFind.FindDelay = 100;
             this.ViewStoklar.OptionsFind.FindMode = DevExpress.XtraEditors.FindMode.Always;
-            this.ViewStoklar.OptionsFind.FindNullPrompt = "Arama Yapmak İçin Buraya Yazın";
+            this.ViewStoklar.OptionsFind.FindNullPrompt = "Aramak için buraya yazın";
             this.ViewStoklar.OptionsFind.ShowFindButton = false;
             this.ViewStoklar.OptionsMenu.EnableColumnMenu = false;
             this.ViewStoklar.OptionsMenu.EnableGroupPanelMenu = false;
             this.ViewStoklar.OptionsView.BestFitMode = DevExpress.XtraGrid.Views.Grid.GridBestFitMode.Fast;
+            this.ViewStoklar.OptionsView.ColumnAutoWidth = false;
             // 
             // gridColumn1
             // 
@@ -284,7 +291,7 @@
             this.PgeStokIslem.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.PgeStokIslem.Name = "PgeStokIslem";
             this.PgeStokIslem.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
-            this.PgeStokIslem.Size = new System.Drawing.Size(1476, 641);
+            this.PgeStokIslem.Size = new System.Drawing.Size(1476, 639);
             this.PgeStokIslem.Text = "Stok Bilgisi";
             // 
             // karmaPanel3
@@ -302,7 +309,7 @@
             this.karmaPanel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.karmaPanel3.Name = "karmaPanel3";
             this.karmaPanel3.ShowCaption = false;
-            this.karmaPanel3.Size = new System.Drawing.Size(1476, 423);
+            this.karmaPanel3.Size = new System.Drawing.Size(1476, 421);
             this.karmaPanel3.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -319,7 +326,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1472, 419);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1472, 417);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // karmaPanel4
@@ -337,7 +344,7 @@
             this.karmaPanel4.Location = new System.Drawing.Point(444, 3);
             this.karmaPanel4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.karmaPanel4.Name = "karmaPanel4";
-            this.karmaPanel4.Size = new System.Drawing.Size(432, 413);
+            this.karmaPanel4.Size = new System.Drawing.Size(432, 411);
             this.karmaPanel4.TabIndex = 5;
             this.karmaPanel4.Text = "Grup Bilgileri";
             // 
@@ -351,7 +358,7 @@
             this.GrdStokGrup.MainView = this.ViewStokGrup;
             this.GrdStokGrup.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.GrdStokGrup.Name = "GrdStokGrup";
-            this.GrdStokGrup.Size = new System.Drawing.Size(428, 321);
+            this.GrdStokGrup.Size = new System.Drawing.Size(428, 319);
             this.GrdStokGrup.TabIndex = 1;
             this.GrdStokGrup.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.ViewStokGrup});
@@ -366,7 +373,7 @@
             this.ViewStokGrup.DetailHeight = 377;
             this.ViewStokGrup.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.ViewStokGrup.GridControl = this.GrdStokGrup;
-            this.ViewStokGrup.GroupPanelText = "Gruplamak İçin Sütunu Sürükleyip Buraya Bırakın";
+            this.ViewStokGrup.GroupPanelText = "Gruplamak için sütunu sürükleyip buraya bırakın";
             this.ViewStokGrup.Name = "ViewStokGrup";
             this.ViewStokGrup.OptionsBehavior.Editable = false;
             this.ViewStokGrup.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDown;
@@ -374,11 +381,12 @@
             this.ViewStokGrup.OptionsFind.AlwaysVisible = true;
             this.ViewStokGrup.OptionsFind.FindDelay = 100;
             this.ViewStokGrup.OptionsFind.FindMode = DevExpress.XtraEditors.FindMode.Always;
-            this.ViewStokGrup.OptionsFind.FindNullPrompt = "Arama Yapmak İçin Buraya Yazın";
+            this.ViewStokGrup.OptionsFind.FindNullPrompt = "Aramak için buraya yazın";
             this.ViewStokGrup.OptionsFind.ShowFindButton = false;
             this.ViewStokGrup.OptionsMenu.EnableColumnMenu = false;
             this.ViewStokGrup.OptionsMenu.EnableGroupPanelMenu = false;
             this.ViewStokGrup.OptionsView.BestFitMode = DevExpress.XtraGrid.Views.Grid.GridBestFitMode.Fast;
+            this.ViewStokGrup.OptionsView.ColumnAutoWidth = false;
             this.ViewStokGrup.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn10
@@ -565,7 +573,7 @@
             this.karmaPanel2.Location = new System.Drawing.Point(4, 3);
             this.karmaPanel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.karmaPanel2.Name = "karmaPanel2";
-            this.karmaPanel2.Size = new System.Drawing.Size(432, 413);
+            this.karmaPanel2.Size = new System.Drawing.Size(432, 411);
             this.karmaPanel2.TabIndex = 4;
             this.karmaPanel2.Text = "Fiyat Bilgileri";
             // 
@@ -579,7 +587,7 @@
             this.GrdStokFiyat.MainView = this.ViewStokFiyat;
             this.GrdStokFiyat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.GrdStokFiyat.Name = "GrdStokFiyat";
-            this.GrdStokFiyat.Size = new System.Drawing.Size(428, 321);
+            this.GrdStokFiyat.Size = new System.Drawing.Size(428, 319);
             this.GrdStokFiyat.TabIndex = 1;
             this.GrdStokFiyat.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.ViewStokFiyat});
@@ -593,7 +601,7 @@
             this.ViewStokFiyat.DetailHeight = 377;
             this.ViewStokFiyat.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.ViewStokFiyat.GridControl = this.GrdStokFiyat;
-            this.ViewStokFiyat.GroupPanelText = "Gruplamak İçin Sütunu Sürükleyip Buraya Bırakın";
+            this.ViewStokFiyat.GroupPanelText = "Gruplamak için sütunu sürükleyip buraya bırakın";
             this.ViewStokFiyat.Name = "ViewStokFiyat";
             this.ViewStokFiyat.OptionsBehavior.Editable = false;
             this.ViewStokFiyat.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDown;
@@ -601,11 +609,12 @@
             this.ViewStokFiyat.OptionsFind.AlwaysVisible = true;
             this.ViewStokFiyat.OptionsFind.FindDelay = 100;
             this.ViewStokFiyat.OptionsFind.FindMode = DevExpress.XtraEditors.FindMode.Always;
-            this.ViewStokFiyat.OptionsFind.FindNullPrompt = "Arama Yapmak İçin Buraya Yazın";
+            this.ViewStokFiyat.OptionsFind.FindNullPrompt = "Aramak için buraya yazın";
             this.ViewStokFiyat.OptionsFind.ShowFindButton = false;
             this.ViewStokFiyat.OptionsMenu.EnableColumnMenu = false;
             this.ViewStokFiyat.OptionsMenu.EnableGroupPanelMenu = false;
             this.ViewStokFiyat.OptionsView.BestFitMode = DevExpress.XtraGrid.Views.Grid.GridBestFitMode.Fast;
+            this.ViewStokFiyat.OptionsView.ColumnAutoWidth = false;
             this.ViewStokFiyat.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn8
@@ -771,7 +780,7 @@
             this.PnlStokAyar.KarmaTableName = null;
             this.PnlStokAyar.Location = new System.Drawing.Point(883, 3);
             this.PnlStokAyar.Name = "PnlStokAyar";
-            this.PnlStokAyar.Size = new System.Drawing.Size(586, 413);
+            this.PnlStokAyar.Size = new System.Drawing.Size(586, 411);
             this.PnlStokAyar.TabIndex = 6;
             this.PnlStokAyar.Text = "Stok Ayarları";
             // 

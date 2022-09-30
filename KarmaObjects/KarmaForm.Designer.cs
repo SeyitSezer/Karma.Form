@@ -224,8 +224,8 @@
             // 
             // KarmaForm
             // 
-            this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.Appearance.ForeColor = System.Drawing.Color.White;
+            this.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.Appearance.ForeColor = System.Drawing.Color.Black;
             this.Appearance.Options.UseBackColor = true;
             this.Appearance.Options.UseFont = true;
             this.Appearance.Options.UseForeColor = true;

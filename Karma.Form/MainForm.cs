@@ -17,6 +17,7 @@ using DevExpress.XtraTab;
 using System.Threading;
 using KarmaUserLib;
 using KarmaLib;
+using DevExpress.LookAndFeel;
 
 namespace Karma_Form
 {
@@ -51,6 +52,7 @@ namespace Karma_Form
             StatusServerName.Caption = $"Çalışılan Şirket: {DatabaseName}({AppServer})";
             AppVersion.Caption = VersionInfos.KarmaFormExe;
             //GetTableColumnList("tblStocks");
+            UserLookAndFeel.Default.SkinName = Properties.Settings.Default.Theme;
         }
 
 
@@ -62,6 +64,9 @@ namespace Karma_Form
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Properties.Settings.Default.Theme = LookAndFeel.ActiveSkinName;
+            Properties.Settings.Default.Palette = LookAndFeel.ActiveSvgPaletteName;
+            Properties.Settings.Default.Save();
             e.Cancel = (DialogResult.Yes != Sor("Program Kapatılacak, Devam Edilsin Mi?", 1, "Onayınız Gerekiyor"));
         }
 
@@ -77,6 +82,11 @@ namespace Karma_Form
         private void tileItem2_ItemClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             PleaseWait(new Thread(() => CreateForm(new FrmStok())));
+        }
+
+        private void MainTabControl_SelectedPageChanged(object sender, TabPageChangedEventArgs e)
+        {
+            SelectTheme.Enabled = MainTabControl.TabPages.Count <= 1;
         }
     }        
 }

@@ -92,8 +92,6 @@ namespace KarmaObjects
         
         protected override void OnCreateControl()
         {
-            BackColor = Color.FromArgb(45, 45, 45);
-            ForeColor = Color.White;
             if (KarmaButtonType == KarmaButtonTypes.Topluİşlem)
             {
                 MnuKaydet = new ToolStripMenuItem();
@@ -103,28 +101,20 @@ namespace KarmaObjects
                 // 
                 MnuKaydet.Text = "Kaydı Sakla";
                 MnuKaydet.Name = "MnuKaydet";
-                MnuKaydet.BackColor = Color.FromArgb(45, 45, 45);
-                MnuKaydet.ForeColor = this.ForeColor;
                 MnuKaydet.Click += MnuKaydet_Click;
                 // 
                 // MnuSil
                 // 
                 MnuSil.Text = "Kaydı Sil";
                 MnuSil.Name = "MnuSil";
-                MnuSil.BackColor = Color.FromArgb(45, 45, 45);
-                MnuSil.ForeColor = this.ForeColor;
                 MnuSil.Click += MnuSil_Click; ;
                 // 
                 // MnuYeniKayit
                 // 
                 MnuYeniKayit.Text = "Yeni Kayıt";
                 MnuYeniKayit.Name = "MnuYeniKayit";
-                MnuYeniKayit.BackColor = Color.FromArgb(45, 45, 45);
-                MnuYeniKayit.ForeColor = this.ForeColor;
                 MnuYeniKayit.Click += MnuYeniKayit_Click;
 
-                ButtonMenu.BackColor = Color.FromArgb(45, 45, 45);
-                ButtonMenu.ForeColor = this.ForeColor;
                 ButtonMenu.ShowImageMargin = false;
                 ButtonMenu.Items.AddRange(new ToolStripMenuItem[] { MnuKaydet, MnuSil, MnuYeniKayit });
                 ButtonMenu.Name = "ButtonMenu";
