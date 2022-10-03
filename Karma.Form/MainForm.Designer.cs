@@ -88,6 +88,7 @@
             this.AppVersion = new DevExpress.XtraBars.BarStaticItem();
             this.SelectTheme = new DevExpress.XtraBars.SkinBarSubItem();
             this.ThemeColor = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
+            this.NotifyButton = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -96,9 +97,14 @@
             this.MnuKaydet = new DevExpress.XtraBars.BarButtonItem();
             this.MnuSil = new DevExpress.XtraBars.BarButtonItem();
             this.MnuYeniKayit = new DevExpress.XtraBars.BarButtonItem();
+            this.barToolbarsListItem1 = new DevExpress.XtraBars.BarToolbarsListItem();
             this.AppMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.MainTabControl = new KarmaObjects.KarmaTab(this.components);
             this.tileItem1 = new DevExpress.XtraEditors.TileItem();
+            this.GenelAlert = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
+            this.tileControl1 = new DevExpress.XtraEditors.TileControl();
+            this.BildirimGroup = new DevExpress.XtraEditors.TileGroup();
+            this.BildirimList = new DevExpress.XtraEditors.TileControl();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainBarManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AppMenu)).BeginInit();
@@ -111,6 +117,12 @@
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(1120, 566);
             this.xtraTabPage2.Text = "xtraTabPage2";
+            // 
+            // MainTimer
+            // 
+            this.MainTimer.Enabled = true;
+            this.MainTimer.Interval = 15000;
+            this.MainTimer.Tick += new System.EventHandler(this.MainTimer_Tick);
             // 
             // DesktopTab
             // 
@@ -208,9 +220,11 @@
             this.StatusServerName,
             this.AppVersion,
             this.SelectTheme,
-            this.ThemeColor});
+            this.ThemeColor,
+            this.barToolbarsListItem1,
+            this.NotifyButton});
             this.MainBarManager.MainMenu = this.MainMenu;
-            this.MainBarManager.MaxItemId = 60;
+            this.MainBarManager.MaxItemId = 62;
             this.MainBarManager.StatusBar = this.bar1;
             // 
             // MainMenu
@@ -565,7 +579,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.StatusServerName),
             new DevExpress.XtraBars.LinkPersistInfo(this.AppVersion),
             new DevExpress.XtraBars.LinkPersistInfo(this.SelectTheme),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ThemeColor)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.ThemeColor),
+            new DevExpress.XtraBars.LinkPersistInfo(this.NotifyButton)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.OptionsBar.UseWholeRow = true;
@@ -605,37 +620,48 @@
             this.ThemeColor.Name = "ThemeColor";
             this.ThemeColor.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
+            // NotifyButton
+            // 
+            this.NotifyButton.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.NotifyButton.Caption = "0";
+            this.NotifyButton.Id = 61;
+            this.NotifyButton.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.False;
+            this.NotifyButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("NotifyButton.ImageOptions.SvgImage")));
+            this.NotifyButton.Name = "NotifyButton";
+            this.NotifyButton.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.NotifyButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NotifyButton_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.MainBarManager;
-            this.barDockControlTop.Size = new System.Drawing.Size(1216, 20);
+            this.barDockControlTop.Size = new System.Drawing.Size(1216, 23);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 576);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 577);
             this.barDockControlBottom.Manager = this.MainBarManager;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1216, 26);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1216, 25);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 23);
             this.barDockControlLeft.Manager = this.MainBarManager;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 556);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 554);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1216, 20);
+            this.barDockControlRight.Location = new System.Drawing.Point(1216, 23);
             this.barDockControlRight.Manager = this.MainBarManager;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 556);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 554);
             // 
             // MnuStokTransfer
             // 
@@ -661,6 +687,12 @@
             this.MnuYeniKayit.Id = 51;
             this.MnuYeniKayit.Name = "MnuYeniKayit";
             // 
+            // barToolbarsListItem1
+            // 
+            this.barToolbarsListItem1.Caption = "barToolbarsListItem1";
+            this.barToolbarsListItem1.Id = 60;
+            this.barToolbarsListItem1.Name = "barToolbarsListItem1";
+            // 
             // AppMenu
             // 
             this.AppMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -681,11 +713,11 @@
             this.MainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainTabControl.KarmaCloseButton = false;
             this.MainTabControl.KarmaCloseButtonMessageActive = true;
-            this.MainTabControl.Location = new System.Drawing.Point(0, 20);
+            this.MainTabControl.Location = new System.Drawing.Point(0, 23);
             this.MainTabControl.Name = "MainTabControl";
             this.MainTabControl.PaintStyleName = "Skin";
             this.MainTabControl.SelectedTabPage = this.DesktopTab;
-            this.MainTabControl.Size = new System.Drawing.Size(1216, 556);
+            this.MainTabControl.Size = new System.Drawing.Size(1216, 554);
             this.MainTabControl.TabIndex = 2;
             this.MainTabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.DesktopTab});
@@ -698,6 +730,47 @@
             // 
             this.tileItem1.Name = "tileItem1";
             // 
+            // GenelAlert
+            // 
+            this.GenelAlert.ControlBoxPosition = DevExpress.XtraBars.Alerter.AlertFormControlBoxPosition.Right;
+            this.GenelAlert.FormDisplaySpeed = DevExpress.XtraBars.Alerter.AlertFormDisplaySpeed.Slow;
+            this.GenelAlert.FormShowingEffect = DevExpress.XtraBars.Alerter.AlertFormShowingEffect.SlideVertical;
+            // 
+            // tileControl1
+            // 
+            this.tileControl1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.tileControl1.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.tileControl1.IndentBetweenItems = 5;
+            this.tileControl1.Location = new System.Drawing.Point(1216, 23);
+            this.tileControl1.MaxId = 4;
+            this.tileControl1.Name = "tileControl1";
+            this.tileControl1.OptionsAdaptiveLayout.ItemMinSize = new System.Drawing.Size(120, 50);
+            this.tileControl1.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.tileControl1.RowCount = 50;
+            this.tileControl1.Size = new System.Drawing.Size(0, 554);
+            this.tileControl1.TabIndex = 8;
+            this.tileControl1.Text = "tileControl1";
+            // 
+            // BildirimGroup
+            // 
+            this.BildirimGroup.Name = "BildirimGroup";
+            // 
+            // BildirimList
+            // 
+            this.BildirimList.AllowDrag = false;
+            this.BildirimList.AllowDragTilesBetweenGroups = false;
+            this.BildirimList.AllowSmoothScrolling = false;
+            this.BildirimList.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BildirimList.Groups.Add(this.BildirimGroup);
+            this.BildirimList.IndentBetweenGroups = 0;
+            this.BildirimList.Location = new System.Drawing.Point(966, 23);
+            this.BildirimList.MaxId = 3;
+            this.BildirimList.Name = "BildirimList";
+            this.BildirimList.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.BildirimList.Size = new System.Drawing.Size(250, 554);
+            this.BildirimList.TabIndex = 9;
+            this.BildirimList.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.NotifyButtonClick);
+            // 
             // MainForm
             // 
             this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
@@ -708,7 +781,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1216, 602);
+            this.Controls.Add(this.BildirimList);
             this.Controls.Add(this.MainTabControl);
+            this.Controls.Add(this.tileControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -717,13 +792,16 @@
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.Name = "MainForm";
             this.Text = "Karma";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Controls.SetChildIndex(this.barDockControlTop, 0);
             this.Controls.SetChildIndex(this.barDockControlBottom, 0);
             this.Controls.SetChildIndex(this.barDockControlRight, 0);
             this.Controls.SetChildIndex(this.barDockControlLeft, 0);
+            this.Controls.SetChildIndex(this.tileControl1, 0);
             this.Controls.SetChildIndex(this.MainTabControl, 0);
+            this.Controls.SetChildIndex(this.BildirimList, 0);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainBarManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AppMenu)).EndInit();
@@ -804,6 +882,12 @@
         private DevExpress.XtraBars.BarStaticItem AppVersion;
         private DevExpress.XtraBars.SkinBarSubItem SelectTheme;
         private DevExpress.XtraBars.SkinPaletteDropDownButtonItem ThemeColor;
+        private DevExpress.XtraBars.Alerter.AlertControl GenelAlert;
+        private DevExpress.XtraBars.BarToolbarsListItem barToolbarsListItem1;
+        private DevExpress.XtraBars.BarButtonItem NotifyButton;
+        private DevExpress.XtraEditors.TileControl tileControl1;
+        private DevExpress.XtraEditors.TileGroup BildirimGroup;
+        private DevExpress.XtraEditors.TileControl BildirimList;
     }
 }
 

@@ -44,6 +44,17 @@ namespace KarmaObjects
         {
             return IsOn ? KarmaCheckedValue.ToDecimal() : KarmaUnCheckedValue.ToDecimal();
         }
+
+        public void KarmaSetValue(object value)
+        {
+            if (value is bool)
+                IsOn = (value.ToBool());
+            else
+            {
+                IsOn = KarmaCheckedValue == value.ToString();
+            }
+        }
+
         public string KarmaFieldName { get; set; }
 
         public string GetSQLText { get => "'" + GetFieldData + "'"; }

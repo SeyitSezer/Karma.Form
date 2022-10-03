@@ -13,5 +13,6 @@ namespace KarmaObjects
         string GetSQLText { get; }
         object GetFieldData { get; }
         bool IsNull { get; }
+        void KarmaSetValue(object value);
     }
 }

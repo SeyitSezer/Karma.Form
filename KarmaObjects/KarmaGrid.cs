@@ -66,6 +66,7 @@ namespace KarmaObjects
             if (AppRunning && KarmaSQLCalistir && !string.IsNullOrEmpty(KarmaSQLText))
             {
                 GetData(KarmaSQLText);
+                _Sigdir.PerformClick();
             }
         }
 
@@ -126,7 +127,7 @@ namespace KarmaObjects
 
         private void MnuBestFitClick(object sender, EventArgs e)
         {
-            ((GridView)MainView).BestFitColumns(true);
+            ((GridView)MainView).BestFitColumns();
         }
 
         private void _Yenile_Click(object sender, EventArgs e)

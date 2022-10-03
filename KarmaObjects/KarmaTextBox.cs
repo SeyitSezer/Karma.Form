@@ -433,6 +433,11 @@ namespace KarmaObjects
             }
             base.OnLeave(e);
         }
+
+        public void KarmaSetValue(object value)
+        {
+            Text = value.ToString();
+        }
     }
 
     public enum KarmaFieldTypes

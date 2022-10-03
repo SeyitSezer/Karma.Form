@@ -79,6 +79,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KarmaBildirimItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="KarmaButton.cs">
       <SubType>Component</SubType>
     </Compile>

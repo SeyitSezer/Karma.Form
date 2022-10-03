@@ -116,6 +116,12 @@ namespace KarmaObjects
             else
                 return DateTime.MinValue;
         }
+
+        public void KarmaSetValue(object value)
+        {
+            EditValue = value;
+        }
+
         public object GetFieldData
         {
             get

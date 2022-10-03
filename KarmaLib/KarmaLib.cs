@@ -25,6 +25,29 @@ namespace KarmaLib
                 return image;
             }
         }
+
+        public static XtraForm FindFormByName(string FormName)
+        {
+            XtraForm xtraForm = null;
+            System.Reflection.Assembly myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
+            System.Reflection.Assembly stokLib = System.Reflection.Assembly.LoadFile(Application.StartupPath + "\\KarmaStokLib.dll");
+            List<Type> _types = new List<Type>();
+            _types.AddRange(myAssembly.GetTypes());
+            _types.AddRange(stokLib.GetTypes());
+            foreach (Type type in _types)
+            {
+                if (type.BaseType.FullName == "DexExpress.XtraEditors.XtraForm" || type.BaseType.FullName == "KarmaObjects.KarmaForm")
+                {
+                    if (type.Name == FormName)
+                    {
+                        var form = Activator.CreateInstance(type) as XtraForm;
+                        xtraForm = form;
+                        break;
+                    }
+                }
+            }
+            return xtraForm;
+        }
         public static bool AppRunning { get; set; } = false;
 
         public static string KarmaBase64ToString(string base64string)
