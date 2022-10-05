@@ -40,17 +40,19 @@ namespace KarmaObjects
             }
             if (!string.IsNullOrEmpty(KarmaLookUpTable) && !string.IsNullOrEmpty(KarmaLookupDisplayField) && !string.IsNullOrEmpty(KarmaLookupValueField))
             {
-                Properties.DataSource = GetSQLData("SELECT " + KarmaLookupValueField + "," + KarmaLookupDisplayField + " FROM " + KarmaLookUpTable + " WHERE 1=1 " + KarmaLookupFilter + ekFiltre);
+                Properties.DataSource = GetSQLData("SELECT " + KarmaLookupValueField + "," + KarmaLookupDisplayField + " FROM " + KarmaLookUpTable + " WHERE 1=1 " + KarmaLookupFilter + ekFiltre, KarmaAddSirketWhere, KarmaAddYilWhere);
                 Properties.DisplayMember = KarmaLookupDisplayField;
                 Properties.ValueMember = KarmaLookupValueField;
             }
         }
-        public bool IsNull { get => GetFieldData is null; }
+        public bool IsNull { get => GetFieldData is null || string.IsNullOrEmpty(GetFieldData.ToString()); }
         public string KarmaFieldName { get; set; }
         public string KarmaLookUpTable { get; set; }
         public string KarmaLookupDisplayField { get; set; }
         public string KarmaLookupValueField { get; set; }
         public string KarmaLookupFilter { get; set; }
+        public bool KarmaAddSirketWhere { get; set; } = false;
+        public bool KarmaAddYilWhere { get; set; } = false;
         public KarmaValueTypes KarmaValueType { get; set; }
         public KarmaFieldTypes KarmaFieldType { get; set; }
         public KarmaComboBox KarmaMasterObject { get => ustobj; set { ustobj = value; if (!(ustobj is null)) ustobj.altobj = this; } }
@@ -165,6 +167,8 @@ namespace KarmaObjects
                 return deger;
             }
         }
+
+        bool KarmaObject.KarmaIsRequired { get;set; }
     }
     public enum KarmaValueTypes
     {

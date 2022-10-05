@@ -33,9 +33,6 @@
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.MainTimer = new System.Windows.Forms.Timer(this.components);
             this.DesktopTab = new DevExpress.XtraTab.XtraTabPage();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.stokIslemleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stokKartlarıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainBarManager = new DevExpress.XtraBars.BarManager(this.components);
             this.MainMenu = new DevExpress.XtraBars.Bar();
             this.MnuSistem = new DevExpress.XtraBars.BarSubItem();
@@ -103,9 +100,10 @@
             this.tileItem1 = new DevExpress.XtraEditors.TileItem();
             this.GenelAlert = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.tileControl1 = new DevExpress.XtraEditors.TileControl();
-            this.BildirimGroup = new DevExpress.XtraEditors.TileGroup();
             this.BildirimList = new DevExpress.XtraEditors.TileControl();
-            this.contextMenuStrip1.SuspendLayout();
+            this.BildirimGroup = new DevExpress.XtraEditors.TileGroup();
+            this.Timer1Sn = new System.Windows.Forms.Timer(this.components);
+            this.StatusUser = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.MainBarManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AppMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainTabControl)).BeginInit();
@@ -130,28 +128,6 @@
             this.DesktopTab.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
             this.DesktopTab.Size = new System.Drawing.Size(1214, 527);
             this.DesktopTab.Text = "Ana Sayfa";
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stokIslemleriToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(145, 26);
-            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
-            // 
-            // stokIslemleriToolStripMenuItem
-            // 
-            this.stokIslemleriToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stokKartlarıToolStripMenuItem});
-            this.stokIslemleriToolStripMenuItem.Name = "stokIslemleriToolStripMenuItem";
-            this.stokIslemleriToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.stokIslemleriToolStripMenuItem.Text = "Stok İşlemleri";
-            // 
-            // stokKartlarıToolStripMenuItem
-            // 
-            this.stokKartlarıToolStripMenuItem.Name = "stokKartlarıToolStripMenuItem";
-            this.stokKartlarıToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
-            this.stokKartlarıToolStripMenuItem.Text = "Stok Kartları";
             // 
             // MainBarManager
             // 
@@ -222,9 +198,10 @@
             this.SelectTheme,
             this.ThemeColor,
             this.barToolbarsListItem1,
-            this.NotifyButton});
+            this.NotifyButton,
+            this.StatusUser});
             this.MainBarManager.MainMenu = this.MainMenu;
-            this.MainBarManager.MaxItemId = 62;
+            this.MainBarManager.MaxItemId = 63;
             this.MainBarManager.StatusBar = this.bar1;
             // 
             // MainMenu
@@ -580,7 +557,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.AppVersion),
             new DevExpress.XtraBars.LinkPersistInfo(this.SelectTheme),
             new DevExpress.XtraBars.LinkPersistInfo(this.ThemeColor),
-            new DevExpress.XtraBars.LinkPersistInfo(this.NotifyButton)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.NotifyButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.StatusUser)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.OptionsBar.UseWholeRow = true;
@@ -588,9 +566,11 @@
             // 
             // StatusServerName
             // 
-            this.StatusServerName.Caption = "Seyit";
+            this.StatusServerName.Caption = "Bağlandı";
             this.StatusServerName.Id = 54;
             this.StatusServerName.Name = "StatusServerName";
+            this.StatusServerName.Size = new System.Drawing.Size(250, 0);
+            this.StatusServerName.Width = 250;
             // 
             // AppVersion
             // 
@@ -751,10 +731,6 @@
             this.tileControl1.TabIndex = 8;
             this.tileControl1.Text = "tileControl1";
             // 
-            // BildirimGroup
-            // 
-            this.BildirimGroup.Name = "BildirimGroup";
-            // 
             // BildirimList
             // 
             this.BildirimList.AllowDrag = false;
@@ -763,13 +739,31 @@
             this.BildirimList.Dock = System.Windows.Forms.DockStyle.Right;
             this.BildirimList.Groups.Add(this.BildirimGroup);
             this.BildirimList.IndentBetweenGroups = 0;
-            this.BildirimList.Location = new System.Drawing.Point(966, 23);
+            this.BildirimList.Location = new System.Drawing.Point(1166, 23);
             this.BildirimList.MaxId = 3;
             this.BildirimList.Name = "BildirimList";
             this.BildirimList.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.BildirimList.Size = new System.Drawing.Size(250, 554);
-            this.BildirimList.TabIndex = 9;
+            this.BildirimList.Size = new System.Drawing.Size(50, 554);
+            this.BildirimList.TabIndex = 14;
             this.BildirimList.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.NotifyButtonClick);
+            // 
+            // BildirimGroup
+            // 
+            this.BildirimGroup.Name = "BildirimGroup";
+            // 
+            // Timer1Sn
+            // 
+            this.Timer1Sn.Enabled = true;
+            this.Timer1Sn.Interval = 1000;
+            this.Timer1Sn.Tick += new System.EventHandler(this.Timer1Sn_Tick);
+            // 
+            // StatusUser
+            // 
+            this.StatusUser.Caption = "Administrator";
+            this.StatusUser.Id = 62;
+            this.StatusUser.Name = "StatusUser";
+            this.StatusUser.Size = new System.Drawing.Size(100, 0);
+            this.StatusUser.Width = 100;
             // 
             // MainForm
             // 
@@ -802,7 +796,6 @@
             this.Controls.SetChildIndex(this.tileControl1, 0);
             this.Controls.SetChildIndex(this.MainTabControl, 0);
             this.Controls.SetChildIndex(this.BildirimList, 0);
-            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainBarManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AppMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainTabControl)).EndInit();
@@ -873,9 +866,6 @@
         private DevExpress.XtraBars.BarButtonItem MnuYeniKayit;
         private DevExpress.XtraBars.BarButtonItem MnuUserSettings;
         private DevExpress.XtraBars.BarSubItem MnuKullanici;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem stokIslemleriToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem stokKartlarıToolStripMenuItem;
         private DevExpress.XtraEditors.TileItem tileItem1;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.BarStaticItem StatusServerName;
@@ -886,8 +876,10 @@
         private DevExpress.XtraBars.BarToolbarsListItem barToolbarsListItem1;
         private DevExpress.XtraBars.BarButtonItem NotifyButton;
         private DevExpress.XtraEditors.TileControl tileControl1;
-        private DevExpress.XtraEditors.TileGroup BildirimGroup;
         private DevExpress.XtraEditors.TileControl BildirimList;
+        private DevExpress.XtraEditors.TileGroup BildirimGroup;
+        private System.Windows.Forms.Timer Timer1Sn;
+        private DevExpress.XtraBars.BarStaticItem StatusUser;
     }
 }
 

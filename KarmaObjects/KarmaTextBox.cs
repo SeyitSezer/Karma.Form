@@ -44,6 +44,8 @@ namespace KarmaObjects
         public string KarmaGuideFields { get; set; }
         public string KarmaGuideFilter { get; set; }
         public string KarmaGuideName { get; set; }
+        public bool KarmaAddSirketWhere { get; set; } = false;
+        public bool KarmaAddYilWhere { get; set; } = false;
         public BorderStyles BorderStyle { get; set; } = BorderStyles.UltraFlat;
 
         public void xOnKeyDown(object sender, KeyEventArgs e)
@@ -288,7 +290,7 @@ namespace KarmaObjects
 
         private void _Guide_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
-            KarmaRehber rehber = new KarmaRehber(KarmaGuideTableName, KarmaGuideFields, KarmaGuideColumnName, KarmaGuideFilter, KarmaGuideName);
+            KarmaRehber rehber = new KarmaRehber(KarmaGuideTableName, KarmaGuideFields, KarmaGuideColumnName, KarmaGuideFilter, KarmaGuideName, KarmaAddSirketWhere, KarmaAddYilWhere);
             rehber.ShowDialog();
             Text = rehber.Sonuc;
             if (!(KarmaOnGuideClick is null))
@@ -424,6 +426,8 @@ namespace KarmaObjects
                 return deger;
             }
         }
+
+        public bool KarmaIsRequired { get; set; }
 
         protected override void OnLeave(EventArgs e)
         {

@@ -25,12 +25,16 @@ namespace KarmaUserLib
     {
         public bool ExportData { get; set; }
         public bool ImportData { get; set; }
+        public string AccessIP { get; set; }
+        public int MaxAccessCount { get; set; }
+        public int CurrAccessCount { get; set; }
     }
     public class User
     {
         public int UserID { get; set; }
         public bool IsAdmin { get; set; }
         public string UserName { get; set; }
+        public string UserNickName { get; set; }
         public string FullName { get; set; }
         public string EMailAdress { get; set; }
         public string GSMNumber { get; set; }
@@ -42,7 +46,7 @@ namespace KarmaUserLib
         public static List<UserNotification> GetUserNotifications(int UserID,bool IsUnread = true)
         {
             List<UserNotification> notifys = new List<UserNotification>();
-            string SQL = $"SELECT * FROM tblUserNotify WHERE (UserID = {UserID} )";
+            string SQL = $"SELECT * FROM tblUserNotify WHERE (UserID = {UserID} or UserID = -1)";
             SQL += IsUnread? " AND IsRead = 0" : "";
             var data = GetSQLData(SQL);
             foreach(DataRow row in data.Rows)

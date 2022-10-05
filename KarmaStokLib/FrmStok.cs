@@ -18,6 +18,8 @@ namespace KarmaStokLib
         public FrmStok()
         {
             InitializeComponent();
+            PnlStokMas.AddChildPanel(PnlStokAyar);
+            PnlStokMas.AddChildPanel(PnlStokPlan);
         }
 
         private void GrdStoklar_DoubleClick(object sender, EventArgs e)
@@ -32,5 +34,10 @@ namespace KarmaStokLib
             GrdStokGrup.GetData("SELECT * FROM ViewStokGrup WHERE StokKodu = " + StokKodu.GetSQLText);
         }
 
+       
+
+        private void FrmStok_Load(object sender, EventArgs e)
+        {
+        }
     }
 }

@@ -24,12 +24,19 @@ namespace KarmaObjects
             //    BackColor = Parent.BackColor;
             if (Text.Length <= 0 || Text == Name) ShowCaption = false;
         }
-        public override string Text { get
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
+        }
+        public override string Text
+        {
+            get
             {
                 ShowCaption = (base.Text.Length > 0 && base.Text != Name);
                 return base.Text;
-            } 
-            set => base.Text = value; }
+            }
+            set => base.Text = value;
+        }
         public KarmaPanel(IContainer container)
         {
             container.Add(this);
@@ -43,7 +50,20 @@ namespace KarmaObjects
         public KarmaObject KarmaSecTextBox { get; set; }
         public KarmaButton KarmaMasterButton { get; set; }
         public KarmaGrid KarmaGridControl { get { return controlgrid; } set { controlgrid = value; if (!(controlgrid is null)) controlgrid.MasterPanel = this; } }
-        public KarmaPanel[] KarmaChildPanels { get; set; }
+        public List<KarmaPanel> KarmaChildPanels = new List<KarmaPanel>();
+        public void AddChildPanel(KarmaPanel panel)
+        {
+            bool sonuc = false;
+            foreach (var x in KarmaChildPanels)
+            {
+                sonuc = x == panel;
+                if (sonuc) break;
+            }
+            if (!sonuc) KarmaChildPanels.Add(panel);
+        }
+
+        public bool KarmaAddSirketWhere { get; set; } = false;
+        public bool KarmaAddYilWhere { get; set; } = false;
         string SQLFilter
         {
             get
@@ -82,18 +102,22 @@ namespace KarmaObjects
                             }
                         }
                     }
-                    
+
                 }
-                if (GetSQLData("SELECT * FROM " + KarmaTableName + " WHERE " + SQLFilter).Rows.Count == 0)
+                if (GetSQLData("SELECT * FROM " + KarmaTableName + " WHERE " + SQLFilter, KarmaAddSirketWhere, KarmaAddYilWhere).Rows.Count == 0)
                     Insert(KarmaTableName, Columns, Values);
                 else
                     UpdateData(KarmaTableName, Columns, Values, " AND " + SQLFilter);
-                KarmaOnNew();
                 if (!(KarmaGridControl is null))
                 {
                     KarmaGridControl.GetData(KarmaGridControl.KarmaSQLText);
                 }
             }
+            foreach (var item in KarmaChildPanels)
+            {
+                item.KarmaOnPost();
+            }
+            KarmaOnNew();
         }
 
         public void KarmaOnDelete()
@@ -102,10 +126,14 @@ namespace KarmaObjects
             {
                 DeleteData(KarmaTableName, SQLFilter);
             }
-            KarmaOnNew();
             if (!(KarmaGridControl is null))
             {
                 KarmaGridControl.GetData(KarmaGridControl.KarmaSQLText);
+            }
+            foreach (var item in KarmaChildPanels)
+            {
+                item.KarmaOnDelete();
+                KarmaOnNew();
             }
         }
 
@@ -123,7 +151,15 @@ namespace KarmaObjects
                     {
                         (_cnt as KarmaComboBox).EditValue = null;
                     }
+                    if (_cnt is KarmaCheck)
+                    {
+                        (_cnt as KarmaCheck).IsOn = false;
+                    }
                 }
+            }
+            foreach (var item in KarmaChildPanels)
+            {
+                item.KarmaOnNew();
             }
         }
         public void KarmaLoadFromGrid()
@@ -144,6 +180,11 @@ namespace KarmaObjects
                             if (a.FieldName == (_cnt as KarmaComboBox).KarmaFieldName)
                                 (_cnt as KarmaComboBox).EditValue = ((GridView)KarmaGridControl.MainView).GetRowCellValue(((GridView)KarmaGridControl.MainView).FocusedRowHandle, a.FieldName).ToString();
                         }
+                        if (_cnt is KarmaCheck)
+                        {
+                            if (a.FieldName == (_cnt as KarmaCheck).KarmaFieldName)
+                                (_cnt as KarmaCheck).IsOn = ((GridView)KarmaGridControl.MainView).GetRowCellValue(((GridView)KarmaGridControl.MainView).FocusedRowHandle, a.FieldName).ToString() == (_cnt as KarmaCheck).KarmaCheckedValue;
+                        }
                     }
 
                 }
@@ -156,7 +197,7 @@ namespace KarmaObjects
             {
                 List<string> Columns = new List<string>();
                 List<object> Values = new List<object>();
-                var x = GetSQLData("SELECT * FROM " + KarmaTableName + " WHERE " + SQLFilter);
+                var x = GetSQLData("SELECT * FROM " + KarmaTableName + " WHERE " + SQLFilter, KarmaAddSirketWhere, KarmaAddYilWhere);
                 if (x.Rows.Count > 0)
                 {
                     foreach (Control a in Controls)
@@ -202,9 +243,18 @@ namespace KarmaObjects
                                     }
                                 }
                             }
+                            else if (a is KarmaCheck)
+                            {
+                                if ((a as KarmaCheck).KarmaFieldName == c.ColumnName)
+                                    (a as KarmaCheck).IsOn = (a as KarmaCheck).KarmaCheckedValue.ToLower() == x.Rows[0][c].ToString().ToLower();
+                            }
                         }
                     }
                 }
+            }
+            foreach (var item in KarmaChildPanels)
+            {
+                item.KarmaLoadFromTable();
             }
         }
     }

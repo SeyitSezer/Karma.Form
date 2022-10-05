@@ -148,10 +148,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KarmaLauncher\KarmaLauncher.csproj">
-      <Project>{7cb13a6a-9d98-4bfe-8c2f-b2806d4efe56}</Project>
-      <Name>KarmaLauncher</Name>
-    </ProjectReference>
     <ProjectReference Include="..\KarmaLib\KarmaLib.csproj">
       <Project>{8940ee8f-1b08-4c84-b97c-86eb1b8cd863}</Project>
       <Name>KarmaLib</Name>

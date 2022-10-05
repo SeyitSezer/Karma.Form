@@ -81,7 +81,7 @@ namespace KarmaLib
             _Mesaj.ShowDialog();
         }
 
-        public static DialogResult Sor(string Mesaj,int bekleSure = 0, string Baslik = "Onayınız Gerekiyor",  bool DefaultDeger= false)
+        public static DialogResult Sor(string Mesaj, int bekleSure = 0, string Baslik = "Onayınız Gerekiyor", bool DefaultDeger = false)
         {
             FrmMesajAlt _Soru = new FrmMesajAlt(Mesaj, false, DefaultDeger, bekleSure, Baslik);
             if (!(MainForm is null))
@@ -96,7 +96,7 @@ namespace KarmaLib
                 _Soru.Height = 200;
                 _Soru.StartPosition = FormStartPosition.CenterScreen;
             };
-            
+
             _Soru.ShowDialog();
             return _Soru.DialogResult;
         }
@@ -104,9 +104,9 @@ namespace KarmaLib
         public static string HataMesajiHazirla(string SQLText, string HataMesaji, Type GonderenNesne, string DataBase)
         {
             string Msj = "";
-            Msj  = "Hata             :" + HataMesaji + Environment.NewLine;
+            Msj = "Hata             :" + HataMesaji + Environment.NewLine;
             Msj += "SQL Text         :" + SQLText + Environment.NewLine;
-            Msj += "Gönderen Nesne   :" + GonderenNesne.Name+ Environment.NewLine;
+            Msj += "Gönderen Nesne   :" + GonderenNesne.Name + Environment.NewLine;
             Msj += "Çalışılan Şifket :" + DataBase + Environment.NewLine;
             Msj += "Hata Tarihi      :" + DateTime.Now.ToString("D");
             return Msj;
@@ -154,16 +154,16 @@ namespace KarmaLib
                     i = MiktarDigit;
                     break;
                 case KarmaFieldNumericTypes.Fiyat:
-                    i= FiyatDigit;
+                    i = FiyatDigit;
                     break;
                 case KarmaFieldNumericTypes.Tutar:
                     i = TutarDigit;
                     break;
                 case KarmaFieldNumericTypes.TamSayi:
-                    i= 0;
+                    i = 0;
                     break;
                 case KarmaFieldNumericTypes.Genel:
-                    i= GenelDigit;
+                    i = GenelDigit;
                     break;
                 default:
                     i = GenelDigit;
@@ -223,6 +223,43 @@ namespace KarmaLib
         public static bool ToBool(this string _obj)
         {
             return Convert.ToBoolean(_obj);
+        }
+
+        public static DateTime ToDate(this object _obj)
+        {
+            if (_obj is DBNull) return DateTime.MinValue;
+            else
+                try
+                {
+                    return Convert.ToDateTime(_obj);
+                }
+                catch (Exception)
+                {
+                    return DateTime.MinValue;
+                }
+        }
+
+        public static DateTime ToDate(this string _obj)
+        {
+            try
+            {
+                return Convert.ToDateTime(_obj);
+            }
+            catch (Exception)
+            {
+                return DateTime.MinValue;
+            }
+        }
+        public static DateTime ToDate(this double _obj)
+        {
+            try
+            {
+                return Convert.ToDateTime(_obj);
+            }
+            catch (Exception)
+            {
+                return DateTime.MinValue;
+            }
         }
     }
 

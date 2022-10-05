@@ -76,21 +76,26 @@
             this.karmaPanel1.KarmaGridControl = null;
             this.karmaPanel1.KarmaMasterButton = null;
             this.karmaPanel1.KarmaMasterTextBox = null;
+            this.karmaPanel1.KarmaSecTextBox = null;
             this.karmaPanel1.KarmaTableName = null;
             this.karmaPanel1.Location = new System.Drawing.Point(182, 0);
             this.karmaPanel1.Name = "karmaPanel1";
+            this.karmaPanel1.ShowCaption = false;
             this.karmaPanel1.Size = new System.Drawing.Size(366, 192);
             this.karmaPanel1.TabIndex = 2;
             // 
             // Yil
             // 
+            this.Yil.EnterMoveNextControl = true;
             this.Yil.KarmaFieldName = null;
             this.Yil.KarmaFieldType = KarmaObjects.KarmaFieldTypes.String;
-            this.Yil.KarmaLookupDisplayField = null;
+            this.Yil.KarmaLookupDisplayField = "GosterTarih";
             this.Yil.KarmaLookupFilter = null;
-            this.Yil.KarmaLookUpTable = null;
-            this.Yil.KarmaLookupValueField = null;
-            this.Yil.KarmaValueType = KarmaObjects.KarmaValueTypes.ItemIndex;
+            this.Yil.KarmaLookUpTable = "tblCalismaYili";
+            this.Yil.KarmaLookupValueField = "CalismaYili";
+            this.Yil.KarmaMasterFieldName = "SirketKodu";
+            this.Yil.KarmaMasterObject = this.Sirket;
+            this.Yil.KarmaValueType = KarmaObjects.KarmaValueTypes.Lookup;
             this.Yil.Location = new System.Drawing.Point(127, 152);
             this.Yil.Name = "Yil";
             this.Yil.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -100,13 +105,16 @@
             // 
             // Sirket
             // 
+            this.Sirket.EnterMoveNextControl = true;
             this.Sirket.KarmaFieldName = null;
             this.Sirket.KarmaFieldType = KarmaObjects.KarmaFieldTypes.String;
-            this.Sirket.KarmaLookupDisplayField = null;
+            this.Sirket.KarmaLookupDisplayField = "Unvan";
             this.Sirket.KarmaLookupFilter = null;
-            this.Sirket.KarmaLookUpTable = null;
-            this.Sirket.KarmaLookupValueField = null;
-            this.Sirket.KarmaValueType = KarmaObjects.KarmaValueTypes.ItemIndex;
+            this.Sirket.KarmaLookUpTable = "tblSirket";
+            this.Sirket.KarmaLookupValueField = "SirketKodu";
+            this.Sirket.KarmaMasterFieldName = null;
+            this.Sirket.KarmaMasterObject = null;
+            this.Sirket.KarmaValueType = KarmaObjects.KarmaValueTypes.Lookup;
             this.Sirket.Location = new System.Drawing.Point(127, 125);
             this.Sirket.Name = "Sirket";
             this.Sirket.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -125,12 +133,14 @@
             this.Password.KarmaGuideFilter = null;
             this.Password.KarmaGuideName = null;
             this.Password.KarmaGuideTableName = null;
+            this.Password.KarmaIsRequired = false;
+            this.Password.KarmaLastEdit = false;
             this.Password.KarmaNumericType = KarmaLib.KarmaLib.KarmaFieldNumericTypes.TamSayi;
             this.Password.KarmaPasswordTextBox = true;
             this.Password.Location = new System.Drawing.Point(127, 37);
             this.Password.Name = "Password";
             this.Password.ReadOnly = false;
-            this.Password.Size = new System.Drawing.Size(227, 20);
+            this.Password.Size = new System.Drawing.Size(227, 24);
             this.Password.TabIndex = 1;
             // 
             // UserName
@@ -144,12 +154,14 @@
             this.UserName.KarmaGuideFilter = null;
             this.UserName.KarmaGuideName = null;
             this.UserName.KarmaGuideTableName = null;
+            this.UserName.KarmaIsRequired = false;
+            this.UserName.KarmaLastEdit = false;
             this.UserName.KarmaNumericType = KarmaLib.KarmaLib.KarmaFieldNumericTypes.TamSayi;
             this.UserName.KarmaPasswordTextBox = false;
             this.UserName.Location = new System.Drawing.Point(127, 10);
             this.UserName.Name = "UserName";
             this.UserName.ReadOnly = false;
-            this.UserName.Size = new System.Drawing.Size(227, 20);
+            this.UserName.Size = new System.Drawing.Size(227, 24);
             this.UserName.TabIndex = 0;
             // 
             // BtnGiris
@@ -162,7 +174,7 @@
             this.BtnGiris.KarmaButtonType = KarmaObjects.KarmaButtonTypes.Özel;
             this.BtnGiris.KarmaMasterPanel = null;
             this.BtnGiris.KarmaMasterTextBox = null;
-            this.BtnGiris.Location = new System.Drawing.Point(234, 63);
+            this.BtnGiris.Location = new System.Drawing.Point(234, 67);
             this.BtnGiris.Name = "BtnGiris";
             this.BtnGiris.Size = new System.Drawing.Size(120, 49);
             this.BtnGiris.TabIndex = 2;
@@ -175,7 +187,7 @@
             this.karmaLabel4.AutoSize = true;
             this.karmaLabel4.Font = new System.Drawing.Font("Roboto", 9F);
             this.karmaLabel4.KarmaFocusControl = null;
-            this.karmaLabel4.Location = new System.Drawing.Point(3, 146);
+            this.karmaLabel4.Location = new System.Drawing.Point(3, 155);
             this.karmaLabel4.Name = "karmaLabel4";
             this.karmaLabel4.ReadOnly = false;
             this.karmaLabel4.Size = new System.Drawing.Size(71, 14);
@@ -188,7 +200,7 @@
             this.karmaLabel3.AutoSize = true;
             this.karmaLabel3.Font = new System.Drawing.Font("Roboto", 9F);
             this.karmaLabel3.KarmaFocusControl = null;
-            this.karmaLabel3.Location = new System.Drawing.Point(3, 119);
+            this.karmaLabel3.Location = new System.Drawing.Point(3, 128);
             this.karmaLabel3.Name = "karmaLabel3";
             this.karmaLabel3.ReadOnly = false;
             this.karmaLabel3.Size = new System.Drawing.Size(87, 14);
@@ -201,7 +213,7 @@
             this.karmaLabel2.AutoSize = true;
             this.karmaLabel2.Font = new System.Drawing.Font("Roboto", 9F);
             this.karmaLabel2.KarmaFocusControl = null;
-            this.karmaLabel2.Location = new System.Drawing.Point(3, 39);
+            this.karmaLabel2.Location = new System.Drawing.Point(3, 40);
             this.karmaLabel2.Name = "karmaLabel2";
             this.karmaLabel2.ReadOnly = false;
             this.karmaLabel2.Size = new System.Drawing.Size(31, 14);
@@ -214,7 +226,7 @@
             this.karmaLabel1.AutoSize = true;
             this.karmaLabel1.Font = new System.Drawing.Font("Roboto", 9F);
             this.karmaLabel1.KarmaFocusControl = null;
-            this.karmaLabel1.Location = new System.Drawing.Point(3, 12);
+            this.karmaLabel1.Location = new System.Drawing.Point(3, 13);
             this.karmaLabel1.Name = "karmaLabel1";
             this.karmaLabel1.ReadOnly = false;
             this.karmaLabel1.Size = new System.Drawing.Size(75, 14);
@@ -234,11 +246,11 @@
             this.ClientSize = new System.Drawing.Size(548, 192);
             this.Controls.Add(this.karmaPanel1);
             this.Controls.Add(this.pictureBox1);
-            this.Font = new System.Drawing.Font("Roboto", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Launcher";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Karma.Form - Launcher";
             this.Load += new System.EventHandler(this.Launcher_Load);

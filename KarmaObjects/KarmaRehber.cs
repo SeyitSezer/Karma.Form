@@ -18,13 +18,13 @@ namespace KarmaObjects
     {
         string DonecekAlan="";
         public string Sonuc;
-        public KarmaRehber(string TableName, string Alanlar, string xDonecekAlan, string SabitFiltre = "", string Baslik = "Rehber")
+        public KarmaRehber(string TableName, string Alanlar, string xDonecekAlan, string SabitFiltre = "", string Baslik = "Rehber", bool AddSirket = true, bool AddYil = true)
         {
             InitializeComponent();
             DonecekAlan = xDonecekAlan;
             Text = Baslik;
             string SQLText = "SELECT " + Alanlar + " FROM " + TableName + " WITH(NOLOCK) WHERE 1=1 " + SabitFiltre;
-            GrdRehber.DataSource = GetSQLData(SQLText);
+            GrdRehber.DataSource = GetSQLData(SQLText, AddSirket, AddYil);
         }
 
         private void KarmaRehber_Load(object sender, EventArgs e)

@@ -14,6 +14,8 @@ namespace KarmaLib
 {
     public static class AppLib
     {
+        public static DateTime ServerTime { get; set; }
+        public static DateTime LoginTime { get; set; }
         public static void VersionControl()
         {
 

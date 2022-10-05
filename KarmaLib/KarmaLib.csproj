@@ -75,6 +75,7 @@
     <Compile Include="IniConfig.cs" />
     <Compile Include="KarmaLib.cs" />
     <Compile Include="KarmaSecurity.cs" />
+    <Compile Include="KarmaSirketLib.cs" />
     <Compile Include="KarmaSQL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

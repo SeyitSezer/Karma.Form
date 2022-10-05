@@ -100,6 +100,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Karma.Form\Karma.Form.csproj">
+      <Project>{ac95bf41-2ac4-4803-8bf3-458d99370753}</Project>
+      <Name>Karma.Form</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KarmaLib\KarmaLib.csproj">
       <Project>{8940ee8f-1b08-4c84-b97c-86eb1b8cd863}</Project>
       <Name>KarmaLib</Name>
@@ -107,6 +111,10 @@
     <ProjectReference Include="..\KarmaObjects\KarmaObjects.csproj">
       <Project>{502436d1-2544-43cf-9a32-68f92fe7a63d}</Project>
       <Name>KarmaObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KarmaUserLib\KarmaUserLib.csproj">
+      <Project>{01822a38-66d4-45df-9bb4-11357c74cff8}</Project>
+      <Name>KarmaUserLib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

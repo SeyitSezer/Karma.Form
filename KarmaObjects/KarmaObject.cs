@@ -14,5 +14,6 @@ namespace KarmaObjects
         object GetFieldData { get; }
         bool IsNull { get; }
         void KarmaSetValue(object value);
+        bool KarmaIsRequired { get; set; }
     }
 }

@@ -12,6 +12,7 @@ using DevExpress.Data.Db;
 using DevExpress.DataAccess.Native.Sql;
 using DevExpress.DataAccess.Sql;
 using DevExpress.DataAccess.ConnectionParameters;
+using static KarmaLib.KarmaSirketLib;
 
 namespace KarmaLib
 {
@@ -37,7 +38,7 @@ namespace KarmaLib
     {
         public static List<KarmaColumnHelper> GetTableColumnList(string TableName)
         {
-            
+
             var _list = new List<KarmaColumnHelper>();
             var _cols = KarmaSQL.GetSQLData($"SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME ='{TableName}'");
             foreach (DataRow col in _cols.Rows)
@@ -78,7 +79,7 @@ namespace KarmaLib
                 }
                 _list.Add(itm);
             }
-            
+
             return _list;
         }
     }
@@ -93,7 +94,7 @@ namespace KarmaLib
                 if (File.Exists(Application.StartupPath + "\\Options\\Config.ini")) File.Delete(Application.StartupPath + "\\Options\\Config.ini");
                 KarmaSecurity.DosyaCoz(Application.StartupPath + "\\Options\\KarmaSettings.opt", Application.StartupPath + "\\Options\\Config.ini", SecurityKey);
                 IniConfig _ReadConfig = new IniConfig(Application.StartupPath + "\\Options\\Config.ini");
-                Server = _ReadConfig.Read("Karma","Server");
+                Server = _ReadConfig.Read("Karma", "Server");
                 UserName = _ReadConfig.Read("Karma", "UserName");
                 Password = _ReadConfig.Read("Karma", "Password");
                 MiktarDigit = Convert.ToInt32(_ReadConfig.Read("Karma", "MiktarDigit"));
@@ -147,7 +148,7 @@ namespace KarmaLib
             }
             catch (Exception x)
             {
-                Mesaj(HataMesajiHazirla(_Insert.CommandText,  x.Message, typeof(KarmaSQL), KarmaConnection.Database),0, "Hata");
+                Mesaj(HataMesajiHazirla(_Insert.CommandText, x.Message, typeof(KarmaSQL), KarmaConnection.Database), 0, "Hata");
             }
         }
 
@@ -160,7 +161,7 @@ namespace KarmaLib
             }
             catch (Exception x)
             {
-                Mesaj(HataMesajiHazirla(_delete.CommandText, x.Message, typeof(KarmaSQL), KarmaConnection.Database),0, "Hata");
+                Mesaj(HataMesajiHazirla(_delete.CommandText, x.Message, typeof(KarmaSQL), KarmaConnection.Database), 0, "Hata");
             }
         }
 
@@ -176,9 +177,9 @@ namespace KarmaLib
                     Mesaj("Alan ve Değer Listesi Eşit Değil, İşleme Devam Edilemiyor!");
                     return;
                 }
-                for(int i = 0; i < cols.Length; i++)
+                for (int i = 0; i < cols.Length; i++)
                 {
-                    _Update.CommandText += cols[i] + " = @P" + (i + 1).ToString() +", ";
+                    _Update.CommandText += cols[i] + " = @P" + (i + 1).ToString() + ", ";
                     _Update.Parameters.AddWithValue("@P" + (i + 1).ToString(), vals[i]);
                 }
                 _Update.CommandText = _Update.CommandText.Substring(0, _Update.CommandText.Length - 2);
@@ -187,23 +188,37 @@ namespace KarmaLib
             }
             catch (Exception x)
             {
-                Mesaj(HataMesajiHazirla(_Update.CommandText, x.Message, typeof(KarmaSQL), KarmaConnection.Database),0, "Hata");
+                Mesaj(HataMesajiHazirla(_Update.CommandText, x.Message, typeof(KarmaSQL), KarmaConnection.Database), 0, "Hata");
             }
         }
 
-        public static DataTable GetSQLData(string SQLText)
+        public static DataTable GetSQLData(string SQLText, bool AddSirket = true, bool AddYil = true)
         {
             DataTable _Result = new DataTable();
+            try
+            {
+                if (CurrentSirket != null)
+                {
+                    if (SQLText.IndexOf("WHERE") <= 0)
+                        SQLText += " WHERE 1=1 ";
+                    SQLText += (AddSirket ? " AND SirketKodu = '" + CurrentSirket.SirketKodu + "'" : "") + (AddYil ? " AND CalismaYili = " + CurrentCalismaYil.Yil.ToString() : "");
+                }
 
-            SqlDataAdapter _GetData = new SqlDataAdapter(SQLText, KarmaConnection);
-            _GetData.Fill(_Result);
+
+                SqlDataAdapter _GetData = new SqlDataAdapter(SQLText, KarmaConnection);
+                _GetData.Fill(_Result);
+            }
+            catch (Exception x)
+            {
+                Mesaj(HataMesajiHazirla(SQLText, x.Message, typeof(DataTable), KarmaLib.DatabaseName));
+            }
             return _Result;
+
         }
 
         public static DataSet GetSQLDataSet(string SQLText)
         {
             DataSet _Result = new DataSet();
-
             SqlDataAdapter _GetData = new SqlDataAdapter(SQLText, KarmaConnection);
             _GetData.Fill(_Result);
             return _Result;

@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 // Tüm değerleri belirtebilir veya varsayılan Derleme ve Düzeltme Numaralarını kullanmak için
 // aşağıda gösterildiği gibi '*' kullanabilirsiniz:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.26")]
-[assembly: AssemblyFileVersion("1.0.0.26")]
+[assembly: AssemblyVersion("1.0.0.98")]
+[assembly: AssemblyFileVersion("1.0.0.98")]
 
-[assembly: AssemblyInformationalVersion("1.0.26")]
+[assembly: AssemblyInformationalVersion("1.0.98")]

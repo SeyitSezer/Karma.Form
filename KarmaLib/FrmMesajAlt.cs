@@ -65,14 +65,18 @@ namespace KarmaLib
                 BtnOk.Enabled = true;
                 //BtnCancel.Enabled = true;
                 BtnNo.Enabled = true;
+                if (!mesajmi)
+                {
+                    if (varsayilan) BtnYes.Focus();
+                    else BtnNo.Focus();
+                }
             }
 
         }
 
         private void ButtonsClick(object sender, EventArgs e)
         {
-            DialogResult = (sender as Button).DialogResult;
-            Close();
+
         }
     }
 }

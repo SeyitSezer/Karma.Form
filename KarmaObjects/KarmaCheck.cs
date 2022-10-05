@@ -66,6 +66,6 @@ namespace KarmaObjects
         public string KarmaUnCheckedText { get => Properties.OffText; set => Properties.OffText = value; }
         public string KarmaCheckedValue { get => Properties.ValueOn.ToString(); set => Properties.ValueOn = value; }
         public string KarmaUnCheckedValue { get => Properties.ValueOff.ToString(); set => Properties.ValueOff = value; }
-        
+        public bool KarmaIsRequired { get; set; }
     }
 }

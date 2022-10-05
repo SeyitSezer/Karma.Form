@@ -35,6 +35,8 @@ namespace KarmaObjects
         public KarmaPanel MasterPanel;
         public string KarmaSQLText { get; set; }
         public bool KarmaSQLCalistir { get; set; } = false;
+        public bool KarmaAddSirketWhere { get; set; } = false;
+        public bool KarmaAddYilWhere { get; set; } = false;
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
@@ -76,7 +78,7 @@ namespace KarmaObjects
             {
                 ((GridView)MainView).ShowLoadingPanel();
                 KarmaSQLText = SQLText;
-                DataSource = GetSQLData(SQLText);
+                DataSource = GetSQLData(SQLText, KarmaAddSirketWhere, KarmaAddYilWhere);
             }
             catch (Exception x)
             {

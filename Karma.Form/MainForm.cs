@@ -20,6 +20,7 @@ using static KarmaUserLib.UserLib;
 using KarmaLib;
 using DevExpress.LookAndFeel;
 using DevExpress.Utils.Drawing.Helpers;
+using static KarmaLib.KarmaSirketLib;
 
 namespace Karma_Form
 {
@@ -51,11 +52,18 @@ namespace Karma_Form
             KarmaLib.KarmaLib.MainForm = this;
             ConnectDB("SzrBase");
             AppRunning = true;
-            StatusServerName.Caption = $"Çalışılan Şirket: {DatabaseName}({AppServer})";
-            AppVersion.Caption = VersionInfos.KarmaFormExe;
+            StatusServerName.Caption = $"Bağlandı: {AppServer}";
+            StatusServerName.Tag = 1;
+            AppVersion.Caption = "Ver. " + VersionInfos.KarmaFormExe;
             //GetTableColumnList("tblStocks");
-            UserLookAndFeel.Default.SkinName = Properties.Settings.Default.Theme;
+            if (string.IsNullOrEmpty(Properties.Settings.Default.Theme))
+            {
+                UserLookAndFeel.Default.SkinName = "Visual Studio 2013 Blue";
+            }
+            else
+                UserLookAndFeel.Default.SkinName = Properties.Settings.Default.Theme;
             BildirimList.Width = 0;
+            StatusUser.Caption = CurrentUser.UserNickName;
         }
 
 
@@ -95,6 +103,11 @@ namespace Karma_Form
         private void MainTimer_Tick(object sender, EventArgs e)
         {
             Notifications();
+            if (StatusServerName.Tag.ToInt() == 1)
+            {
+                StatusServerName.Caption = CurrentSirket.Unvan;
+                StatusServerName.Tag = 0;
+            }
         }
 
         public void Notifications()
@@ -138,25 +151,50 @@ namespace Karma_Form
         private void NotifyButtonClick(object sender, DevExpress.XtraEditors.TileItemEventArgs e)
         {
             KarmaBildirimItem item = (KarmaBildirimItem)e.Item;
-            if (item.IsRead) return;
-            var x = FindFormByName(item.EventForm);
-            if (x == null) return;
-            string deger = item.EventObject.Substring(item.EventObject.IndexOf(";")+1);
+            if (!item.IsRead)
+            {
+                var x = FindFormByName(item.EventForm);
+                if (x != null)
+                {
+                    string deger = item.EventObject.Substring(item.EventObject.IndexOf(";") + 1);
 
-            if (x.Controls.Find(item.EventObject.Substring(0, item.EventObject.IndexOf(";")), true)[0] is KarmaTextBox)
-                (x.Controls.Find(item.EventObject.Substring(0, item.EventObject.IndexOf(";")), true)[0] as KarmaTextBox).KarmaSetValue(deger);
-            else if (x.Controls.Find(item.EventObject.Substring(0, item.EventObject.IndexOf(";")), true)[0] is KarmaCheck)
-                (x.Controls.Find(item.EventObject.Substring(0, item.EventObject.IndexOf(";")), true)[0] as KarmaCheck).KarmaSetValue(deger);
-            else if (x.Controls.Find(item.EventObject.Substring(0, item.EventObject.IndexOf(";")), true)[0] is KarmaComboBox)
-                (x.Controls.Find(item.EventObject.Substring(0, item.EventObject.IndexOf(";")), true)[0] as KarmaComboBox).KarmaSetValue(deger);
+                    if (x.Controls.Find(item.EventObject.Substring(0, item.EventObject.IndexOf(";")), true)[0] is KarmaTextBox)
+                        (x.Controls.Find(item.EventObject.Substring(0, item.EventObject.IndexOf(";")), true)[0] as KarmaTextBox).KarmaSetValue(deger);
+                    else if (x.Controls.Find(item.EventObject.Substring(0, item.EventObject.IndexOf(";")), true)[0] is KarmaCheck)
+                        (x.Controls.Find(item.EventObject.Substring(0, item.EventObject.IndexOf(";")), true)[0] as KarmaCheck).KarmaSetValue(deger);
+                    else if (x.Controls.Find(item.EventObject.Substring(0, item.EventObject.IndexOf(";")), true)[0] is KarmaComboBox)
+                        (x.Controls.Find(item.EventObject.Substring(0, item.EventObject.IndexOf(";")), true)[0] as KarmaComboBox).KarmaSetValue(deger);
 
-            PleaseWait(new Thread(() => CreateForm((KarmaForm)x)));
-            x.ActiveControl = x.Controls.Find(item.EventObject.Substring(0, item.EventObject.IndexOf(";")), true)[0];
-            x.Controls.Find(item.EventObject.Substring(0, item.EventObject.IndexOf(";")), true)[0].Focus();
-            item.IsRead = true;
+                    PleaseWait(new Thread(() => CreateForm((KarmaForm)x)));
+                    x.ActiveControl = x.Controls.Find(item.EventObject.Substring(0, item.EventObject.IndexOf(";")), true)[0];
+                    x.Controls.Find(item.EventObject.Substring(0, item.EventObject.IndexOf(";")), true)[0].Focus();
+                    item.IsRead = true;
+                }
+            }
             UpdateData("tblUserNotify", new List<string>() { "IsRead", "ReadDate" }, new List<object>() { true, DateTime.Now }, " AND ID = " + item.NotifyID.ToString());
+            Notifications();
         }
 
-       
+        private void Timer1Sn_Tick(object sender, EventArgs e)
+        {
+            if (NotifyButton.Caption == "0")
+            {
+                NotifyButton.ItemAppearance.Normal.ForeColor = Color.Empty;
+                NotifyButton.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.Default;
+            }
+            else
+            {
+                if (NotifyButton.ImageOptions.AllowGlyphSkinning == DevExpress.Utils.DefaultBoolean.Default)
+                {
+                    NotifyButton.ItemAppearance.Normal.ForeColor = Color.Red;
+                    NotifyButton.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+                }
+                else
+                {
+                    NotifyButton.ItemAppearance.Normal.ForeColor = Color.Empty;
+                    NotifyButton.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.Default;
+                }
+            }
+        }
     }
 }
